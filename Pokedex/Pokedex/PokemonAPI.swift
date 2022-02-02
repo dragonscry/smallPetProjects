@@ -14,7 +14,7 @@ struct Pokemon: Codable {
 }
 
 struct PokemonEntry: Codable, Identifiable {
-    var id = UUID()
+    let id = UUID()
     var name: String
     var url: String
 }
@@ -28,11 +28,13 @@ class PokeApi {
         URLSession.shared.dataTask(with: url) { data, response, error in
             guard let data = data else {return}
             
-            let pokemonList = try! JSONDecoder().decode(Pokemon.self, from: data)
+            let pokemonList = try? JSONDecoder().decode(Pokemon.self, from: data)
             
             DispatchQueue.main.async {
-                completion(pokemonList.results)
+                completion(pokemonList?.results ?? [])
             }
+            
+            print("Pokemon patching")
         }.resume()
     }
 }

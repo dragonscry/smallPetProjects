@@ -9,25 +9,22 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State var pokemon = [PokemonEntry]()
+    @State var pokemons = [PokemonEntry]()
     @State var searchText = ""
     
     var body: some View {
         NavigationView {
             List {
-                ForEach(searchText == "" ? pokemon : pokemon.filter({$0.name.contains(searchText.lowercased())
+                ForEach(searchText == "" ? pokemons : pokemons.filter({$0.name.contains(searchText.lowercased())
                 })) { entry in
                     HStack {
-                        PokemonImage(imageLink: "\(entry.url)")
-                            .padding(.horizontal, 10)//PokemonImage
-                        NavigationLink("\(entry.name)".capitalized,destination: Text("DetailView for \(entry.name)"))
+                        Text("\(entry.name)")
                     }
                 }
             }
-            .onAppear{
-                PokeApi().getData() { pokemon in
-                    self.pokemon = pokemon
-                }
+            .onAppear{ if pokemons.isEmpty {
+                PokeApi().getData(completion: {poke in self.pokemons = poke })
+            }
             }
             .searchable(text: $searchText)
             .navigationTitle("Pokedex")
