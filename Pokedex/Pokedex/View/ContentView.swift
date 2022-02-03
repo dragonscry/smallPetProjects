@@ -17,9 +17,8 @@ struct ContentView: View {
             List {
                 ForEach(searchText == "" ? pokemons : pokemons.filter({$0.name.contains(searchText.lowercased())
                 })) { entry in
-                    HStack {
-                        Text("\(entry.name)")
-                    }
+                    NavigationLink(destination: PokemonDetailsView(link: entry.url))
+                    {Text("\(entry.name)")}
                 }
             }
             .onAppear{ if pokemons.isEmpty {

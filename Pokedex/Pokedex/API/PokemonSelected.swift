@@ -7,26 +7,26 @@
 
 import Foundation
 
-struct PokemonSelected: Codable {
-    var sprites: PokemonSprites
-    var weight: Int
-}
-
-struct PokemonSprites: Codable {
-    var front_default: String
-}
-
+//struct PokemonSelected: Codable {
+//    var sprites: PokemonSprites
+//    var weight: Int
+//}
+//
+//struct PokemonSprites: Codable {
+//    var front_default: String
+//}
+//
 class PokemonSelectedApi {
-    func getData(url: String, completion: @escaping (PokemonSprites)->()) {
+    func getData(url: String, completion: @escaping (PokemonDetails)->()) {
         guard let url = URL(string: url) else {return}
-        
+
         URLSession.shared.dataTask(with: url) { data, response, error in
             guard let data = data else {return}
-            
-            let pokemonSprite = try! JSONDecoder().decode(PokemonSelected.self, from: data)
-            
+
+            let pokemonDetails = try! JSONDecoder().decode(PokemonDetails.self, from: data)
+
             DispatchQueue.main.async {
-                completion(pokemonSprite.sprites)
+                completion(pokemonDetails)
             }
         }.resume()
     }
