@@ -11,6 +11,8 @@
 		9AB7405927B6BEE900F873A9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB7405827B6BEE900F873A9 /* ContentView.swift */; };
 		9AB7405B27B6BEEA00F873A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AB7405A27B6BEEA00F873A9 /* Assets.xcassets */; };
 		9AB7405E27B6BEEA00F873A9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AB7405D27B6BEEA00F873A9 /* Preview Assets.xcassets */; };
+		9AB7406527B85D8400F873A9 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB7406427B85D8400F873A9 /* API.swift */; };
+		9AB7406727B85D9600F873A9 /* JokeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB7406627B85D9600F873A9 /* JokeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		9AB7405827B6BEE900F873A9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		9AB7405A27B6BEEA00F873A9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9AB7405D27B6BEEA00F873A9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		9AB7406427B85D8400F873A9 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		9AB7406627B85D9600F873A9 /* JokeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +57,8 @@
 			children = (
 				9AB7405627B6BEE900F873A9 /* JokeApiApp.swift */,
 				9AB7405827B6BEE900F873A9 /* ContentView.swift */,
+				9AB7406427B85D8400F873A9 /* API.swift */,
+				9AB7406627B85D9600F873A9 /* JokeView.swift */,
 				9AB7405A27B6BEEA00F873A9 /* Assets.xcassets */,
 				9AB7405C27B6BEEA00F873A9 /* Preview Content */,
 			);
@@ -138,6 +144,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9AB7405927B6BEE900F873A9 /* ContentView.swift in Sources */,
+				9AB7406727B85D9600F873A9 /* JokeView.swift in Sources */,
+				9AB7406527B85D8400F873A9 /* API.swift in Sources */,
 				9AB7405727B6BEE900F873A9 /* JokeApiApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
