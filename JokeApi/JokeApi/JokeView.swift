@@ -12,7 +12,7 @@ struct JokeView: View {
     let defaultText = "To show a joke click on button below"
     var body: some View {
         ZStack {
-            VStack {
+            VStack(alignment: .leading) {
                 if joke == nil {
                     Text(defaultText)
                 } else if joke!.joke != nil {

@@ -12,6 +12,8 @@ struct ContentView: View {
     @State var categories : AllCategories?
     @State var joke: Joke?
     
+    @State var isSettingsOn = false
+    
     var body: some View {
         NavigationView {
             VStack{
@@ -29,6 +31,14 @@ struct ContentView: View {
                     Text("Get a joke")
                 }
             }
+            .sheet(isPresented: $isSettingsOn){
+                Text("Settings")
+            }
+            .navigationBarItems(trailing: Button(action: {
+                isSettingsOn = true
+            }){
+                Image(systemName: "gear")
+            })
             .padding(.vertical, 30)
             .navigationTitle(Text("Jokes"))
             
