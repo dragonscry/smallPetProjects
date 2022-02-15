@@ -13,6 +13,11 @@ struct ContentView: View {
     @State var joke: Joke?
     
     @State var isSettingsOn = false
+    @State var currentCategory = "Any"
+    
+    var url : String {
+        "https://v2.jokeapi.dev/joke/" + currentCategory.lowercased()
+    }
     
     var body: some View {
         NavigationView {
@@ -20,9 +25,10 @@ struct ContentView: View {
                 JokeView(joke: $joke)
                 
                 Spacer()
-                
+                Text("Your current category is: \(currentCategory)").fontWeight(.bold)
+                    .padding()
                 Button(action: {
-                    JokeAPI().getJoke(from: "https://v2.jokeapi.dev/joke/any", completion: {joke in
+                    JokeAPI().getJoke(from: url, completion: {joke in
                         withAnimation {
                         self.joke = joke
                         }
@@ -30,9 +36,13 @@ struct ContentView: View {
                 }){
                     Text("Get a joke")
                 }
+                .foregroundColor(.white)
+                .padding()
+                .background(Color.green)
+                .clipShape(Capsule())
             }
             .sheet(isPresented: $isSettingsOn){
-                Text("Settings")
+                SettingsView(currentCategory: $currentCategory)
             }
             .navigationBarItems(trailing: Button(action: {
                 isSettingsOn = true
