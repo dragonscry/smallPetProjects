@@ -25,7 +25,7 @@ struct TextBootcamp: View {
             Text("Underline Color".lowercased())
                 .font(.title)
                 .underline(true, color: Color.green)
-            //Text through systeb
+            //Text through system5
             Text("System")
                 .font(.system(size: 24, weight: .semibold, design: .serif))
             //Text Multiline
