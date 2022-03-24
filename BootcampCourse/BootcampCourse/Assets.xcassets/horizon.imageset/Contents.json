@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "filename" : "horizon-zero-dawn-aloy-tallneck-art-gora-reka-voda.jpg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
