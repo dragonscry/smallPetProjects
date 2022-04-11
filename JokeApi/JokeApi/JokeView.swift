@@ -17,10 +17,13 @@ struct JokeView: View {
                     Text(defaultText)
                 } else if joke!.joke != nil {
                     Text("\(joke!.joke!)")
+                        .transition(.slide)
                 }
                 else {
                     Text("\(joke!.setup!)")
+                        .transition(.slide)
                     Text("\(joke!.delivery!)")
+                        .transition(.slide)
                 }
             }
             .foregroundColor(Color.white)
