@@ -53,6 +53,7 @@
 		9ACE213027E86D5600B38913 /* ShapesBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACE212F27E86D5600B38913 /* ShapesBootcamp.swift */; };
 		9ACE213227E872AB00B38913 /* ColorsBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACE213127E872AB00B38913 /* ColorsBootcamp.swift */; };
 		9AF13C5F28105EC40098C9FC /* DarkModeBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF13C5E28105EC40098C9FC /* DarkModeBootcamp.swift */; };
+		9AF13C61281063450098C9FC /* DocumentationBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF13C60281063450098C9FC /* DocumentationBootcamp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -103,6 +104,7 @@
 		9ACE212F27E86D5600B38913 /* ShapesBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapesBootcamp.swift; sourceTree = "<group>"; };
 		9ACE213127E872AB00B38913 /* ColorsBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsBootcamp.swift; sourceTree = "<group>"; };
 		9AF13C5E28105EC40098C9FC /* DarkModeBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkModeBootcamp.swift; sourceTree = "<group>"; };
+		9AF13C60281063450098C9FC /* DocumentationBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentationBootcamp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +166,7 @@
 				9A3C67772800C94A0060B57B /* BindingBootcamp.swift */,
 				9A3C677928019F410060B57B /* ConditionalBootcamp.swift */,
 				9A3C677B2801A4810060B57B /* TernaryBootcamp.swift */,
+				9AF13C60281063450098C9FC /* DocumentationBootcamp.swift */,
 				9A3C677D2801A6F40060B57B /* AnimationBootcamp.swift */,
 				9A3C677F2801B14F0060B57B /* AnimationTimintBootcamp.swift */,
 				9A3C67812802F2B00060B57B /* TransitionsBootcamp.swift */,
@@ -301,6 +304,7 @@
 				9A3C6798280B243B0060B57B /* TextEditorBootcamp.swift in Sources */,
 				9A3C6796280B17880060B57B /* TextFieldBootcamp.swift in Sources */,
 				9A3C675C27ED1CFF0060B57B /* ImageBootcamp.swift in Sources */,
+				9AF13C61281063450098C9FC /* DocumentationBootcamp.swift in Sources */,
 				9A3C67902806EFDB0060B57B /* AlertBootcamp.swift in Sources */,
 				9A3C676827F63DC90060B57B /* ForEachBootcamp.swift in Sources */,
 				9AA59B64280DEB6C0004B444 /* DatePickerBootcamp.swift in Sources */,
