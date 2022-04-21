@@ -57,6 +57,7 @@
 		9AF13C63281099890098C9FC /* OnApperBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF13C62281099890098C9FC /* OnApperBootcamp.swift */; };
 		9AF13C6528114A9A0098C9FC /* IfLetGuardBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF13C6428114A9A0098C9FC /* IfLetGuardBootcamp.swift */; };
 		9AF13C6728114EF40098C9FC /* TagGestureBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF13C6628114EF40098C9FC /* TagGestureBootcamp.swift */; };
+		9AF13C692811531E0098C9FC /* CustomDataBootcamps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF13C682811531E0098C9FC /* CustomDataBootcamps.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -111,6 +112,7 @@
 		9AF13C62281099890098C9FC /* OnApperBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnApperBootcamp.swift; sourceTree = "<group>"; };
 		9AF13C6428114A9A0098C9FC /* IfLetGuardBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IfLetGuardBootcamp.swift; sourceTree = "<group>"; };
 		9AF13C6628114EF40098C9FC /* TagGestureBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagGestureBootcamp.swift; sourceTree = "<group>"; };
+		9AF13C682811531E0098C9FC /* CustomDataBootcamps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDataBootcamps.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 				9ACE211F27E7D6E300B38913 /* BootcampCourseApp.swift */,
 				9ACE212127E7D6E300B38913 /* ContentView.swift */,
 				9AF13C6628114EF40098C9FC /* TagGestureBootcamp.swift */,
+				9AF13C682811531E0098C9FC /* CustomDataBootcamps.swift */,
 				9AF13C62281099890098C9FC /* OnApperBootcamp.swift */,
 				9AF13C6428114A9A0098C9FC /* IfLetGuardBootcamp.swift */,
 				9AA59B67280DF1E50004B444 /* SliderBootcamp.swift */,
@@ -293,6 +296,7 @@
 				9A3C675E27EE70710060B57B /* FrameBootcamp.swift in Sources */,
 				9ACE212227E7D6E300B38913 /* ContentView.swift in Sources */,
 				9A3C677227FE19110060B57B /* StateBootcamp.swift in Sources */,
+				9AF13C692811531E0098C9FC /* CustomDataBootcamps.swift in Sources */,
 				9A3C67822802F2B00060B57B /* TransitionsBootcamp.swift in Sources */,
 				9A3C676E27FCCCEC0060B57B /* SafeAreaBootcamp.swift in Sources */,
 				9ACE212E27E7D6FA00B38913 /* TextBootcamp.swift in Sources */,
