@@ -55,6 +55,7 @@
 		9AF13C5F28105EC40098C9FC /* DarkModeBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF13C5E28105EC40098C9FC /* DarkModeBootcamp.swift */; };
 		9AF13C61281063450098C9FC /* DocumentationBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF13C60281063450098C9FC /* DocumentationBootcamp.swift */; };
 		9AF13C63281099890098C9FC /* OnApperBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF13C62281099890098C9FC /* OnApperBootcamp.swift */; };
+		9AF13C6528114A9A0098C9FC /* IfLetGuardBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF13C6428114A9A0098C9FC /* IfLetGuardBootcamp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -107,6 +108,7 @@
 		9AF13C5E28105EC40098C9FC /* DarkModeBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkModeBootcamp.swift; sourceTree = "<group>"; };
 		9AF13C60281063450098C9FC /* DocumentationBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentationBootcamp.swift; sourceTree = "<group>"; };
 		9AF13C62281099890098C9FC /* OnApperBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnApperBootcamp.swift; sourceTree = "<group>"; };
+		9AF13C6428114A9A0098C9FC /* IfLetGuardBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IfLetGuardBootcamp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +144,7 @@
 				9ACE211F27E7D6E300B38913 /* BootcampCourseApp.swift */,
 				9ACE212127E7D6E300B38913 /* ContentView.swift */,
 				9AF13C62281099890098C9FC /* OnApperBootcamp.swift */,
+				9AF13C6428114A9A0098C9FC /* IfLetGuardBootcamp.swift */,
 				9AA59B67280DF1E50004B444 /* SliderBootcamp.swift */,
 				9AA59B69280F3E970004B444 /* TabViewBootcamp.swift */,
 				9AF13C5E28105EC40098C9FC /* DarkModeBootcamp.swift */,
@@ -275,6 +278,7 @@
 				9A3C676C27F8DD840060B57B /* ScrollViewBootcamp.swift in Sources */,
 				9A3C67802801B14F0060B57B /* AnimationTimintBootcamp.swift in Sources */,
 				9AA59B6A280F3E970004B444 /* TabViewBootcamp.swift in Sources */,
+				9AF13C6528114A9A0098C9FC /* IfLetGuardBootcamp.swift in Sources */,
 				9A3C676427F2383D0060B57B /* PaddingAndSpacerBootcamp.swift in Sources */,
 				9AA59B66280DEEE50004B444 /* StepperBootcamp.swift in Sources */,
 				9AF13C63281099890098C9FC /* OnApperBootcamp.swift in Sources */,
