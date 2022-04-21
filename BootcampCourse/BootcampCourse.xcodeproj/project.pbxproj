@@ -59,6 +59,7 @@
 		9AF13C6728114EF40098C9FC /* TagGestureBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF13C6628114EF40098C9FC /* TagGestureBootcamp.swift */; };
 		9AF13C692811531E0098C9FC /* CustomDataBootcamps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF13C682811531E0098C9FC /* CustomDataBootcamps.swift */; };
 		9AF13C6B2811B0F60098C9FC /* ViewModelBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF13C6A2811B0F60098C9FC /* ViewModelBootcamp.swift */; };
+		9AF13C6D2811EF270098C9FC /* EnvironmentBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF13C6C2811EF270098C9FC /* EnvironmentBootcamp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -115,6 +116,7 @@
 		9AF13C6628114EF40098C9FC /* TagGestureBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagGestureBootcamp.swift; sourceTree = "<group>"; };
 		9AF13C682811531E0098C9FC /* CustomDataBootcamps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDataBootcamps.swift; sourceTree = "<group>"; };
 		9AF13C6A2811B0F60098C9FC /* ViewModelBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBootcamp.swift; sourceTree = "<group>"; };
+		9AF13C6C2811EF270098C9FC /* EnvironmentBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentBootcamp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +154,7 @@
 				9AF13C6628114EF40098C9FC /* TagGestureBootcamp.swift */,
 				9AF13C682811531E0098C9FC /* CustomDataBootcamps.swift */,
 				9AF13C6A2811B0F60098C9FC /* ViewModelBootcamp.swift */,
+				9AF13C6C2811EF270098C9FC /* EnvironmentBootcamp.swift */,
 				9AF13C62281099890098C9FC /* OnApperBootcamp.swift */,
 				9AF13C6428114A9A0098C9FC /* IfLetGuardBootcamp.swift */,
 				9AA59B67280DF1E50004B444 /* SliderBootcamp.swift */,
@@ -284,6 +287,7 @@
 				9ACE213227E872AB00B38913 /* ColorsBootcamp.swift in Sources */,
 				9A3C676027EFA9EF0060B57B /* BackgroundAndOverlayBootcamp.swift in Sources */,
 				9A3C677A28019F410060B57B /* ConditionalBootcamp.swift in Sources */,
+				9AF13C6D2811EF270098C9FC /* EnvironmentBootcamp.swift in Sources */,
 				9AF13C6728114EF40098C9FC /* TagGestureBootcamp.swift in Sources */,
 				9A3C676C27F8DD840060B57B /* ScrollViewBootcamp.swift in Sources */,
 				9A3C67802801B14F0060B57B /* AnimationTimintBootcamp.swift in Sources */,
