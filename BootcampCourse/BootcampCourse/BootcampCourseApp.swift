@@ -11,7 +11,7 @@ import SwiftUI
 struct BootcampCourseApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            AppstorageBootcamp()
         }
     }
 }
