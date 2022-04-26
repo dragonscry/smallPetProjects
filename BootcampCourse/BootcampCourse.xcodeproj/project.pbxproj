@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9A195D272818013300CEF6B4 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A195D262818013300CEF6B4 /* ProfileView.swift */; };
+		9A195D292818139600CEF6B4 /* AsyncImageBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A195D282818139600CEF6B4 /* AsyncImageBootcamp.swift */; };
 		9A3C675827EA62620060B57B /* GradiensBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3C675727EA62620060B57B /* GradiensBootcamp.swift */; };
 		9A3C675A27EBC8B30060B57B /* IconsBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3C675927EBC8B30060B57B /* IconsBootcamp.swift */; };
 		9A3C675C27ED1CFF0060B57B /* ImageBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3C675B27ED1CFF0060B57B /* ImageBootcamp.swift */; };
@@ -68,6 +69,7 @@
 
 /* Begin PBXFileReference section */
 		9A195D262818013300CEF6B4 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		9A195D282818139600CEF6B4 /* AsyncImageBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageBootcamp.swift; sourceTree = "<group>"; };
 		9A3C675727EA62620060B57B /* GradiensBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradiensBootcamp.swift; sourceTree = "<group>"; };
 		9A3C675927EBC8B30060B57B /* IconsBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconsBootcamp.swift; sourceTree = "<group>"; };
 		9A3C675B27ED1CFF0060B57B /* ImageBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageBootcamp.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				9AF13C62281099890098C9FC /* OnApperBootcamp.swift */,
 				9AF13C6428114A9A0098C9FC /* IfLetGuardBootcamp.swift */,
 				9AA59B67280DF1E50004B444 /* SliderBootcamp.swift */,
+				9A195D282818139600CEF6B4 /* AsyncImageBootcamp.swift */,
 				9AA59B69280F3E970004B444 /* TabViewBootcamp.swift */,
 				9AF13C5E28105EC40098C9FC /* DarkModeBootcamp.swift */,
 				9AA59B61280DE9EC0004B444 /* ColorPickerBootcamp.swift */,
@@ -321,6 +324,7 @@
 				9A3C677027FE15950060B57B /* ButtonBootcamp.swift in Sources */,
 				9ACE213027E86D5600B38913 /* ShapesBootcamp.swift in Sources */,
 				9A3C678428030AE30060B57B /* SheetsBootcamp.swift in Sources */,
+				9A195D292818139600CEF6B4 /* AsyncImageBootcamp.swift in Sources */,
 				9A3C676A27F8DD200060B57B /* LazyVGridBootcamp.swift in Sources */,
 				9A3C675E27EE70710060B57B /* FrameBootcamp.swift in Sources */,
 				9ACE212227E7D6E300B38913 /* ContentView.swift in Sources */,
