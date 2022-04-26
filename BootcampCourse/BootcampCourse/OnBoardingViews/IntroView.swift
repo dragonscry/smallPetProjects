@@ -22,10 +22,12 @@ struct IntroView: View {
             //onboarding view
             
             if currentUserSignedIn {
-                Text("Profile View")
+                ProfileView()
+                    .transition(.asymmetric(insertion: .move(edge: .bottom), removal: .move(edge: .top)))
             }
             else {
                 OnBoardingView()
+                    .transition(.asymmetric(insertion: .move(edge: .top), removal: .move(edge: .bottom)))
             }
             
         }
