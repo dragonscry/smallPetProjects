@@ -24,6 +24,7 @@
 		9AFDD41C28318307007F6C2E /* tada.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9AFDD41A28318307007F6C2E /* tada.mp3 */; };
 		9AFDD41D28318307007F6C2E /* duck.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9AFDD41B28318307007F6C2E /* duck.mp3 */; };
 		9AFDD41F2832DE76007F6C2E /* HapticsBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFDD41E2832DE76007F6C2E /* HapticsBootcamp.swift */; };
+		9AFDD44228358AF8007F6C2E /* PushNotificationsBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFDD44128358AF8007F6C2E /* PushNotificationsBootcamp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		9AFDD41A28318307007F6C2E /* tada.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tada.mp3; sourceTree = "<group>"; };
 		9AFDD41B28318307007F6C2E /* duck.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = duck.mp3; sourceTree = "<group>"; };
 		9AFDD41E2832DE76007F6C2E /* HapticsBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsBootcamp.swift; sourceTree = "<group>"; };
+		9AFDD44128358AF8007F6C2E /* PushNotificationsBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationsBootcamp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 				9AFDD40D282C489F007F6C2E /* DragGestureBootCamp2.swift */,
 				9AFDD40B282C2ED7007F6C2E /* DragGestureBootcamp.swift */,
 				9AFDD415283045E6007F6C2E /* MaskBootcamp.swift */,
+				9AFDD44128358AF8007F6C2E /* PushNotificationsBootcamp.swift */,
 				9AAE05472823BFF600BA72CB /* ContentView.swift */,
 				9AFDD41E2832DE76007F6C2E /* HapticsBootcamp.swift */,
 				9AFDD40F282D2738007F6C2E /* ScrollViewReaderBootcamp.swift */,
@@ -191,6 +194,7 @@
 				9AFDD416283045E6007F6C2E /* MaskBootcamp.swift in Sources */,
 				9AAE05482823BFF600BA72CB /* ContentView.swift in Sources */,
 				9AFDD40E282C489F007F6C2E /* DragGestureBootCamp2.swift in Sources */,
+				9AFDD44228358AF8007F6C2E /* PushNotificationsBootcamp.swift in Sources */,
 				9AFDD410282D2738007F6C2E /* ScrollViewReaderBootcamp.swift in Sources */,
 				9AFDD4142830102E007F6C2E /* MultipleSheetsBootcamp.swift in Sources */,
 				9AAE05562823C79300BA72CB /* MagnificationGestureBootcamp.swift in Sources */,
