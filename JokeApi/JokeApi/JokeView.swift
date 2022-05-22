@@ -15,6 +15,7 @@ struct JokeView: View {
             VStack(alignment: .leading) {
                 if joke == nil {
                     Text(defaultText)
+                        .transition(.slide)
                 } else if joke!.joke != nil {
                     Text("\(joke!.joke!)")
                         .transition(.slide)
