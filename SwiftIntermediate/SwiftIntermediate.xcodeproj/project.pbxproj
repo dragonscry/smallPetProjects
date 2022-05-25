@@ -14,6 +14,8 @@
 		9A707041283C210A0094E592 /* TypeAliasBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A707040283C210A0094E592 /* TypeAliasBootcamp.swift */; };
 		9A707043283CCBD80094E592 /* EscapingBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A707042283CCBD80094E592 /* EscapingBootcamp.swift */; };
 		9A707045283D5F4C0094E592 /* CodableBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A707044283D5F4C0094E592 /* CodableBootcamp.swift */; };
+		9A707047283E18EE0094E592 /* DownloadWithEscapingBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A707046283E18EE0094E592 /* DownloadWithEscapingBootcamp.swift */; };
+		9A8A248F283EAF2800254677 /* DownloadWIthCombine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8A248E283EAF2800254677 /* DownloadWIthCombine.swift */; };
 		9AAE05462823BFF600BA72CB /* SwiftIntermediateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAE05452823BFF600BA72CB /* SwiftIntermediateApp.swift */; };
 		9AAE05482823BFF600BA72CB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAE05472823BFF600BA72CB /* ContentView.swift */; };
 		9AAE054A2823BFF700BA72CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AAE05492823BFF700BA72CB /* Assets.xcassets */; };
@@ -46,6 +48,8 @@
 		9A707040283C210A0094E592 /* TypeAliasBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeAliasBootcamp.swift; sourceTree = "<group>"; };
 		9A707042283CCBD80094E592 /* EscapingBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EscapingBootcamp.swift; sourceTree = "<group>"; };
 		9A707044283D5F4C0094E592 /* CodableBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableBootcamp.swift; sourceTree = "<group>"; };
+		9A707046283E18EE0094E592 /* DownloadWithEscapingBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadWithEscapingBootcamp.swift; sourceTree = "<group>"; };
+		9A8A248E283EAF2800254677 /* DownloadWIthCombine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadWIthCombine.swift; sourceTree = "<group>"; };
 		9AAE05422823BFF600BA72CB /* SwiftIntermediate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftIntermediate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AAE05452823BFF600BA72CB /* SwiftIntermediateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftIntermediateApp.swift; sourceTree = "<group>"; };
 		9AAE05472823BFF600BA72CB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -116,9 +120,11 @@
 				9A70703E283C15040094E592 /* WeakSelfBootcamp.swift */,
 				9A707044283D5F4C0094E592 /* CodableBootcamp.swift */,
 				9AFDD4432836C0F0007F6C2E /* HashableBootcamp.swift */,
+				9A8A248E283EAF2800254677 /* DownloadWIthCombine.swift */,
 				9AFDD41E2832DE76007F6C2E /* HapticsBootcamp.swift */,
 				9A094DEA283AAAB300321469 /* CoreDataRelationshipBootcamp.swift */,
 				9A707040283C210A0094E592 /* TypeAliasBootcamp.swift */,
+				9A707046283E18EE0094E592 /* DownloadWithEscapingBootcamp.swift */,
 				9A70703C283C05C60094E592 /* BackgroundThreadBootcamp.swift */,
 				9A094DEC283AACA100321469 /* CoreDataContainer.xcdatamodeld */,
 				9AFDD466283A8979007F6C2E /* CoreDataBootcamp.swift */,
@@ -231,6 +237,7 @@
 				9AFDD40C282C2ED7007F6C2E /* DragGestureBootcamp.swift in Sources */,
 				9AFDD467283A8979007F6C2E /* CoreDataBootcamp.swift in Sources */,
 				9AFDD416283045E6007F6C2E /* MaskBootcamp.swift in Sources */,
+				9A8A248F283EAF2800254677 /* DownloadWIthCombine.swift in Sources */,
 				9AAE05482823BFF600BA72CB /* ContentView.swift in Sources */,
 				9A707041283C210A0094E592 /* TypeAliasBootcamp.swift in Sources */,
 				9A094DEE283AACA100321469 /* CoreDataContainer.xcdatamodeld in Sources */,
@@ -238,6 +245,7 @@
 				9AFDD44628376CCC007F6C2E /* ArraysBootcamp.swift in Sources */,
 				9AFDD44228358AF8007F6C2E /* PushNotificationsBootcamp.swift in Sources */,
 				9AFDD410282D2738007F6C2E /* ScrollViewReaderBootcamp.swift in Sources */,
+				9A707047283E18EE0094E592 /* DownloadWithEscapingBootcamp.swift in Sources */,
 				9A707045283D5F4C0094E592 /* CodableBootcamp.swift in Sources */,
 				9A70703F283C15040094E592 /* WeakSelfBootcamp.swift in Sources */,
 				9AFDD4142830102E007F6C2E /* MultipleSheetsBootcamp.swift in Sources */,
