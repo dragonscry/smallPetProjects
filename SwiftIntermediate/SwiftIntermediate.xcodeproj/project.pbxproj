@@ -16,6 +16,7 @@
 		9A707045283D5F4C0094E592 /* CodableBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A707044283D5F4C0094E592 /* CodableBootcamp.swift */; };
 		9A707047283E18EE0094E592 /* DownloadWithEscapingBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A707046283E18EE0094E592 /* DownloadWithEscapingBootcamp.swift */; };
 		9A8A248F283EAF2800254677 /* DownloadWIthCombine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8A248E283EAF2800254677 /* DownloadWIthCombine.swift */; };
+		9A8A2491284548C200254677 /* TimerBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8A2490284548C100254677 /* TimerBootcamp.swift */; };
 		9AAE05462823BFF600BA72CB /* SwiftIntermediateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAE05452823BFF600BA72CB /* SwiftIntermediateApp.swift */; };
 		9AAE05482823BFF600BA72CB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAE05472823BFF600BA72CB /* ContentView.swift */; };
 		9AAE054A2823BFF700BA72CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AAE05492823BFF700BA72CB /* Assets.xcassets */; };
@@ -50,6 +51,7 @@
 		9A707044283D5F4C0094E592 /* CodableBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableBootcamp.swift; sourceTree = "<group>"; };
 		9A707046283E18EE0094E592 /* DownloadWithEscapingBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadWithEscapingBootcamp.swift; sourceTree = "<group>"; };
 		9A8A248E283EAF2800254677 /* DownloadWIthCombine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadWIthCombine.swift; sourceTree = "<group>"; };
+		9A8A2490284548C100254677 /* TimerBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerBootcamp.swift; sourceTree = "<group>"; };
 		9AAE05422823BFF600BA72CB /* SwiftIntermediate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftIntermediate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AAE05452823BFF600BA72CB /* SwiftIntermediateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftIntermediateApp.swift; sourceTree = "<group>"; };
 		9AAE05472823BFF600BA72CB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 				9A094DEA283AAAB300321469 /* CoreDataRelationshipBootcamp.swift */,
 				9A707040283C210A0094E592 /* TypeAliasBootcamp.swift */,
 				9A707046283E18EE0094E592 /* DownloadWithEscapingBootcamp.swift */,
+				9A8A2490284548C100254677 /* TimerBootcamp.swift */,
 				9A70703C283C05C60094E592 /* BackgroundThreadBootcamp.swift */,
 				9A094DEC283AACA100321469 /* CoreDataContainer.xcdatamodeld */,
 				9AFDD466283A8979007F6C2E /* CoreDataBootcamp.swift */,
@@ -252,6 +255,7 @@
 				9AAE05562823C79300BA72CB /* MagnificationGestureBootcamp.swift in Sources */,
 				9AAE05462823BFF600BA72CB /* SwiftIntermediateApp.swift in Sources */,
 				9AFDD412282EE282007F6C2E /* GeometryReaderBootcamp.swift in Sources */,
+				9A8A2491284548C200254677 /* TimerBootcamp.swift in Sources */,
 				9AFDD41F2832DE76007F6C2E /* HapticsBootcamp.swift in Sources */,
 				9AAE05542823C02E00BA72CB /* LongPressGesture.swift in Sources */,
 				9AFDD40A282C2C50007F6C2E /* RotationGestureBootcamp.swift in Sources */,
