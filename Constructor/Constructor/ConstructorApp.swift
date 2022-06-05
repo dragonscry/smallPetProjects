@@ -10,12 +10,9 @@ import SwiftUI
 @main
 struct ConstructorApp: App {
     
-    @State var constructorModelView : ConstructorModelView = ConstructorModelView()
-    
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environmentObject(constructorModelView)
+                ContentView()
         }
     }
 }
