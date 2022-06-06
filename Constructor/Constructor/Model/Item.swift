@@ -7,8 +7,30 @@
 
 import SwiftUI
 
-struct Item: Hashable {
+class Item: Identifiable {
+    
     let id = UUID().uuidString
-    let name : String
+    var name : String
     var price : Int
+    
+    init(name: String, price: Int) {
+        self.name = name
+        self.price = price
+    }
+    
+    func update(name: String, price: Int) {
+        self.name = name
+        self.price = price
+    }
+}
+
+extension Item: Hashable {
+    static func == (lhs: Item, rhs: Item) -> Bool {
+        lhs.name == rhs.name && lhs.price == rhs.price
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(name)
+        hasher.combine(price)
+    }
 }

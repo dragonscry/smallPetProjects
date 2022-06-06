@@ -18,6 +18,9 @@
 		9A36F5E2284D2F6F00EA563F /* ItemListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A36F5E1284D2F6F00EA563F /* ItemListView.swift */; };
 		9A36F5E4284D323700EA563F /* AddItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A36F5E3284D323700EA563F /* AddItemView.swift */; };
 		9A36F5E6284D347900EA563F /* ProductListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A36F5E5284D347900EA563F /* ProductListView.swift */; };
+		9A36F5E8284E605100EA563F /* AddProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A36F5E7284E605000EA563F /* AddProductView.swift */; };
+		9A36F5EA284E66D800EA563F /* SelectItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A36F5E9284E66D800EA563F /* SelectItemView.swift */; };
+		9A36F5EE284E7F2100EA563F /* ItemDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A36F5ED284E7F2100EA563F /* ItemDetailsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +36,9 @@
 		9A36F5E1284D2F6F00EA563F /* ItemListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListView.swift; sourceTree = "<group>"; };
 		9A36F5E3284D323700EA563F /* AddItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemView.swift; sourceTree = "<group>"; };
 		9A36F5E5284D347900EA563F /* ProductListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListView.swift; sourceTree = "<group>"; };
+		9A36F5E7284E605000EA563F /* AddProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductView.swift; sourceTree = "<group>"; };
+		9A36F5E9284E66D800EA563F /* SelectItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectItemView.swift; sourceTree = "<group>"; };
+		9A36F5ED284E7F2100EA563F /* ItemDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,10 +92,9 @@
 		9A094E0B283B8A7800321469 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9A36F5EC284E799500EA563F /* Products */,
+				9A36F5EB284E798D00EA563F /* Items */,
 				9A094DFD283B8A0600321469 /* ContentView.swift */,
-				9A36F5E1284D2F6F00EA563F /* ItemListView.swift */,
-				9A36F5E5284D347900EA563F /* ProductListView.swift */,
-				9A36F5E3284D323700EA563F /* AddItemView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -110,6 +115,26 @@
 				9A36F5DF284D2F3300EA563F /* ProductModelView.swift */,
 			);
 			path = ModelView;
+			sourceTree = "<group>";
+		};
+		9A36F5EB284E798D00EA563F /* Items */ = {
+			isa = PBXGroup;
+			children = (
+				9A36F5E3284D323700EA563F /* AddItemView.swift */,
+				9A36F5E1284D2F6F00EA563F /* ItemListView.swift */,
+				9A36F5ED284E7F2100EA563F /* ItemDetailsView.swift */,
+			);
+			path = Items;
+			sourceTree = "<group>";
+		};
+		9A36F5EC284E799500EA563F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A36F5E9284E66D800EA563F /* SelectItemView.swift */,
+				9A36F5E7284E605000EA563F /* AddProductView.swift */,
+				9A36F5E5284D347900EA563F /* ProductListView.swift */,
+			);
+			path = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,10 +207,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A36F5EE284E7F2100EA563F /* ItemDetailsView.swift in Sources */,
 				9A36F5DE284D2EE600EA563F /* ItemModelView.swift in Sources */,
 				9A094DFE283B8A0600321469 /* ContentView.swift in Sources */,
 				9A36F5E0284D2F3300EA563F /* ProductModelView.swift in Sources */,
 				9A36F5DC284D2BCE00EA563F /* Product.swift in Sources */,
+				9A36F5EA284E66D800EA563F /* SelectItemView.swift in Sources */,
+				9A36F5E8284E605100EA563F /* AddProductView.swift in Sources */,
 				9A36F5DA284D2B8000EA563F /* Item.swift in Sources */,
 				9A094DFC283B8A0600321469 /* ConstructorApp.swift in Sources */,
 				9A36F5E6284D347900EA563F /* ProductListView.swift in Sources */,

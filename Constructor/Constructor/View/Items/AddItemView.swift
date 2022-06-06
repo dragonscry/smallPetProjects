@@ -10,7 +10,7 @@ import SwiftUI
 struct AddItemView: View {
     
     @Environment(\.presentationMode) var presentationMode
-    @ObservedObject var itemVM: ItemModelView
+    @EnvironmentObject var itemMV: ItemModelView
     @State var textFieldText = ""
     @State var price = ""
     
@@ -38,7 +38,7 @@ struct AddItemView: View {
                 .padding(.horizontal)
             
             Button {
-                itemVM.saveItem(name: textFieldText, price: price)
+                itemMV.saveItem(name: textFieldText, price: price)
                 presentationMode.wrappedValue.dismiss()
             } label: {
                 Text("Save Item")
@@ -58,7 +58,7 @@ struct AddItemView: View {
 
 struct AddItemView_Previews: PreviewProvider {
     static var previews: some View {
-        AddItemView(itemVM: ItemModelView())
+        AddItemView()
     }
 }
 

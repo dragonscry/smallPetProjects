@@ -17,4 +17,18 @@ class ItemModelView : ObservableObject {
         items.append(newItem)
     }
     
+    init() {
+        getItem()
+    }
+    
+    
+    
+    func getItem(){
+        items.append(Item(name: "Protocol", price: 10))
+        items.append(Item(name: "Arbus", price: 20))
+        items.append(Item(name: "Pilesos", price: 30))
+        items.append(Item(name: "Lord", price: 20))
+        items.append(Item(name: "Lord", price: 30))
+    }
+    
 }

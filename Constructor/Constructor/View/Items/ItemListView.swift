@@ -9,15 +9,22 @@ import SwiftUI
 
 struct ItemListView: View {
     
-    @StateObject var itemVM: ItemModelView = ItemModelView()
+    @EnvironmentObject var itemMV: ItemModelView
     @State var isAddingItem = false
     
     var body: some View {
         NavigationView {
             List {
-                ForEach(itemVM.items, id: \.self) { item in
-                    Text(item.name)
-                    
+                ForEach(itemMV.items) { item in
+                    NavigationLink {
+                        ItemDetailsView(item: item)
+                    } label: {
+                        HStack{
+                            Text(item.name)
+                            Spacer()
+                            Text("\(item.price)")
+                        }
+                    }
                 }
             }
             .navigationTitle("All Items")
@@ -29,7 +36,7 @@ struct ItemListView: View {
                         Image(systemName: "plus")
                     }
                     .sheet(isPresented: $isAddingItem) {
-                        AddItemView(itemVM: itemVM)
+                        AddItemView()
                     }
                     
                 }
@@ -43,3 +50,4 @@ struct ItemListView_Previews: PreviewProvider {
         ItemListView()
     }
 }
+
