@@ -21,6 +21,16 @@ class ItemModelView : ObservableObject {
         getItem()
     }
     
+    func refresh() {
+        let newItem = Item(name: "", price: 0)
+        items.append(newItem)
+        let index = items.firstIndex { item in
+            item.id == newItem.id
+        }
+        guard let index = index else {return}
+        items.remove(at: index)
+    }
+    
     
     
     func getItem(){

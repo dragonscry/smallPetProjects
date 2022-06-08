@@ -10,6 +10,7 @@ import SwiftUI
 struct ItemListView: View {
     
     @EnvironmentObject var itemMV: ItemModelView
+    //@StateObject var itemMV = ItemModelView()
     @State var isAddingItem = false
     
     var body: some View {

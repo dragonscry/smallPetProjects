@@ -10,6 +10,8 @@ import SwiftUI
 struct ItemDetailsView: View {
     
     @EnvironmentObject var itemMV: ItemModelView
+    //@StateObject var itemMV: ItemModelView
+    @Environment(\.presentationMode) var presentationMode
     var item : Item
     @State var textFieldText = ""
     @State var price = ""
@@ -39,6 +41,8 @@ struct ItemDetailsView: View {
             
             Button {
                 item.update(name: textFieldText, price: Int(price) ?? 0)
+                itemMV.refresh()
+                presentationMode.wrappedValue.dismiss()
             } label: {
                 Text("Save Item")
                     .foregroundColor(.white)
