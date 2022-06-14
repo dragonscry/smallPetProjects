@@ -8,7 +8,7 @@
 import Foundation
 
 struct PhotoModel: Identifiable, Codable {
-    let albumID: Int
+    let albumId: Int
     let id: Int
     let title: String
     let url: String

@@ -6,13 +6,18 @@
 //
 
 import Foundation
+import Combine
 
 class PhotoModelDataService {
     
     static let instance = PhotoModelDataService() //Singleton
     
+    @Published var photoModels: [PhotoModel] = []
+    
+    var cancellables = Set<AnyCancellable>()
+    
     private init() {
-        
+        downloadData()
     }
     
     func downloadData() {
@@ -21,7 +26,20 @@ class PhotoModelDataService {
         URLSession.shared.dataTaskPublisher(for: url)
             .subscribe(on: DispatchQueue.global(qos: .background))
             .receive(on: DispatchQueue.main)
-            .tryMap(<#T##transform: (Publishers.SubscribeOn<URLSession.DataTaskPublisher, DispatchQueue>.Output) throws -> T##(Publishers.SubscribeOn<URLSession.DataTaskPublisher, DispatchQueue>.Output) throws -> T#>)
+            .tryMap(handleOutput)
+            .decode(type: [PhotoModel].self, decoder: JSONDecoder())
+            .sink { (completion) in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    print("Error downloading data. \(error)")
+                }
+            } receiveValue: { [weak self] (returnedPhotoModels) in
+                self?.photoModels = returnedPhotoModels
+            }
+            .store(in: &cancellables)
+
                 
                 
     }
