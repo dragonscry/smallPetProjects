@@ -20,15 +20,8 @@ struct AddProductView: View {
     
     var body: some View {
         VStack {
-            TextField("", text: $textFieldText)
-                .placeholder(when: textFieldText.isEmpty, placeholder: {
-                    Text("type name here").foregroundColor(.white).opacity(0.8)
-                })
-                .padding()
-                .padding(.horizontal)
-                .background(.green)
-                .cornerRadius(10)
-                .padding(.horizontal)
+            TextField("Type Product Name", text: $textFieldText)
+                .underlineTextField()
             
             Button {
                 self.isShowingSelectItem = true

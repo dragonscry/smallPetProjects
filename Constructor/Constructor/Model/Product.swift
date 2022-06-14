@@ -28,6 +28,7 @@ struct Product: Identifiable {
         itemsFromSet(items: items)
     }
     
+    //in future we will add count changing!
     mutating func itemsFromSet(items: Set<Item>){
         for item in items {
             self.items[item] = 1

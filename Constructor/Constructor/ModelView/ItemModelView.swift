@@ -12,6 +12,7 @@ class ItemModelView : ObservableObject {
     
     @Published var items : [Item] = []
     
+    //save item in list
     func saveItem(name: String, price: String) {
         let newItem = Item(name: name, price: Int(price) ?? 0)
         items.append(newItem)
@@ -21,6 +22,7 @@ class ItemModelView : ObservableObject {
         getItem()
     }
     
+    //need to update list (need to refactor!!!)
     func refresh() {
         let newItem = Item(name: "", price: 0)
         items.append(newItem)
@@ -29,6 +31,16 @@ class ItemModelView : ObservableObject {
         }
         guard let index = index else {return}
         items.remove(at: index)
+    }
+    
+    //update item in list
+    func update(item: Item, name: String, price: Int) {
+        let index = items.firstIndex { newItem in
+            newItem.id == item.id
+        }
+        guard let index = index else {return}
+        items[index].name = name
+        items[index].price = price
     }
     
     

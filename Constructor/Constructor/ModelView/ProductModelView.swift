@@ -12,11 +12,13 @@ class ProductModelView : ObservableObject {
     
     @Published var products : [Product] = []
     
+    //If we want to save product only with name
     func saveProduct(name: String) {
         let newProduct = Product(name: name)
         products.append(newProduct)
     }
     
+    //If we want to save product with products
     func saveProduct(name: String, items: Set<Item>){
         let newProduct = Product(name: name, items: items)
         products.append(newProduct)
