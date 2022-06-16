@@ -10,12 +10,15 @@ import Foundation
 
 class ItemModelView : ObservableObject {
     
+    let fileName = "items.json"
+    
     @Published var items : [Item] = []
     
     //save item in list
     func saveItem(name: String, price: String) {
         let newItem = Item(name: name, price: Int(price) ?? 0)
         items.append(newItem)
+        saveToJSON()
     }
     
     init() {
@@ -43,6 +46,40 @@ class ItemModelView : ObservableObject {
         items[index].price = price
     }
     
+    func saveToJSON() {
+        
+//        guard let filePath = Bundle.main.url(forResource: fileName, withExtension: nil) else {
+//            fatalError("No file \(fileName) in directory")
+//        }
+        //encoder.outputFormatting = .prettyPrinted
+        do {
+            let filename = getDocumentsDirectory().appendingPathComponent("items.json")
+            let encoder = JSONEncoder()
+            try encoder.encode(items).write(to: filename)
+            
+        } catch {
+            print(error.localizedDescription)
+        }
+
+//        guard let data = data else {fatalError("No data if file")}
+//        try? data.write(to: filePath)
+    }
+    
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
+    }
+    
+    func getDataFromJSON() {
+        guard let filePath = Bundle.main.url(forResource: fileName, withExtension: nil) else {
+            fatalError("No file \(fileName) in directory")
+        }
+        let data = try! Data(contentsOf: filePath)
+        let decoder = JSONDecoder()
+        guard let items = try? decoder.decode([Item].self, from: data) else {return}
+        self.items = items
+    }
+    
     
     
     func getItem(){
@@ -52,5 +89,5 @@ class ItemModelView : ObservableObject {
         items.append(Item(name: "Lord", price: 20))
         items.append(Item(name: "Lord", price: 30))
     }
-    
+
 }

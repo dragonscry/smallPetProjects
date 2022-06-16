@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct Product: Identifiable {
-    let id = UUID().uuidString
+struct Product: Identifiable, Codable {
+    var id = UUID().uuidString
     var name: String
     var items: [Item:Int]
     var price: Int {

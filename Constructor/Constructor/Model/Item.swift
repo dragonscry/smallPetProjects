@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-class Item: Identifiable {
+class Item: Identifiable, Codable {
     
-    let id = UUID().uuidString
+    var id = UUID().uuidString
     var name : String
     var price : Int
     
