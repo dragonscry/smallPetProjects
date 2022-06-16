@@ -12,17 +12,23 @@ class ItemModelView : ObservableObject {
     
     let fileName = "items.json"
     
-    @Published var items : [Item] = []
+    let itemsKey: String = "items_list"
+    
+    @Published var items : [Item] = [] {
+        didSet {
+            saveToJSON()
+        }
+    }
     
     //save item in list
     func saveItem(name: String, price: String) {
         let newItem = Item(name: name, price: Int(price) ?? 0)
         items.append(newItem)
-        saveToJSON()
+       // saveToJSON()
     }
     
     init() {
-        getItem()
+        getDataFromJSON()
     }
     
     //need to update list (need to refactor!!!)
@@ -47,22 +53,19 @@ class ItemModelView : ObservableObject {
     }
     
     func saveToJSON() {
-        
-//        guard let filePath = Bundle.main.url(forResource: fileName, withExtension: nil) else {
-//            fatalError("No file \(fileName) in directory")
+//        do {
+//            let filename = getDocumentsDirectory().appendingPathComponent("items.json")
+//            let encoder = JSONEncoder()
+//            try encoder.encode(items).write(to: filename, options: [.atomic])
+//            print("Success")
+//
+//        } catch {
+//            print(error.localizedDescription)
 //        }
-        //encoder.outputFormatting = .prettyPrinted
-        do {
-            let filename = getDocumentsDirectory().appendingPathComponent("items.json")
-            let encoder = JSONEncoder()
-            try encoder.encode(items).write(to: filename)
-            
-        } catch {
-            print(error.localizedDescription)
+        if let encodedData = try? JSONEncoder().encode(items) {
+            UserDefaults.standard.set(encodedData, forKey: itemsKey)
         }
-
-//        guard let data = data else {fatalError("No data if file")}
-//        try? data.write(to: filePath)
+        
     }
     
     func getDocumentsDirectory() -> URL {
@@ -71,13 +74,20 @@ class ItemModelView : ObservableObject {
     }
     
     func getDataFromJSON() {
-        guard let filePath = Bundle.main.url(forResource: fileName, withExtension: nil) else {
-            fatalError("No file \(fileName) in directory")
-        }
-        let data = try! Data(contentsOf: filePath)
-        let decoder = JSONDecoder()
-        guard let items = try? decoder.decode([Item].self, from: data) else {return}
-        self.items = items
+//        guard let filePath = Bundle.main.url(forResource: fileName, withExtension: nil) else {
+//            fatalError("No file \(fileName) in directory")
+//        }
+//        let data = try! Data(contentsOf: filePath)
+//        let decoder = JSONDecoder()
+//        guard let items = try? decoder.decode([Item].self, from: data) else {return}
+//        self.items = items
+        
+        guard
+            let data = UserDefaults.standard.data(forKey: itemsKey),
+            let savedItems = try? JSONDecoder().decode([Item].self, from: data)
+        else { return }
+        
+        self.items = savedItems
     }
     
     
