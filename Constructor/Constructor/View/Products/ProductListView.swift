@@ -8,19 +8,19 @@
 import SwiftUI
 
 struct ProductListView: View {
-    @EnvironmentObject var productMV: ProductModelView
+    @EnvironmentObject var coreDataVM: CoreDataRelationshipViewModel
+    //@EnvironmentObject var productMV: ProductModelView
     @State var isAddingProduct = false
     
     var body: some View {
         NavigationView {
             List {
-                ForEach(productMV.products) { product in
-                    HStack{
-                        Text(product.name)
-                        Spacer()
-                        Text("\(product.price)")
+                ForEach(coreDataVM.products) { product in
+                    NavigationLink {
+                        ProductDetailsView(entity: product)
+                    } label: {
+                        ProductRow(product: product)
                     }
-                    
                 }
             }
             .navigationTitle("All Products")
@@ -44,5 +44,35 @@ struct ProductListView: View {
 struct ProductListView_Previews: PreviewProvider {
     static var previews: some View {
         ProductListView()
+    }
+}
+
+struct ProductRow: View {
+    
+    let product: ProductEntity
+    @State var sum : Float = 0
+    var s : Float { getPrice()}
+    
+    var body: some View {
+        HStack {
+            Text(product.name ?? "UnnamedProduct")
+            Spacer()
+            Text("\(sum)")
+        }
+        .onAppear(perform: chSum)
+    }
+    
+    func chSum() {
+        self.sum = s
+    }
+    
+    func getPrice() -> Float {
+        var s : Float = 0
+        if let items = product.items?.allObjects as? [ItemEntity] {
+            for i in 0..<items.count {
+                s += items[i].price
+            }
+        }
+        return s
     }
 }

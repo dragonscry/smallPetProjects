@@ -9,18 +9,11 @@ import SwiftUI
 import Foundation
 
 class ProductModelView : ObservableObject {
-    
-    let itemsKey: String = "produc_list"
-    @Published var products : [Product] = [] {
-        didSet {
-            saveToJSON()
-        }
-    }
-    
-    
+
+    @Published var products : [Product] = []
     
     init() {
-        getDataFromJSON()
+        
     }
     
     func refresh() {
@@ -43,31 +36,5 @@ class ProductModelView : ObservableObject {
     func saveProduct(name: String, items: Set<Item>){
         let newProduct = Product(name: name, items: items)
         products.append(newProduct)
-    }
-    
-    func saveToJSON() {
-        
-        if let encodedData = try? JSONEncoder().encode(products) {
-            UserDefaults.standard.set(encodedData, forKey: itemsKey)
-        }
-        
-    }
-    
-    
-    func getDataFromJSON() {
-//        guard let filePath = Bundle.main.url(forResource: fileName, withExtension: nil) else {
-//            fatalError("No file \(fileName) in directory")
-//        }
-//        let data = try! Data(contentsOf: filePath)
-//        let decoder = JSONDecoder()
-//        guard let items = try? decoder.decode([Item].self, from: data) else {return}
-//        self.items = items
-        
-        guard
-            let data = UserDefaults.standard.data(forKey: itemsKey),
-            let savedItems = try? JSONDecoder().decode([Product].self, from: data)
-        else { return }
-        
-        self.products = savedItems
     }
 }

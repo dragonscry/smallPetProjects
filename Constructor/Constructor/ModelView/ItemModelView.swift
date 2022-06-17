@@ -10,16 +10,7 @@ import Foundation
 
 class ItemModelView : ObservableObject {
     
-    let fileName = "items.json"
-    
-    let itemsKey: String = "items_list"
-    
-    @Published var items : [Item] = [] {
-        didSet {
-            saveToJSON()
-        }
-    }
-    
+    @Published var items : [Item] = []
     //save item in list
     func saveItem(name: String, price: String) {
         let newItem = Item(name: name, price: Int(price) ?? 0)
@@ -28,7 +19,7 @@ class ItemModelView : ObservableObject {
     }
     
     init() {
-        getDataFromJSON()
+        getItem()
     }
     
     //need to update list (need to refactor!!!)
@@ -50,44 +41,6 @@ class ItemModelView : ObservableObject {
         guard let index = index else {return}
         items[index].name = name
         items[index].price = price
-    }
-    
-    func saveToJSON() {
-//        do {
-//            let filename = getDocumentsDirectory().appendingPathComponent("items.json")
-//            let encoder = JSONEncoder()
-//            try encoder.encode(items).write(to: filename, options: [.atomic])
-//            print("Success")
-//
-//        } catch {
-//            print(error.localizedDescription)
-//        }
-        if let encodedData = try? JSONEncoder().encode(items) {
-            UserDefaults.standard.set(encodedData, forKey: itemsKey)
-        }
-        
-    }
-    
-    func getDocumentsDirectory() -> URL {
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        return paths[0]
-    }
-    
-    func getDataFromJSON() {
-//        guard let filePath = Bundle.main.url(forResource: fileName, withExtension: nil) else {
-//            fatalError("No file \(fileName) in directory")
-//        }
-//        let data = try! Data(contentsOf: filePath)
-//        let decoder = JSONDecoder()
-//        guard let items = try? decoder.decode([Item].self, from: data) else {return}
-//        self.items = items
-        
-        guard
-            let data = UserDefaults.standard.data(forKey: itemsKey),
-            let savedItems = try? JSONDecoder().decode([Item].self, from: data)
-        else { return }
-        
-        self.items = savedItems
     }
     
     

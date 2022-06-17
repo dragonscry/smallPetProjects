@@ -10,18 +10,30 @@ import SwiftUI
 struct ItemListView: View {
     
     @EnvironmentObject var itemMV: ItemModelView
+    @EnvironmentObject var coreDataVM: CoreDataRelationshipViewModel
     //@StateObject var itemMV = ItemModelView()
     @State var isAddingItem = false
     
     var body: some View {
         NavigationView {
             List {
-                ForEach(itemMV.items) { item in
+//                ForEach(itemMV.items) { item in
+//                    NavigationLink {
+//                        ItemDetailsView(item: item)
+//                    } label: {
+//                        HStack{
+//                            Text(item.name)
+//                            Spacer()
+//                            Text("\(item.price)")
+//                        }
+//                    }
+//                }
+                ForEach(coreDataVM.items) { item in
                     NavigationLink {
                         ItemDetailsView(item: item)
                     } label: {
-                        HStack{
-                            Text(item.name)
+                        HStack {
+                            Text(item.name ?? "Item")
                             Spacer()
                             Text("\(item.price)")
                         }

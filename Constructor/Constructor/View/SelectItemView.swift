@@ -9,16 +9,17 @@ import SwiftUI
 
 struct SelectItemView: View {
     
-    @EnvironmentObject var itemMV: ItemModelView
+    //@EnvironmentObject var itemMV: ItemModelView
+    @EnvironmentObject var coreDataVM: CoreDataRelationshipViewModel
     @Environment(\.presentationMode) var presentationMode
-    @Binding var selectedRows : Set<Item>
+    @Binding var selectedRows : Set<ItemEntity>
     
     var body: some View {
         NavigationView {
             List {
-                ForEach(itemMV.items) { item in
+                ForEach(coreDataVM.items) { item in
                     HStack{
-                        Text(item.name)
+                        Text(item.name ?? "")
                         Spacer()
                         Text("\(item.price)")
                         if selectedRows.contains(item) {

@@ -9,17 +9,18 @@ import SwiftUI
 
 struct ItemDetailsView: View {
     
-    @EnvironmentObject var itemMV: ItemModelView
-    @EnvironmentObject var productMV: ProductModelView
+    //@EnvironmentObject var itemMV: ItemModelView
+    //@EnvironmentObject var productMV: ProductModelView
+    @EnvironmentObject var coreDataVM: CoreDataRelationshipViewModel
     //@StateObject var itemMV: ItemModelView
     @Environment(\.presentationMode) var presentationMode
-    var item : Item
-    @State var textFieldText = ""
+    var item : ItemEntity
+    @State var name = ""
     @State var price = ""
     
     var body: some View {
         VStack {
-            TextField(item.name, text: $textFieldText)
+            TextField(item.name ?? "", text: $name)
                 .underlineTextField()
             
             TextField("\(item.price)", text: $price)
@@ -27,9 +28,12 @@ struct ItemDetailsView: View {
             
             Button {
      //           item.update(name: textFieldText, price: Int(price) ?? 0)
-                itemMV.update(item: item, name: textFieldText, price: Int(price) ?? 0)
-                itemMV.refresh()
-                productMV.refresh()
+    //            itemMV.update(item: item, name: textFieldText, price: Int(price) ?? 0)
+    //            itemMV.refresh()
+    //            productMV.refresh()
+                coreDataVM.updateItem(item: item, name: name, price: Float(price) ?? 0)
+                coreDataVM.getItems()
+                coreDataVM.getProducts()
                 presentationMode.wrappedValue.dismiss()
             } label: {
                 Text("Save Item")

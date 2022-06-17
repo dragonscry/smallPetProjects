@@ -12,6 +12,7 @@ struct ConstructorApp: App {
     
     @ObservedObject var itemMV: ItemModelView = ItemModelView()
     @ObservedObject var productMV: ProductModelView = ProductModelView()
+    @StateObject var coreDataVM: CoreDataRelationshipViewModel = CoreDataRelationshipViewModel()
     
     var body: some Scene {
         WindowGroup {
@@ -20,6 +21,7 @@ struct ConstructorApp: App {
             }
             .environmentObject(itemMV)
             .environmentObject(productMV)
+            .environmentObject(coreDataVM)
         }
     }
 }

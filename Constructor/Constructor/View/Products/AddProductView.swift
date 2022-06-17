@@ -10,17 +10,18 @@ import SwiftUI
 struct AddProductView: View {
     
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var itemMV: ItemModelView
-    @EnvironmentObject var productMV: ProductModelView
-    @State var textFieldText = ""
-    @State var items = Set<Item>()
+    //@EnvironmentObject var itemMV: ItemModelView
+    @EnvironmentObject var coreDataVM: CoreDataRelationshipViewModel
+    //@EnvironmentObject var productMV: ProductModelView
+    @State var name = ""
+    @State var items = Set<ItemEntity>()
     
     @State var isShowingSelectItem = false
     
     
     var body: some View {
         VStack {
-            TextField("Type Product Name", text: $textFieldText)
+            TextField("Type Product Name", text: $name)
                 .underlineTextField()
             
             Button {
@@ -38,11 +39,13 @@ struct AddProductView: View {
 
             
             Button {
-                if items.isEmpty{
-                    productMV.saveProduct(name: textFieldText)
-                } else {
-                    productMV.saveProduct(name: textFieldText, items: self.items)
+                if items.isEmpty {
+                    coreDataVM.addProduct(name: name)
+                } else if !items.isEmpty {
+                    coreDataVM.addProduct(name: name, items: items)
                 }
+                
+                coreDataVM.getProducts()
                 presentationMode.wrappedValue.dismiss()
             } label: {
                 Text("Save Product")
