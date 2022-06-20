@@ -9,7 +9,11 @@ import SwiftUI
 
 struct DownloadingImageView: View {
     
-    @StateObject var loader = ImageLoadingViewModel()
+    @StateObject var loader: ImageLoadingViewModel
+    
+    init(url: String) {
+        _loader = StateObject(wrappedValue: ImageLoadingViewModel(url: url))
+    }
     
     var body: some View {
         ZStack {
@@ -24,10 +28,10 @@ struct DownloadingImageView: View {
     }
 }
 
-struct DownloadingImageView_Previews: PreviewProvider {
-    static var previews: some View {
-        DownloadingImageView()
-            .frame(width: 75, height: 75)
-            .previewLayout(.sizeThatFits)
-    }
-}
+//struct DownloadingImageView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        DownloadingImageView()
+//            .frame(width: 75, height: 75)
+//            .previewLayout(.sizeThatFits)
+//    }
+//}
