@@ -21,6 +21,7 @@ struct ProductListView: View {
                         ProductRow(product: product)
                     }
                 }
+                .onDelete(perform: coreDataVM.deleteProduct)
             }
             .navigationTitle("All Products")
             .toolbar {

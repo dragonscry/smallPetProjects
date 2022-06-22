@@ -75,11 +75,19 @@ class CoreDataRelationshipViewModel : ObservableObject {
         save()
     }
     
-    func deleteItem(item: ItemEntity) {
-//        for index in offsets {
-//            let item = 
-//        }
-        manager.context.delete(item)
+    func deleteItem(at indexSet: IndexSet) {
+        indexSet.forEach { index in
+            let item = items[index]
+            manager.context.delete(item)
+        }
+        save()
+    }
+    
+    func deleteProduct(at indexSet: IndexSet) {
+        indexSet.forEach { index in
+            let product = products[index]
+            manager.context.delete(product)
+        }
         save()
     }
     

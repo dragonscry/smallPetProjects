@@ -26,6 +26,7 @@ struct ItemListView: View {
                         }
                     }
                 }
+                .onDelete(perform: coreDataVM.deleteItem)
             }
             .navigationTitle("All Items")
             .toolbar {
@@ -51,6 +52,7 @@ struct ItemListView_Previews: PreviewProvider {
     }
 }
 
+//WHY IS NOT UPDATED??(((
 struct ItemRow: View {
     var item : ItemEntity
     @State var name : String = ""
