@@ -66,6 +66,7 @@ class CoreDataRelationshipViewModel : ObservableObject {
     
     func addItemToProduct(item: ItemEntity, product: ProductEntity) {
         product.addToItems(item)
+        save()
     }
     
     func updateItem(item: ItemEntity, name: String, price: Float) {
@@ -74,8 +75,18 @@ class CoreDataRelationshipViewModel : ObservableObject {
         save()
     }
     
+    func deleteItem(item: ItemEntity) {
+//        for index in offsets {
+//            let item = 
+//        }
+        manager.context.delete(item)
+        save()
+    }
+    
     func save() {
         manager.save()
+        getItems()
+        getProducts()
     }
     
 }

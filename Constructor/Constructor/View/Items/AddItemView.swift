@@ -10,7 +10,6 @@ import SwiftUI
 struct AddItemView: View {
     
     @Environment(\.presentationMode) var presentationMode
-    //@EnvironmentObject var itemMV: ItemModelView
     @EnvironmentObject var coreDataVM: CoreDataRelationshipViewModel
     @State var name = ""
     @State var price = ""
@@ -24,7 +23,6 @@ struct AddItemView: View {
                 .underlineTextField()
             
             Button {
-  //              itemMV.saveItem(name: textFieldText, price: price)
                 coreDataVM.addItem(name: name, price: Float(price) ?? 0)
                 coreDataVM.getItems()
                 presentationMode.wrappedValue.dismiss()

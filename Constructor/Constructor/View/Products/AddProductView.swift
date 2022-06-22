@@ -10,9 +10,7 @@ import SwiftUI
 struct AddProductView: View {
     
     @Environment(\.presentationMode) var presentationMode
-    //@EnvironmentObject var itemMV: ItemModelView
     @EnvironmentObject var coreDataVM: CoreDataRelationshipViewModel
-    //@EnvironmentObject var productMV: ProductModelView
     @State var name = ""
     @State var items = Set<ItemEntity>()
     
@@ -44,8 +42,6 @@ struct AddProductView: View {
                 } else if !items.isEmpty {
                     coreDataVM.addProduct(name: name, items: items)
                 }
-                
-                coreDataVM.getProducts()
                 presentationMode.wrappedValue.dismiss()
             } label: {
                 Text("Save Product")

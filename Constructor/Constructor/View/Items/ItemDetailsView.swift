@@ -9,10 +9,7 @@ import SwiftUI
 
 struct ItemDetailsView: View {
     
-    //@EnvironmentObject var itemMV: ItemModelView
-    //@EnvironmentObject var productMV: ProductModelView
     @EnvironmentObject var coreDataVM: CoreDataRelationshipViewModel
-    //@StateObject var itemMV: ItemModelView
     @Environment(\.presentationMode) var presentationMode
     var item : ItemEntity
     @State var name = ""
@@ -27,13 +24,7 @@ struct ItemDetailsView: View {
                 .underlineTextField()
             
             Button {
-     //           item.update(name: textFieldText, price: Int(price) ?? 0)
-    //            itemMV.update(item: item, name: textFieldText, price: Int(price) ?? 0)
-    //            itemMV.refresh()
-    //            productMV.refresh()
                 coreDataVM.updateItem(item: item, name: name, price: Float(price) ?? 0)
-                coreDataVM.getItems()
-                coreDataVM.getProducts()
                 presentationMode.wrappedValue.dismiss()
             } label: {
                 Text("Save Item")
@@ -43,6 +34,12 @@ struct ItemDetailsView: View {
                     .cornerRadius(10)
             }
         }
+        .onAppear(perform: defaultValues)
+    }
+    
+    func defaultValues() {
+        self.name = item.name ?? ""
+        self.price = String(item.price)
     }
 }
 

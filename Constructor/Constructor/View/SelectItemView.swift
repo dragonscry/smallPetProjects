@@ -9,7 +9,6 @@ import SwiftUI
 
 struct SelectItemView: View {
     
-    //@EnvironmentObject var itemMV: ItemModelView
     @EnvironmentObject var coreDataVM: CoreDataRelationshipViewModel
     @Environment(\.presentationMode) var presentationMode
     @Binding var selectedRows : Set<ItemEntity>

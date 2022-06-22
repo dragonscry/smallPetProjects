@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ProductListView: View {
     @EnvironmentObject var coreDataVM: CoreDataRelationshipViewModel
-    //@EnvironmentObject var productMV: ProductModelView
     @State var isAddingProduct = false
     
     var body: some View {
@@ -50,7 +49,7 @@ struct ProductListView_Previews: PreviewProvider {
 struct ProductRow: View {
     
     let product: ProductEntity
-    @State var sum : Float = 0
+    @State var sum : String = ""
     var s : Float { getPrice()}
     
     var body: some View {
@@ -60,10 +59,11 @@ struct ProductRow: View {
             Text("\(sum)")
         }
         .onAppear(perform: chSum)
+
     }
     
     func chSum() {
-        self.sum = s
+        self.sum = String(format: "%.2f", s)
     }
     
     func getPrice() -> Float {

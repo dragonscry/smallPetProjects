@@ -8,34 +8,21 @@
 import SwiftUI
 
 struct ItemListView: View {
-    
-    @EnvironmentObject var itemMV: ItemModelView
     @EnvironmentObject var coreDataVM: CoreDataRelationshipViewModel
-    //@StateObject var itemMV = ItemModelView()
     @State var isAddingItem = false
     
     var body: some View {
         NavigationView {
             List {
-//                ForEach(itemMV.items) { item in
-//                    NavigationLink {
-//                        ItemDetailsView(item: item)
-//                    } label: {
-//                        HStack{
-//                            Text(item.name)
-//                            Spacer()
-//                            Text("\(item.price)")
-//                        }
-//                    }
-//                }
                 ForEach(coreDataVM.items) { item in
                     NavigationLink {
                         ItemDetailsView(item: item)
                     } label: {
                         HStack {
-                            Text(item.name ?? "Item")
-                            Spacer()
-                            Text("\(item.price)")
+//                            Text(item.name ?? "")
+//                            Spacer()
+//                            Text(String(format: "%.2f", item.price))
+                            ItemRow(item: item)
                         }
                     }
                 }
@@ -64,3 +51,22 @@ struct ItemListView_Previews: PreviewProvider {
     }
 }
 
+struct ItemRow: View {
+    var item : ItemEntity
+    @State var name : String = ""
+    @State var price : String = ""
+    
+    var body: some View {
+        HStack {
+            Text(item.name ?? "")
+            Spacer()
+            Text(String(format: "%.2f", item.price))
+        }
+        .onAppear(perform: updateFields)
+    }
+    
+    func updateFields() {
+        self.name = item.name ?? ""
+        self.price = String(format: "%.2f", item.price)
+    }
+}

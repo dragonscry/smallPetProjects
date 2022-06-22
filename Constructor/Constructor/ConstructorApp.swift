@@ -10,8 +10,6 @@ import SwiftUI
 @main
 struct ConstructorApp: App {
     
-    @ObservedObject var itemMV: ItemModelView = ItemModelView()
-    @ObservedObject var productMV: ProductModelView = ProductModelView()
     @StateObject var coreDataVM: CoreDataRelationshipViewModel = CoreDataRelationshipViewModel()
     
     var body: some Scene {
@@ -19,8 +17,6 @@ struct ConstructorApp: App {
             VStack {
                 ContentView()
             }
-            .environmentObject(itemMV)
-            .environmentObject(productMV)
             .environmentObject(coreDataVM)
         }
     }
