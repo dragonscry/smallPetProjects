@@ -12,14 +12,15 @@ class CoreDataRelationshipViewModel : ObservableObject {
     
     let manager = CoreDataManager.instance
     
-    @Published var products: [ProductEntity] = []
-    @Published var items: [ItemEntity] = []
+    @Published var products: [ProductEntity] = [] //empty array with products
+    @Published var items: [ItemEntity] = [] //empty array with items
     
     init() {
         getItems()
         getProducts()
     }
     
+    //add items from core to array
     func getItems() {
         let request = NSFetchRequest<ItemEntity>(entityName: "ItemEntity")
         
@@ -31,6 +32,7 @@ class CoreDataRelationshipViewModel : ObservableObject {
         
     }
     
+    //add products from core to array
     func getProducts() {
         let request = NSFetchRequest<ProductEntity>(entityName: "ProductEntity")
         
@@ -42,6 +44,7 @@ class CoreDataRelationshipViewModel : ObservableObject {
         
     }
     
+    //add item to core
     func addItem(name: String, price: Float) {
         let newItem = ItemEntity(context: manager.context)
         newItem.name = name
@@ -49,6 +52,7 @@ class CoreDataRelationshipViewModel : ObservableObject {
         save()
     }
     
+    //add product to core without items
     func addProduct(name : String) {
         let newProduct = ProductEntity(context: manager.context)
         newProduct.name = name
@@ -56,6 +60,7 @@ class CoreDataRelationshipViewModel : ObservableObject {
         save()
     }
     
+    //add product to core with items
     func addProduct(name : String, items: Set<ItemEntity>) {
         let newProduct = ProductEntity(context: manager.context)
         newProduct.name = name
@@ -64,17 +69,20 @@ class CoreDataRelationshipViewModel : ObservableObject {
         save()
     }
     
+    //add item to product
     func addItemToProduct(item: ItemEntity, product: ProductEntity) {
         product.addToItems(item)
         save()
     }
     
+    //update item entity
     func updateItem(item: ItemEntity, name: String, price: Float) {
         item.name = name
         item.price = price
         save()
     }
     
+    //delete item from core
     func deleteItem(at indexSet: IndexSet) {
         indexSet.forEach { index in
             let item = items[index]
@@ -82,7 +90,8 @@ class CoreDataRelationshipViewModel : ObservableObject {
         }
         save()
     }
-    
+   
+    // delete product from core
     func deleteProduct(at indexSet: IndexSet) {
         indexSet.forEach { index in
             let product = products[index]
@@ -91,10 +100,18 @@ class CoreDataRelationshipViewModel : ObservableObject {
         save()
     }
     
+    //save to core and get all entitys
     func save() {
-        manager.save()
-        getItems()
-        getProducts()
+        
+        products.removeAll()
+        items.removeAll()
+//
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.manager.save()
+            self.getItems()
+            self.getProducts()
+        }
+
     }
     
 }

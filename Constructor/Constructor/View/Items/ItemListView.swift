@@ -18,12 +18,7 @@ struct ItemListView: View {
                     NavigationLink {
                         ItemDetailsView(item: item)
                     } label: {
-                        HStack {
-//                            Text(item.name ?? "")
-//                            Spacer()
-//                            Text(String(format: "%.2f", item.price))
                             ItemRow(item: item)
-                        }
                     }
                 }
                 .onDelete(perform: coreDataVM.deleteItem)
@@ -55,8 +50,6 @@ struct ItemListView_Previews: PreviewProvider {
 //WHY IS NOT UPDATED??(((
 struct ItemRow: View {
     var item : ItemEntity
-    @State var name : String = ""
-    @State var price : String = ""
     
     var body: some View {
         HStack {
@@ -64,11 +57,5 @@ struct ItemRow: View {
             Spacer()
             Text(String(format: "%.2f", item.price))
         }
-        .onAppear(perform: updateFields)
-    }
-    
-    func updateFields() {
-        self.name = item.name ?? ""
-        self.price = String(format: "%.2f", item.price)
     }
 }

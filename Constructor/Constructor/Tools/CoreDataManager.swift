@@ -24,6 +24,7 @@ class CoreDataManager {
         context = container.viewContext
     }
     
+    // save to coredata
     func save() {
         do {
             try context.save()

@@ -18,9 +18,7 @@ struct SelectItemView: View {
             List {
                 ForEach(coreDataVM.items) { item in
                     HStack{
-                        Text(item.name ?? "")
-                        Spacer()
-                        Text("\(item.price)")
+                        ItemRow(item: item)
                         if selectedRows.contains(item) {
                             Image(systemName: "heart.fill")
                         }
