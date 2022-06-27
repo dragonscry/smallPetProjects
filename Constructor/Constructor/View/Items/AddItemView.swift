@@ -15,30 +15,38 @@ struct AddItemView: View {
     @State var price = ""
     
     var body: some View {
-        VStack {
-            TextField("Type Item name", text: $name)
-                .underlineTextField()
-            
-            TextField("Type Item price", text: $price)
-                .underlineTextField()
-            
-            Button {
-                coreDataVM.addItem(name: name, price: Float(price) ?? 0)
-                coreDataVM.getItems()
-                presentationMode.wrappedValue.dismiss()
-            } label: {
-                Text("Save Item")
-                    .foregroundColor(.white)
-                    .padding()
-                    .background(.blue)
-                    .cornerRadius(10)
+        NavigationView {
+            VStack {
+                HStack {
+                    
+                    DefaultPhotoView()
+                    
+                    VStack {
+                        TextField("Type Item name", text: $name)
+                            .underlineTextField()
+                        
+                        TextField("Type Item price", text: $price)
+                            .underlineTextField()
+                    }
+                }
+                .padding(.bottom, 50)
+                .padding(.horizontal)
+                
+                Button {
+                    coreDataVM.addItem(name: name, price: Float(price) ?? 0)
+                    coreDataVM.getItems()
+                    presentationMode.wrappedValue.dismiss()
+                } label: {
+                    SaveButtonLabel()
+                }
+
+                
+                Spacer()
+
             }
-
-            
-            Spacer()
-
+            .navigationTitle("Add Item")
+            .padding(.vertical)
         }
-        .padding(.vertical)
     }
 }
 

@@ -33,6 +33,9 @@ struct ItemDetailsView: View {
                     .background(.blue)
                     .cornerRadius(10)
             }
+            
+            Spacer()
+            
         }
         .onAppear(perform: defaultValues)
     }
