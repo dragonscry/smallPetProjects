@@ -17,12 +17,13 @@ struct ButtonsView: View {
 // Default Save Button Label
 struct SaveButtonLabel: View {
     var body: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 10)
+                .stroke(.black)
             Text("SAVE")
-                .foregroundColor(.white)
-                .padding()
-                .padding(.horizontal)
-                .background(.blue)
-                .cornerRadius(10)
+                .foregroundColor(.black)
+        }
+        .frame(width: 80, height: 40)
     }
 }
 
