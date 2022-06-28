@@ -17,21 +17,27 @@ struct ItemDetailsView: View {
     
     var body: some View {
         VStack {
-            TextField(item.name ?? "", text: $name)
-                .underlineTextField()
-            
-            TextField("\(item.price)", text: $price)
-                .underlineTextField()
+            HStack {
+                
+                DefaultPhotoView()
+                
+                VStack {
+                    TextField(item.name ?? "", text: $name)
+                        .underlineTextField()
+                    
+                    TextField("\(item.price)", text: $price)
+                        .underlineTextField()
+                }
+            }
+            .padding(.horizontal)
+            .padding(.bottom, 50)
+
             
             Button {
                 coreDataVM.updateItem(item: item, name: name, price: Float(price) ?? 0)
                 presentationMode.wrappedValue.dismiss()
             } label: {
-                Text("Save Item")
-                    .foregroundColor(.white)
-                    .padding()
-                    .background(.blue)
-                    .cornerRadius(10)
+                SaveButtonLabel()
             }
             
             Spacer()
