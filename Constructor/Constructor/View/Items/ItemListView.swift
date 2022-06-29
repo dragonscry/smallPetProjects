@@ -18,7 +18,7 @@ struct ItemListView: View {
                     NavigationLink {
                         ItemDetailsView(item: item)
                     } label: {
-                            ItemRow(item: item)
+                        ItemRow(item: item)
                     }
                 }
                 .onDelete(perform: coreDataVM.deleteItem)

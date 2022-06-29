@@ -27,8 +27,20 @@ struct SaveButtonLabel: View {
     }
 }
 
+struct SelectItemButtonLabel: View {
+    var body: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 10)
+                .stroke(.black)
+            Text("SELECT ITEM")
+                .foregroundColor(.black)
+        }
+        .frame(width: 130, height: 40)
+    }
+}
+
 struct ButtonsView_Previews: PreviewProvider {
     static var previews: some View {
-        SaveButtonLabel()
+        SelectItemButtonLabel()
     }
 }

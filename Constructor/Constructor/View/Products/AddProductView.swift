@@ -14,43 +14,65 @@ struct AddProductView: View {
     @State var name = ""
     @State var items = Set<ItemEntity>()
     
+    var arrayItems: [ItemEntity] {
+        Array(items)
+    }
+    
     @State var isShowingSelectItem = false
     
     
     var body: some View {
         VStack {
-            TextField("Type Product Name", text: $name)
-                .underlineTextField()
             
-            Button {
-                self.isShowingSelectItem = true
-            } label: {
-                Text("Select Items")
-                    .foregroundColor(.white)
-                    .padding()
-                    .background(.blue)
-                    .cornerRadius(10)
+            HStack {
+                Button {
+                    self.isShowingSelectItem = true
+                } label: {
+                    SelectItemButtonLabel()
+                }
+                .sheet(isPresented: $isShowingSelectItem) {
+                    SelectItemView(selectedRows: $items)
+                }
+                
+                Spacer()
+                
+                Button {
+                    if items.isEmpty {
+                        coreDataVM.addProduct(name: name)
+                    } else if !items.isEmpty {
+                        coreDataVM.addProduct(name: name, items: items)
+                    }
+                    presentationMode.wrappedValue.dismiss()
+                } label: {
+                    SaveButtonLabel()
+                }
             }
-            .sheet(isPresented: $isShowingSelectItem) {
-                SelectItemView(selectedRows: $items)
+            .padding(.bottom, 40)
+            
+            HStack {
+                DefaultPhotoView()
+                TextField("Type Product Name", text: $name)
+                    .underlineTextField()
             }
+            
+            List {
+                Section(header: Text("Added items")) {
+                    ForEach(arrayItems, id: \.self) { item in
+                        ItemRow(item: item)
+                    }
+                }
+            }
+            
 
             
-            Button {
-                if items.isEmpty {
-                    coreDataVM.addProduct(name: name)
-                } else if !items.isEmpty {
-                    coreDataVM.addProduct(name: name, items: items)
-                }
-                presentationMode.wrappedValue.dismiss()
-            } label: {
-                Text("Save Product")
-                    .foregroundColor(.white)
-                    .padding()
-                    .background(.blue)
-                    .cornerRadius(10)
-            }
+            Spacer()
+            
+
+
+            
+
         }
+        .padding()
     }
 }
 

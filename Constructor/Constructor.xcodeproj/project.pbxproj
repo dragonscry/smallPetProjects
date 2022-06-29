@@ -101,7 +101,7 @@
 		9A094E0B283B8A7800321469 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				9A7294A22869A2A0007E93AA /* Reus View */,
+				9A7294A22869A2A0007E93AA /* Reuse View */,
 				9A36F5EC284E799500EA563F /* Products */,
 				9A36F5EB284E798D00EA563F /* Items */,
 				9A094DFD283B8A0600321469 /* ContentView.swift */,
@@ -160,14 +160,14 @@
 			path = Products;
 			sourceTree = "<group>";
 		};
-		9A7294A22869A2A0007E93AA /* Reus View */ = {
+		9A7294A22869A2A0007E93AA /* Reuse View */ = {
 			isa = PBXGroup;
 			children = (
 				9A36F5E9284E66D800EA563F /* SelectItemView.swift */,
 				9A7294A32869A2FA007E93AA /* DefaultPhotoView.swift */,
 				9A7294A52869A9B8007E93AA /* ButtonsView.swift */,
 			);
-			path = "Reus View";
+			path = "Reuse View";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

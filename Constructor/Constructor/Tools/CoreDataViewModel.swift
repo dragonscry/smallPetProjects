@@ -47,6 +47,7 @@ class CoreDataRelationshipViewModel : ObservableObject {
     //add item to core
     func addItem(name: String, price: Float) {
         let newItem = ItemEntity(context: manager.context)
+        newItem.id = UUID().uuidString
         newItem.name = name
         newItem.price = price
         save()
@@ -55,6 +56,7 @@ class CoreDataRelationshipViewModel : ObservableObject {
     //add product to core without items
     func addProduct(name : String) {
         let newProduct = ProductEntity(context: manager.context)
+        newProduct.id = UUID().uuidString
         newProduct.name = name
         newProduct.items = []
         save()
@@ -63,6 +65,7 @@ class CoreDataRelationshipViewModel : ObservableObject {
     //add product to core with items
     func addProduct(name : String, items: Set<ItemEntity>) {
         let newProduct = ProductEntity(context: manager.context)
+        newProduct.id = UUID().uuidString
         newProduct.name = name
         let newItems = items as NSSet
         newProduct.items = newItems
@@ -106,7 +109,7 @@ class CoreDataRelationshipViewModel : ObservableObject {
         products.removeAll()
         items.removeAll()
 //
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
             self.manager.save()
             self.getItems()
             self.getProducts()
