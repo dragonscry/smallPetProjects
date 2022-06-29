@@ -18,7 +18,10 @@ struct ItemListView: View {
                     NavigationLink {
                         ItemDetailsView(item: item)
                     } label: {
-                        ItemRow(item: item)
+                        VStack {
+                            ItemRow(item: item)
+                        }
+                        
                     }
                 }
                 .onDelete(perform: coreDataVM.deleteItem)

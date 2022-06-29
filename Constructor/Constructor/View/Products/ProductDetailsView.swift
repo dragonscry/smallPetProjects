@@ -17,7 +17,6 @@ struct ProductDetailsView: View {
     
     var body: some View {
         VStack {
-            
                 HStack {
                     DefaultPhotoView()
                     
@@ -33,11 +32,22 @@ struct ProductDetailsView: View {
                 if let items = entity.items?.allObjects as? [ItemEntity] {
                     Section(header: Text("Items in product")) {
                         ForEach(items){ item in
-                            ItemRow(item: item)
+                            NavigationLink {
+                                ItemDetailsView(item: item)
+                            } label: {
+                                ItemRow(item: item)
+                            }
                         }
                     }
                 }
                 Text("Total: \(sum)")
+            }
+            
+            Button {
+                coreDataVM.updateProduct(product: entity, name: name)
+                //presentationMode.wrappedValue.dismiss()
+            } label: {
+                SaveButtonLabel()
             }
         }
         .onAppear(perform: totalSum)

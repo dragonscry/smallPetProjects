@@ -26,6 +26,7 @@ class CoreDataRelationshipViewModel : ObservableObject {
         
         do {
             items = try manager.context.fetch(request)
+            print("Recieve Items")
         } catch let error {
             print("Error product fetching \(error.localizedDescription)")
         }
@@ -85,6 +86,11 @@ class CoreDataRelationshipViewModel : ObservableObject {
         save()
     }
     
+    func updateProduct(product: ProductEntity, name: String) {
+        product.name = name
+        save()
+    }
+    
     //delete item from core
     func deleteItem(at indexSet: IndexSet) {
         indexSet.forEach { index in
@@ -108,8 +114,9 @@ class CoreDataRelationshipViewModel : ObservableObject {
         
         products.removeAll()
         items.removeAll()
+        print("Items removed")
 //
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.manager.save()
             self.getItems()
             self.getProducts()
