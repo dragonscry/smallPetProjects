@@ -49,16 +49,3 @@ struct ItemListView_Previews: PreviewProvider {
         ItemListView()
     }
 }
-
-//WHY IS NOT UPDATED??(((
-struct ItemRow: View {
-    var item : ItemEntity
-    
-    var body: some View {
-        HStack {
-            Text(item.name ?? "")
-            Spacer()
-            Text(String(format: "%.2f", item.price))
-        }
-    }
-}

@@ -66,10 +66,6 @@ struct AddProductView: View {
 
             
             Spacer()
-            
-
-
-            
 
         }
         .padding()

@@ -14,8 +14,10 @@ class CoreDataRelationshipViewModel : ObservableObject {
     
     @Published var products: [ProductEntity] = [] //empty array with products
     @Published var items: [ItemEntity] = [] //empty array with items
+    @Published var itemsCount: [ItemCountEntity] = [] //empty array with itemCounts
     
     init() {
+        getItemsCount()
         getItems()
         getProducts()
     }
@@ -26,7 +28,6 @@ class CoreDataRelationshipViewModel : ObservableObject {
         
         do {
             items = try manager.context.fetch(request)
-            print("Recieve Items")
         } catch let error {
             print("Error product fetching \(error.localizedDescription)")
         }
@@ -45,19 +46,40 @@ class CoreDataRelationshipViewModel : ObservableObject {
         
     }
     
+    //add items from core to array
+    func getItemsCount() {
+        let request = NSFetchRequest<ItemCountEntity>(entityName: "ItemCountEntity")
+        
+        do {
+            itemsCount = try manager.context.fetch(request)
+        } catch let error {
+            print("Error product fetching \(error.localizedDescription)")
+        }
+        
+    }
+    
     //add item to core
     func addItem(name: String, price: Float) {
         let newItem = ItemEntity(context: manager.context)
-        newItem.id = UUID().uuidString
+        newItem.itemID = UUID().uuidString
         newItem.name = name
         newItem.price = price
         save()
     }
     
+    //add item count to core
+    func addItemCount(item: ItemEntity, product: ProductEntity) {
+        let newItemCount = ItemCountEntity(context: manager.context)
+        newItemCount.idItem = item.itemID
+        newItemCount.count = 1
+        
+        addItemCountToProduct(itemCount: newItemCount, product: product)
+    }
+    
     //add product to core without items
     func addProduct(name : String) {
         let newProduct = ProductEntity(context: manager.context)
-        newProduct.id = UUID().uuidString
+        newProduct.productID = UUID().uuidString
         newProduct.name = name
         newProduct.items = []
         save()
@@ -66,10 +88,15 @@ class CoreDataRelationshipViewModel : ObservableObject {
     //add product to core with items
     func addProduct(name : String, items: Set<ItemEntity>) {
         let newProduct = ProductEntity(context: manager.context)
-        newProduct.id = UUID().uuidString
+        newProduct.productID = UUID().uuidString
         newProduct.name = name
         let newItems = items as NSSet
         newProduct.items = newItems
+        
+        for item in items {
+            addItemCount(item: item, product: newProduct)
+        }
+        
         save()
     }
     
@@ -79,6 +106,11 @@ class CoreDataRelationshipViewModel : ObservableObject {
         save()
     }
     
+    //add item count to product
+    func addItemCountToProduct(itemCount: ItemCountEntity, product: ProductEntity) {
+        product.addToItemCounts(itemCount)
+    }
+    
     //update item entity
     func updateItem(item: ItemEntity, name: String, price: Float) {
         item.name = name
@@ -86,9 +118,20 @@ class CoreDataRelationshipViewModel : ObservableObject {
         save()
     }
     
+    //update product entity
     func updateProduct(product: ProductEntity, name: String) {
         product.name = name
         save()
+    }
+    
+    //update item count entity
+    func updateItemCount(itemCount: ItemCountEntity?, count: Int) {
+        
+        guard let itemCount = itemCount else {return}
+        
+        itemCount.count = Int32(count)
+        //save()
+        manager.save()
     }
     
     //delete item from core
@@ -99,11 +142,16 @@ class CoreDataRelationshipViewModel : ObservableObject {
         }
         save()
     }
-   
+    
     // delete product from core
     func deleteProduct(at indexSet: IndexSet) {
         indexSet.forEach { index in
             let product = products[index]
+            if let itemCounts = product.itemCounts?.allObjects as? [ItemCountEntity] {
+                for itemCount in itemCounts {
+                    manager.context.delete(itemCount)
+                }
+            }
             manager.context.delete(product)
         }
         save()
@@ -114,14 +162,28 @@ class CoreDataRelationshipViewModel : ObservableObject {
         
         products.removeAll()
         items.removeAll()
-        print("Items removed")
-//
+        itemsCount.removeAll()
+        //
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.manager.save()
             self.getItems()
             self.getProducts()
+            self.getItemsCount()
+            
+//            print("ItemsCount count is : \(self.itemsCount.count)")
+//            print("Item Count is : \(self.items.count)")
+//
+//            for product in self.products {
+//                print("product name is \(String(describing: product.name))")
+//                if let itemCounts = product.itemCounts?.allObjects as? [ItemCountEntity] {
+//                    print (itemCounts.count)
+//                    for itemC in itemCounts {
+//                        print("item count id \(String(describing: itemC.idItem))")
+//                    }
+//                }
+//            }
         }
-
+        
     }
     
 }

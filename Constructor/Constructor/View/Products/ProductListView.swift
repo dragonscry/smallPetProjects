@@ -16,7 +16,7 @@ struct ProductListView: View {
             List {
                 ForEach(coreDataVM.products) { product in
                     NavigationLink {
-                        ProductDetailsView(entity: product)
+                        ProductDetailsView(product: product)
                     } label: {
                         ProductRow(product: product)
                     }
@@ -71,9 +71,22 @@ struct ProductRow: View {
         var s : Float = 0
         if let items = product.items?.allObjects as? [ItemEntity] {
             for i in 0..<items.count {
-                s += items[i].price
+                s += items[i].price * Float(getItemCount(item: items[i])?.count ?? 1)
             }
         }
         return s
+    }
+    
+    func getItemCount(item: ItemEntity) -> ItemCountEntity? {
+        
+        if let itemCounts = product.itemCounts?.allObjects as? [ItemCountEntity] {
+            let count = itemCounts.first { itemCount in
+                itemCount.idItem == item.itemID
+            }
+            
+            return count
+        }
+        
+        return nil
     }
 }
