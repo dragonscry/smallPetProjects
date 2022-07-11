@@ -8,6 +8,7 @@
 import Foundation
 import CoreData
 
+//abstract class for saving to core data
 class CoreDataManager {
     
     static let instance = CoreDataManager() //Singleton

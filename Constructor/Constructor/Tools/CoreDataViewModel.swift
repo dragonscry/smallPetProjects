@@ -15,11 +15,23 @@ class CoreDataRelationshipViewModel : ObservableObject {
     @Published var products: [ProductEntity] = [] //empty array with products
     @Published var items: [ItemEntity] = [] //empty array with items
     @Published var itemsCount: [ItemCountEntity] = [] //empty array with itemCounts
+    @Published var projects: [ProjectEntity] = [] //empty array with projects
     
     init() {
         getItemsCount()
         getItems()
         getProducts()
+    }
+    
+    //add projects from core to array
+    func getProjects() {
+        let request = NSFetchRequest<ProjectEntity>(entityName: "ProjectEntity")
+        
+        do {
+            projects = try manager.context.fetch(request)
+        } catch let error {
+            print("Error product fetching \(error.localizedDescription)")
+        }
     }
     
     //add items from core to array
@@ -56,6 +68,14 @@ class CoreDataRelationshipViewModel : ObservableObject {
             print("Error product fetching \(error.localizedDescription)")
         }
         
+    }
+    
+    func addProject(name: String) {
+        let newProject = ProjectEntity(context: manager.context)
+        newProject.projectID = UUID().uuidString
+        newProject.name = name
+        newProject.isSelected = true
+        save()
     }
     
     //add item to core
@@ -160,6 +180,7 @@ class CoreDataRelationshipViewModel : ObservableObject {
     //save to core and get all entitys
     func save() {
         
+        projects.removeAll()
         products.removeAll()
         items.removeAll()
         itemsCount.removeAll()
@@ -169,7 +190,7 @@ class CoreDataRelationshipViewModel : ObservableObject {
             self.getItems()
             self.getProducts()
             self.getItemsCount()
-            
+            self.getProjects()
 //            print("ItemsCount count is : \(self.itemsCount.count)")
 //            print("Item Count is : \(self.items.count)")
 //

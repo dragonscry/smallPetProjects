@@ -16,10 +16,18 @@
         <attribute name="productID" optional="YES" attributeType="String"/>
         <relationship name="itemCounts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ItemCountEntity" inverseName="product" inverseEntity="ItemCountEntity"/>
         <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ItemEntity" inverseName="products" inverseEntity="ItemEntity"/>
+        <relationship name="projects" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ProjectEntity" inverseName="products" inverseEntity="ProjectEntity"/>
+    </entity>
+    <entity name="ProjectEntity" representedClassName="ProjectEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="isSelected" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="projectID" optional="YES" attributeType="String"/>
+        <relationship name="products" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ProductEntity" inverseName="projects" inverseEntity="ProductEntity"/>
     </entity>
     <elements>
-        <element name="ItemEntity" positionX="-389.6953125" positionY="-362.05859375" width="128" height="89"/>
-        <element name="ProductEntity" positionX="-743.484375" positionY="-501.578125" width="128" height="89"/>
         <element name="ItemCountEntity" positionX="-567" positionY="-396" width="128" height="74"/>
+        <element name="ItemEntity" positionX="-389.6953125" positionY="-362.05859375" width="128" height="89"/>
+        <element name="ProductEntity" positionX="-743.484375" positionY="-501.578125" width="128" height="118"/>
+        <element name="ProjectEntity" positionX="-567" positionY="-396" width="128" height="103"/>
     </elements>
 </model>
