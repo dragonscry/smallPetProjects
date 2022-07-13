@@ -11,6 +11,10 @@ struct ContentView: View {
     
     var body: some View {
         TabView {
+            ProjectListView()
+                .tabItem {
+                    Image(systemName: "display")
+                }
             ItemListView()
                 .tabItem {
                     Image(systemName: "suitcase")

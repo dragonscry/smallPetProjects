@@ -208,3 +208,11 @@ class CoreDataRelationshipViewModel : ObservableObject {
     }
     
 }
+
+//MARK: TODO:
+/*
+ 1. make func to unselect all projects
+ 2. make func to find select project
+ 3. on all prod list and all item list use func select project
+ 4. update creation item and product with select project (view + base)
+ */
