@@ -8,8 +8,32 @@
 import SwiftUI
 
 struct AddProjectView: View {
+    
+    @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var coreDataVM: CoreDataRelationshipViewModel
+    @State var name = ""
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            VStack {
+                HStack {
+                    DefaultPhotoView()
+                    TextField("Type Project Name", text: $name)
+                        .underlineTextField()
+                }
+                .padding(.bottom, 20)
+                
+                Button {
+                    coreDataVM.unselectAllProject()
+                    coreDataVM.addProject(name: name)
+                    presentationMode.wrappedValue.dismiss()
+                } label: {
+                    SaveButtonLabel()
+                }
+                
+            }
+            .navigationTitle("Add Project")
+        }
     }
 }
 

@@ -18,6 +18,7 @@ class CoreDataRelationshipViewModel : ObservableObject {
     @Published var projects: [ProjectEntity] = [] //empty array with projects
     
     init() {
+        getProjects()
         getItemsCount()
         getItems()
         getProducts()
@@ -70,12 +71,21 @@ class CoreDataRelationshipViewModel : ObservableObject {
         
     }
     
+    //add project to core
     func addProject(name: String) {
         let newProject = ProjectEntity(context: manager.context)
         newProject.projectID = UUID().uuidString
         newProject.name = name
         newProject.isSelected = true
         save()
+    }
+    
+    //unselect all project
+    func unselectAllProject() {
+        for project in projects {
+            project.isSelected = false
+        }
+        self.save()
     }
     
     //add item to core

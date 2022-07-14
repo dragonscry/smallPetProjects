@@ -8,8 +8,42 @@
 import SwiftUI
 
 struct ProjectListView: View {
+    
+    @EnvironmentObject var coreDataVM: CoreDataRelationshipViewModel
+    @State var isAddingProject = false
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            List {
+                ForEach(coreDataVM.projects) { project in
+                    HStack {
+                        Text(project.name ?? "empty")
+                        Spacer()
+                        Text(project.isSelected ? "🟢" : "🔴")
+                    }
+                    .onTapGesture {
+                        coreDataVM.unselectAllProject()
+                        project.isSelected = true
+                        coreDataVM.save()
+                    }
+
+                }
+            }
+            .navigationTitle("All Projects")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        self.isAddingProject = true
+                    } label: {
+                        Image(systemName: "plus")
+                    }
+                    .sheet(isPresented: $isAddingProject) {
+                        AddProjectView()
+                    }
+
+                }
+            }
+        }
     }
 }
 
