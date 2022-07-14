@@ -14,14 +14,19 @@ struct ProductListView: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(coreDataVM.products) { product in
-                    NavigationLink {
-                        ProductDetailsView(product: product)
-                    } label: {
-                        ProductRow(product: product)
+                if let project = coreDataVM.selectedProject {
+                    if let products = project.products?.allObjects as? [ProductEntity]{
+                        ForEach(products) { product in
+                            NavigationLink {
+                                ProductDetailsView(product: product)
+                            } label: {
+                                ProductRow(product: product)
+                            }
+                        }
+                        .onDelete(perform: coreDataVM.deleteProduct)
                     }
                 }
-                .onDelete(perform: coreDataVM.deleteProduct)
+
             }
             .navigationTitle("All Products")
             .toolbar {

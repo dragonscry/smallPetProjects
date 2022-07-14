@@ -14,17 +14,22 @@ struct ItemListView: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(coreDataVM.items) { item in
-                    NavigationLink {
-                        ItemDetailsView(item: item)
-                    } label: {
-                        VStack {
-                            ItemRow(item: item)
+                if let project = coreDataVM.selectedProject {
+                    if let items = project.items?.allObjects as? [ItemEntity]{
+                        ForEach(items) { item in
+                            NavigationLink {
+                                ItemDetailsView(item: item)
+                            } label: {
+                                VStack {
+                                    ItemRow(item: item)
+                                }
+                                
+                            }
                         }
-                        
+                        .onDelete(perform: coreDataVM.deleteItem)
                     }
+
                 }
-                .onDelete(perform: coreDataVM.deleteItem)
             }
             .navigationTitle("All Items")
             .toolbar {

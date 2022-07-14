@@ -17,6 +17,14 @@ class CoreDataRelationshipViewModel : ObservableObject {
     @Published var itemsCount: [ItemCountEntity] = [] //empty array with itemCounts
     @Published var projects: [ProjectEntity] = [] //empty array with projects
     
+    var selectedProject : ProjectEntity? {
+        get {
+            projects.first { project in
+                project.isSelected == true
+            }
+        }
+    }
+    
     init() {
         getProjects()
         getItemsCount()
@@ -73,6 +81,7 @@ class CoreDataRelationshipViewModel : ObservableObject {
     
     //add project to core
     func addProject(name: String) {
+        self.unselectAllProject()
         let newProject = ProjectEntity(context: manager.context)
         newProject.projectID = UUID().uuidString
         newProject.name = name
@@ -94,6 +103,9 @@ class CoreDataRelationshipViewModel : ObservableObject {
         newItem.itemID = UUID().uuidString
         newItem.name = name
         newItem.price = price
+        
+        self.addItemToProject(item: newItem)
+        
         save()
     }
     
@@ -112,6 +124,9 @@ class CoreDataRelationshipViewModel : ObservableObject {
         newProduct.productID = UUID().uuidString
         newProduct.name = name
         newProduct.items = []
+        
+        self.addProductToProject(product: newProduct)
+        
         save()
     }
     
@@ -127,6 +142,8 @@ class CoreDataRelationshipViewModel : ObservableObject {
             addItemCount(item: item, product: newProduct)
         }
         
+        self.addProductToProject(product: newProduct)
+        
         save()
     }
     
@@ -139,6 +156,27 @@ class CoreDataRelationshipViewModel : ObservableObject {
     //add item count to product
     func addItemCountToProduct(itemCount: ItemCountEntity, product: ProductEntity) {
         product.addToItemCounts(itemCount)
+    }
+    
+    func addProductToProject(product: ProductEntity) {
+        guard let project = projects.first(where: { project in
+            project.isSelected == true
+        }) else {
+            print("No selected projects")
+            return
+        }
+        project.addToProducts(product)
+    }
+    
+    func addItemToProject(item: ItemEntity) {
+        guard let project = projects.first(where: { project in
+            project.isSelected == true
+        }) else {
+            print("No selected projects")
+            return
+        }
+        
+        project.addToItems(item)
     }
     
     //update item entity
@@ -221,7 +259,7 @@ class CoreDataRelationshipViewModel : ObservableObject {
 
 //MARK: TODO:
 /*
- 1. make func to unselect all projects
+ 1. make func to unselect all projects +
  2. make func to find select project
  3. on all prod list and all item list use func select project
  4. update creation item and product with select project (view + base)
