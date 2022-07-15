@@ -16,18 +16,22 @@ struct SelectItemView: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(coreDataVM.items) { item in
-                    HStack{
-                        ItemRow(item: item)
-                        if selectedRows.contains(item) {
-                            Image(systemName: "heart.fill")
-                        }
-                    }
-                    .onTapGesture {
-                        if !selectedRows.contains(item){
-                            selectedRows.insert(item)
-                        } else {
-                            selectedRows.remove(item)
+                if let project = coreDataVM.selectedProject {
+                    if let items = project.items?.allObjects as? [ItemEntity] {
+                        ForEach(items) { item in
+                            HStack{
+                                ItemRow(item: item)
+                                if selectedRows.contains(item) {
+                                    Image(systemName: "heart.fill")
+                                }
+                            }
+                            .onTapGesture {
+                                if !selectedRows.contains(item){
+                                    selectedRows.insert(item)
+                                } else {
+                                    selectedRows.remove(item)
+                                }
+                            }
                         }
                     }
                 }

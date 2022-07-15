@@ -17,6 +17,7 @@ class CoreDataRelationshipViewModel : ObservableObject {
     @Published var itemsCount: [ItemCountEntity] = [] //empty array with itemCounts
     @Published var projects: [ProjectEntity] = [] //empty array with projects
     
+    //selected project property
     var selectedProject : ProjectEntity? {
         get {
             projects.first { project in
@@ -259,8 +260,5 @@ class CoreDataRelationshipViewModel : ObservableObject {
 
 //MARK: TODO:
 /*
- 1. make func to unselect all projects +
- 2. make func to find select project
- 3. on all prod list and all item list use func select project
- 4. update creation item and product with select project (view + base)
+Maybe good reason to split all functionality
  */

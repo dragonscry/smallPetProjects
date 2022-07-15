@@ -10,6 +10,7 @@ import SwiftUI
 struct ProductListView: View {
     @EnvironmentObject var coreDataVM: CoreDataRelationshipViewModel
     @State var isAddingProduct = false
+    @State var isAlert = false
     
     var body: some View {
         NavigationView {
@@ -28,11 +29,24 @@ struct ProductListView: View {
                 }
 
             }
+            .alert("Please, add a Project", isPresented: $isAlert, actions: {
+                Button(role: .cancel) {
+                    //
+                } label: {
+                    Text("OK")
+                }
+
+            })
             .navigationTitle("All Products")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        self.isAddingProduct = true
+                        if coreDataVM.selectedProject != nil {
+                            self.isAddingProduct = true
+                        } else {
+                            self.isAlert = true
+                        }
+
                     } label: {
                         Image(systemName: "plus")
                     }
