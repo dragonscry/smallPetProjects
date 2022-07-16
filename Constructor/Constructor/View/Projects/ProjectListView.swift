@@ -34,6 +34,7 @@ struct ProjectListView: View {
                     
 
                 }
+                .onDelete(perform: coreDataVM.deleteProject)
             }
             .navigationTitle("All Projects")
             .toolbar {

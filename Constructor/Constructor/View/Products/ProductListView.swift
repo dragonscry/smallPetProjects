@@ -15,9 +15,9 @@ struct ProductListView: View {
     var body: some View {
         NavigationView {
             List {
-                if let project = coreDataVM.selectedProject {
-                    if let products = project.products?.allObjects as? [ProductEntity]{
-                        ForEach(products) { product in
+                //if let project = coreDataVM.selectedProject {
+                  //  if let products = project.products?.allObjects as? [ProductEntity]{
+                ForEach(coreDataVM.products) { product in
                             NavigationLink {
                                 ProductDetailsView(product: product)
                             } label: {
@@ -25,8 +25,8 @@ struct ProductListView: View {
                             }
                         }
                         .onDelete(perform: coreDataVM.deleteProduct)
-                    }
-                }
+                  //  }
+               // }
 
             }
             .alert("Please, add a Project", isPresented: $isAlert, actions: {

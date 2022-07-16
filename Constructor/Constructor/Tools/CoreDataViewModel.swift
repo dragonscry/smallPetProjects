@@ -210,6 +210,30 @@ class CoreDataRelationshipViewModel : ObservableObject {
         manager.save()
     }
     
+    //delete project and all conected items and products
+    func deleteProject(at indexSet: IndexSet) {
+        indexSet.forEach { index in
+            let project = projects[index]
+            
+            //delete all connected products
+            if let products = project.products?.allObjects as? [ProductEntity] {
+                for product in products {
+                    deleteProduct(product: product)
+                }
+            }
+            
+            //delete all connected items
+            if let items = project.items?.allObjects as? [ItemEntity] {
+                for item in items {
+                    deleteItem(item: item)
+                }
+            }
+            
+            manager.context.delete(project)
+        }
+        save()
+    }
+    
     //delete item from core
     func deleteItem(at indexSet: IndexSet) {
         indexSet.forEach { index in
@@ -223,14 +247,32 @@ class CoreDataRelationshipViewModel : ObservableObject {
     func deleteProduct(at indexSet: IndexSet) {
         indexSet.forEach { index in
             let product = products[index]
-            if let itemCounts = product.itemCounts?.allObjects as? [ItemCountEntity] {
-                for itemCount in itemCounts {
-                    manager.context.delete(itemCount)
-                }
-            }
+            deleteItemCounts(product: product)
             manager.context.delete(product)
         }
         save()
+    }
+    
+    
+    
+    //delete specific item
+    func deleteItem(item: ItemEntity) {
+        manager.context.delete(item)
+    }
+    
+    //delete specific product and all conected item counts
+    func deleteProduct(product: ProductEntity) {
+        deleteItemCounts(product: product)
+        manager.context.delete(product)
+    }
+    
+    //delete item counts from project
+    func deleteItemCounts(product: ProductEntity) {
+        if let itemCounts = product.itemCounts?.allObjects as? [ItemCountEntity] {
+            for itemCount in itemCounts {
+                manager.context.delete(itemCount)
+            }
+        }
     }
     
     //save to core and get all entitys
