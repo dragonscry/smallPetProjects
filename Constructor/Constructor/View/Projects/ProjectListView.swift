@@ -16,16 +16,22 @@ struct ProjectListView: View {
         NavigationView {
             List {
                 ForEach(coreDataVM.projects) { project in
-                    HStack {
-                        Text(project.name ?? "empty")
-                        Spacer()
-                        Text(project.isSelected ? "🟢" : "🔴")
+                    NavigationLink {
+                        ProjectDetailsView(project: project)
+                    } label: {
+                        HStack {
+                            Text(project.name ?? "empty")
+                            Spacer()
+                            Text(project.isSelected ? "🟢" : "🔴")
+                        }
+                        .onTapGesture {
+                            coreDataVM.unselectAllProject()
+                            project.isSelected = true
+                            coreDataVM.save()
+                        }
                     }
-                    .onTapGesture {
-                        coreDataVM.unselectAllProject()
-                        project.isSelected = true
-                        coreDataVM.save()
-                    }
+
+                    
 
                 }
             }

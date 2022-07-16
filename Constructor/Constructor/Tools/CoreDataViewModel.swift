@@ -180,6 +180,13 @@ class CoreDataRelationshipViewModel : ObservableObject {
         project.addToItems(item)
     }
     
+    //update project entity
+    
+    func updateProject(project: ProjectEntity, name: String) {
+        project.name = name
+        save()
+    }
+    
     //update item entity
     func updateItem(item: ItemEntity, name: String, price: Float) {
         item.name = name
@@ -240,18 +247,18 @@ class CoreDataRelationshipViewModel : ObservableObject {
             self.getProducts()
             self.getItemsCount()
             self.getProjects()
-//            print("ItemsCount count is : \(self.itemsCount.count)")
-//            print("Item Count is : \(self.items.count)")
-//
-//            for product in self.products {
-//                print("product name is \(String(describing: product.name))")
-//                if let itemCounts = product.itemCounts?.allObjects as? [ItemCountEntity] {
-//                    print (itemCounts.count)
-//                    for itemC in itemCounts {
-//                        print("item count id \(String(describing: itemC.idItem))")
-//                    }
-//                }
-//            }
+            //            print("ItemsCount count is : \(self.itemsCount.count)")
+            //            print("Item Count is : \(self.items.count)")
+            //
+            //            for product in self.products {
+            //                print("product name is \(String(describing: product.name))")
+            //                if let itemCounts = product.itemCounts?.allObjects as? [ItemCountEntity] {
+            //                    print (itemCounts.count)
+            //                    for itemC in itemCounts {
+            //                        print("item count id \(String(describing: itemC.idItem))")
+            //                    }
+            //                }
+            //            }
         }
         
     }
@@ -260,5 +267,5 @@ class CoreDataRelationshipViewModel : ObservableObject {
 
 //MARK: TODO:
 /*
-Maybe good reason to split all functionality
+ Maybe good reason to split all functionality
  */

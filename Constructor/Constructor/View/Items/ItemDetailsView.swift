@@ -10,7 +10,7 @@ import SwiftUI
 struct ItemDetailsView: View {
     
     @EnvironmentObject var coreDataVM: CoreDataRelationshipViewModel
-    //@Environment(\.presentationMode) var presentationMode
+    @Environment(\.presentationMode) var presentationMode
     var item : ItemEntity
     @State var name = ""
     @State var price = ""
@@ -35,7 +35,7 @@ struct ItemDetailsView: View {
             
             Button {
                 coreDataVM.updateItem(item: item, name: name, price: Float(price) ?? 0)
-                //presentationMode.wrappedValue.dismiss()
+                presentationMode.wrappedValue.dismiss()
             } label: {
                 SaveButtonLabel()
             }
