@@ -11,6 +11,8 @@ import SwiftUI
 struct ConstructorApp: App {
     
     @StateObject var coreDataVM: CoreDataRelationshipViewModel = CoreDataRelationshipViewModel()
+    @StateObject var projectsVM: ProjectsViewModel = ProjectsViewModel()
+    @StateObject var itemsVM: ItemsViewModel = ItemsViewModel()
     
     var body: some Scene {
         WindowGroup {
@@ -18,6 +20,8 @@ struct ConstructorApp: App {
                 ContentView()
             }
             .environmentObject(coreDataVM)
+            .environmentObject(projectsVM)
+            .environmentObject(itemsVM)
         }
     }
 }

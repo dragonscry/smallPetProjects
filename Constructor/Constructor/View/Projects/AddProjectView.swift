@@ -10,7 +10,8 @@ import SwiftUI
 struct AddProjectView: View {
     
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var coreDataVM: CoreDataRelationshipViewModel
+    //@EnvironmentObject var coreDataVM: CoreDataRelationshipViewModel
+    @EnvironmentObject var projectVM: ProjectsViewModel
     @State var name = ""
     
     var body: some View {
@@ -24,14 +25,17 @@ struct AddProjectView: View {
                 .padding(.bottom, 20)
                 
                 Button {
-                    coreDataVM.unselectAllProject()
-                    coreDataVM.addProject(name: name)
+                    projectVM.unselectAllProject()
+                    projectVM.addProject(name: name)
                     presentationMode.wrappedValue.dismiss()
                 } label: {
                     SaveButtonLabel()
                 }
                 
+                Spacer()
+                
             }
+            .padding(.horizontal)
             .navigationTitle("Add Project")
         }
     }

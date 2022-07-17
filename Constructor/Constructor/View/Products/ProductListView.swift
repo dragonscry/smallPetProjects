@@ -15,9 +15,9 @@ struct ProductListView: View {
     var body: some View {
         NavigationView {
             List {
-                //if let project = coreDataVM.selectedProject {
-                  //  if let products = project.products?.allObjects as? [ProductEntity]{
-                ForEach(coreDataVM.products) { product in
+                if let project = coreDataVM.selectedProject {
+                    if let products = project.products?.allObjects as? [ProductEntity]{
+                        ForEach(products) { product in
                             NavigationLink {
                                 ProductDetailsView(product: product)
                             } label: {
@@ -25,9 +25,9 @@ struct ProductListView: View {
                             }
                         }
                         .onDelete(perform: coreDataVM.deleteProduct)
-                  //  }
-               // }
-
+                    }
+                }
+                
             }
             .alert("Please, add a Project", isPresented: $isAlert, actions: {
                 Button(role: .cancel) {
@@ -35,7 +35,7 @@ struct ProductListView: View {
                 } label: {
                     Text("OK")
                 }
-
+                
             })
             .navigationTitle("All Products")
             .toolbar {
@@ -46,7 +46,7 @@ struct ProductListView: View {
                         } else {
                             self.isAlert = true
                         }
-
+                        
                     } label: {
                         Image(systemName: "plus")
                     }
@@ -79,7 +79,7 @@ struct ProductRow: View {
             Text("\(sum)")
         }
         .onAppear(perform: chSum)
-
+        
     }
     
     func chSum() {

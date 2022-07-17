@@ -15,6 +15,8 @@ struct ProductDetailsView: View {
     @State var name = ""
     @State var sum: String = ""
     
+    @State var isShowingSelectItem = false
+    
     var body: some View {
         VStack {
             HStack {
@@ -33,9 +35,17 @@ struct ProductDetailsView: View {
                 if let items = product.items?.allObjects as? [ItemEntity] {
                     Section(header: Text("Items in product")) {
                         ForEach(items){ item in
-                                VStack {
-                                    ItemRowWithStepper(item: item, itemCount: getItemCount(item: item))
+                            VStack {
+                                ItemRowWithStepper(item: item, itemCount: getItemCount(item: item))
+                            }
+                            .swipeActions(edge: .trailing) {
+                                Button(role: .destructive) {
+                                    self.deleteItemFromProduct(item: item)
+                                } label: {
+                                    Label("Delete", systemImage: "trash")
                                 }
+
+                            }
                         }
                     }
                 }
@@ -66,9 +76,9 @@ struct ProductDetailsView: View {
     func totalSum() {
         var s: Float = 0
         if let items = product.items?.allObjects as? [ItemEntity] {
-                for i in 0..<items.count {
-                    s += items[i].price * Float(getItemCount(item: items[i])?.count ?? 1)
-                }
+            for i in 0..<items.count {
+                s += items[i].price * Float(getItemCount(item: items[i])?.count ?? 1)
+            }
         }
         
         sum = String(format: "%.2f", s)
@@ -87,12 +97,18 @@ struct ProductDetailsView: View {
         return nil
     }
     
+    func deleteItemFromProduct(item: ItemEntity) {
+        self.product.removeFromItems(item)
+        coreDataVM.save()
+    }
+    
     func defaultValues() {
-        self.name = product.name ?? ""
-    }    
+        if self.name == "" {
+            self.name = product.name ?? ""
+        }
+    }
+    
 }
-
-
 
 
 //struct ProductDetailsView_Previews: PreviewProvider {

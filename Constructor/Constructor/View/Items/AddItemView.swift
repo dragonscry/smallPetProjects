@@ -10,7 +10,9 @@ import SwiftUI
 struct AddItemView: View {
     
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var coreDataVM: CoreDataRelationshipViewModel
+    //@EnvironmentObject var coreDataVM: CoreDataRelationshipViewModel
+    @EnvironmentObject var projectVM: ProjectsViewModel
+    @EnvironmentObject var itemVM: ItemsViewModel
     @State var name = ""
     @State var price = ""
     
@@ -33,8 +35,8 @@ struct AddItemView: View {
                 .padding(.horizontal)
                 
                 Button {
-                    coreDataVM.addItem(name: name, price: Float(price) ?? 0)
-                    coreDataVM.getItems()
+                    itemVM.addItem(name: name, price: Float(price) ?? 0, project: projectVM.selectedProject)
+                    itemVM.getItems()
                     presentationMode.wrappedValue.dismiss()
                 } label: {
                     SaveButtonLabel()

@@ -8,26 +8,39 @@
 import SwiftUI
 
 struct ItemListView: View {
-    @EnvironmentObject var coreDataVM: CoreDataRelationshipViewModel
+    //@EnvironmentObject var coreDataVM: CoreDataRelationshipViewModel
+    @EnvironmentObject var itemsVM: ItemsViewModel
+    @EnvironmentObject var projectVM: ProjectsViewModel
     @State var isAddingItem = false
     @State var isAlert = false
     
     var body: some View {
         NavigationView {
             List {
-                if let project = coreDataVM.selectedProject {
-                    if let items = project.items?.allObjects as? [ItemEntity]{
+                if let project = projectVM.selectedProject {
+                    if let items = project.items?.allObjects as? [ItemEntity]
+                    {
                         ForEach(items) { item in
                             NavigationLink {
                                 ItemDetailsView(item: item)
                             } label: {
                                 VStack {
-                                    ItemRow(item: item)
+                                    //ItemRow(item: item)
+                                    Text("\(item.name ?? "")")
                                 }
-                                
+
+                            }
+                            .swipeActions(edge: .trailing) {
+                                Button(role: .destructive) {
+                                    withAnimation(.easeOut(duration: 0.2)) {
+                                        itemsVM.deleteItem2(item: item)
+                                    }
+                                } label: {
+                                    Label("Delete", systemImage: "trash")
+                                }
+
                             }
                         }
-                        .onDelete(perform: coreDataVM.deleteItem)
                     }
 
                 }
@@ -44,7 +57,7 @@ struct ItemListView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        if coreDataVM.selectedProject != nil {
+                        if projectVM.selectedProject != nil {
                             self.isAddingItem = true
                         } else {
                             self.isAlert = true
