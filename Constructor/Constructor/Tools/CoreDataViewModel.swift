@@ -181,7 +181,6 @@ class CoreDataRelationshipViewModel : ObservableObject {
     }
     
     //update project entity
-    
     func updateProject(project: ProjectEntity, name: String) {
         project.name = name
         save()

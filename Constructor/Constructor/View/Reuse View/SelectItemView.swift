@@ -9,14 +9,15 @@ import SwiftUI
 
 struct SelectItemView: View {
     
-    @EnvironmentObject var coreDataVM: CoreDataRelationshipViewModel
+    //@EnvironmentObject var coreDataVM: CoreDataRelationshipViewModel
+    @EnvironmentObject var projectVM: ProjectsViewModel
     @Environment(\.presentationMode) var presentationMode
     @Binding var selectedRows : Set<ItemEntity>
     
     var body: some View {
         NavigationView {
             List {
-                if let project = coreDataVM.selectedProject {
+                if let project = projectVM.selectedProject {
                     if let items = project.items?.allObjects as? [ItemEntity] {
                         ForEach(items) { item in
                             HStack{

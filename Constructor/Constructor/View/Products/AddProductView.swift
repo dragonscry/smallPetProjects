@@ -10,7 +10,9 @@ import SwiftUI
 struct AddProductView: View {
     
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var coreDataVM: CoreDataRelationshipViewModel
+    //@EnvironmentObject var coreDataVM: CoreDataRelationshipViewModel
+    @EnvironmentObject var productVM: ProductsViewModel
+    @EnvironmentObject var projectVM: ProjectsViewModel
     @State var name = ""
     @State var items = Set<ItemEntity>()
     
@@ -38,9 +40,9 @@ struct AddProductView: View {
                 
                 Button {
                     if items.isEmpty {
-                        coreDataVM.addProduct(name: name)
+                        productVM.addProduct(name: name, project: projectVM.selectedProject)
                     } else if !items.isEmpty {
-                        coreDataVM.addProduct(name: name, items: items)
+                        productVM.addProduct(name: name, items: items, project: projectVM.selectedProject)
                     }
                     presentationMode.wrappedValue.dismiss()
                 } label: {

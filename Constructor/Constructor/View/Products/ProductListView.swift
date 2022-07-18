@@ -8,23 +8,27 @@
 import SwiftUI
 
 struct ProductListView: View {
-    @EnvironmentObject var coreDataVM: CoreDataRelationshipViewModel
+    //@EnvironmentObject var coreDataVM: CoreDataRelationshipViewModel
+    @EnvironmentObject var productVM: ProductsViewModel
+    @EnvironmentObject var projectVM: ProjectsViewModel
     @State var isAddingProduct = false
     @State var isAlert = false
     
     var body: some View {
         NavigationView {
             List {
-                if let project = coreDataVM.selectedProject {
+                if let project = projectVM.selectedProject {
                     if let products = project.products?.allObjects as? [ProductEntity]{
-                        ForEach(products) { product in
+                        ForEach(productVM.products.filter({ product in
+                            products.contains(product)
+                        })) { product in
                             NavigationLink {
                                 ProductDetailsView(product: product)
                             } label: {
                                 ProductRow(product: product)
                             }
                         }
-                        .onDelete(perform: coreDataVM.deleteProduct)
+                        .onDelete(perform: productVM.deleteProduct)
                     }
                 }
                 
@@ -41,7 +45,7 @@ struct ProductListView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        if coreDataVM.selectedProject != nil {
+                        if projectVM.selectedProject != nil {
                             self.isAddingProduct = true
                         } else {
                             self.isAlert = true
@@ -66,6 +70,7 @@ struct ProductListView_Previews: PreviewProvider {
     }
 }
 
+//Custom Product row
 struct ProductRow: View {
     
     let product: ProductEntity
@@ -82,10 +87,12 @@ struct ProductRow: View {
         
     }
     
+    //convert float to float with 2 decimals
     func chSum() {
         self.sum = String(format: "%.2f", s)
     }
     
+    //calculates sums from all items
     func getPrice() -> Float {
         var s : Float = 0
         if let items = product.items?.allObjects as? [ItemEntity] {
@@ -96,6 +103,7 @@ struct ProductRow: View {
         return s
     }
     
+    //get item count which connected to item
     func getItemCount(item: ItemEntity) -> ItemCountEntity? {
         
         if let itemCounts = product.itemCounts?.allObjects as? [ItemCountEntity] {

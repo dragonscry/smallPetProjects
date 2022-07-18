@@ -20,7 +20,9 @@ struct ItemListView: View {
                 if let project = projectVM.selectedProject {
                     if let items = project.items?.allObjects as? [ItemEntity]
                     {
-                        ForEach(items) { item in
+                        ForEach(itemsVM.items.filter({ item in
+                            items.contains(item)
+                        })) { item in
                             NavigationLink {
                                 ItemDetailsView(item: item)
                             } label: {
@@ -30,17 +32,18 @@ struct ItemListView: View {
                                 }
 
                             }
-                            .swipeActions(edge: .trailing) {
-                                Button(role: .destructive) {
-                                    withAnimation(.easeOut(duration: 0.2)) {
-                                        itemsVM.deleteItem2(item: item)
-                                    }
-                                } label: {
-                                    Label("Delete", systemImage: "trash")
-                                }
-
-                            }
+//                            .swipeActions(edge: .trailing) {
+//                                Button(role: .destructive) {
+//                                    withAnimation(.easeOut(duration: 0.2)) {
+//                                        itemsVM.deleteItem2(item: item)
+//                                    }
+//                                } label: {
+//                                    Label("Delete", systemImage: "trash")
+//                                }
+//
+//                            }
                         }
+                        .onDelete(perform: itemsVM.deleteItem)
                     }
 
                 }
