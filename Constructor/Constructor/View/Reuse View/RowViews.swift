@@ -22,10 +22,12 @@ struct ItemRow: View {
 struct ItemRowWithStepper: View {
     
     var item : ItemEntity
-    @EnvironmentObject var coreDataVM: CoreDataRelationshipViewModel
+    //@EnvironmentObject var coreDataVM: CoreDataRelationshipViewModel
+    @EnvironmentObject var productVM: ProductsViewModel
     var itemCount: ItemCountEntity?
     
     @State var count = 1
+    @Binding var sum: String
     
     var body: some View {
         VStack{
@@ -59,13 +61,15 @@ struct ItemRowWithStepper: View {
     func incrementStep() {
         count += 1
         if count >= 100 { count = 100 }
-        coreDataVM.updateItemCount(itemCount: itemCount, count: count)
+        productVM.updateItemCount(itemCount: itemCount, count: count)
+        sum = String(format: "%.2f", (Float(sum) ?? 0) + item.price)
     }
     
     func decrementStep() {
         count -= 1
         if count < 1 { count = 1 }
-        coreDataVM.updateItemCount(itemCount: itemCount, count: count)
+        productVM.updateItemCount(itemCount: itemCount, count: count)
+        sum = String(format: "%.2f", (Float(sum) ?? 0) - item.price)
     }
 }
 

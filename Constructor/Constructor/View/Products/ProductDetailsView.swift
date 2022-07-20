@@ -11,7 +11,9 @@ struct ProductDetailsView: View {
     
     let product: ProductEntity
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var coreDataVM: CoreDataRelationshipViewModel
+    //@EnvironmentObject var coreDataVM: CoreDataRelationshipViewModel
+    @EnvironmentObject var productVM: ProductsViewModel
+    @EnvironmentObject var projectVM: ProjectsViewModel
     @State var name = ""
     @State var sum: String = ""
     
@@ -36,7 +38,7 @@ struct ProductDetailsView: View {
                     Section(header: Text("Items in product")) {
                         ForEach(items){ item in
                             VStack {
-                                ItemRowWithStepper(item: item, itemCount: getItemCount(item: item))
+                                ItemRowWithStepper(item: item, itemCount: getItemCount(item: item), sum: $sum)
                             }
                             .swipeActions(edge: .trailing) {
                                 Button(role: .destructive) {
@@ -53,7 +55,7 @@ struct ProductDetailsView: View {
             }
             HStack {
                 Button {
-                    coreDataVM.updateProduct(product: product, name: name)
+                    productVM.updateProduct(product: product, name: name)
                     //presentationMode.wrappedValue.dismiss()
                 } label: {
                     SaveButtonLabel()
@@ -99,7 +101,7 @@ struct ProductDetailsView: View {
     
     func deleteItemFromProduct(item: ItemEntity) {
         self.product.removeFromItems(item)
-        coreDataVM.save()
+        productVM.save()
     }
     
     func defaultValues() {
