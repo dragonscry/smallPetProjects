@@ -11,6 +11,7 @@ struct ItemDetailsView: View {
     
     //@EnvironmentObject var coreDataVM: CoreDataRelationshipViewModel
     @EnvironmentObject var itemVM: ItemsViewModel
+    @EnvironmentObject var productVM: ProductsViewModel
     @Environment(\.presentationMode) var presentationMode
     var item : ItemEntity
     @State var name = ""
@@ -36,6 +37,7 @@ struct ItemDetailsView: View {
             
             Button {
                 itemVM.updateItem(item: item, name: name, price: Float(price) ?? 0)
+                productVM.getProducts()
                 presentationMode.wrappedValue.dismiss()
             } label: {
                 SaveButtonLabel()

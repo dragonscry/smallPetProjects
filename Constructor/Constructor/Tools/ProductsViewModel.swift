@@ -92,6 +92,13 @@ class ProductsViewModel: ObservableObject {
         save()
     }
     
+    //add items to product
+    func addItemsToProduct(items: Set<ItemEntity>, product: ProductEntity) {
+        let items = items as NSSet
+        product.addToItems(items)
+        save()
+    }
+    
     //update product entity
     func updateProduct(product: ProductEntity, name: String) {
         product.name = name
@@ -104,8 +111,7 @@ class ProductsViewModel: ObservableObject {
         guard let itemCount = itemCount else {return}
         
         itemCount.count = Int32(count)
-        //save()
-        manager.save()
+        save()
     }
     
     // delete product from core
@@ -131,14 +137,15 @@ class ProductsViewModel: ObservableObject {
     func deleteProduct(product: ProductEntity) {
         deleteItemCounts(product: product)
         manager.context.delete(product)
+        save()
     }
     
     
     func save() {
         products.removeAll()
         itemCounts.removeAll()
-        self.manager.save()
-        self.getProducts()
+        manager.save()
+        getProducts()
     }
     
 }
