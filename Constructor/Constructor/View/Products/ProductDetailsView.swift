@@ -14,6 +14,7 @@ struct ProductDetailsView: View {
     //@EnvironmentObject var coreDataVM: CoreDataRelationshipViewModel
     @EnvironmentObject var productVM: ProductsViewModel
     @EnvironmentObject var projectVM: ProjectsViewModel
+    @EnvironmentObject var itemVM: ItemsViewModel
     @State var name = ""
     @State var sum: String = ""
     
@@ -40,13 +41,15 @@ struct ProductDetailsView: View {
                 
                 Section {
                     Text("Total: \(sum)")
-                        .onAppear(perform: totalSum)
+                        
                 }
                 
                 if let items = product.items?.allObjects as? [ItemEntity] {
                     
                     Section(header: Text("Items in product")) {
-                        ForEach(items){ item in
+                        ForEach(itemVM.items.filter({ item in
+                            items.contains(item)
+                        })){ item in
                                 VStack {
                                     ItemRowWithStepper(item: item, itemCount: getItemCount(item: item), sum: $sum)
                                 }
@@ -60,6 +63,7 @@ struct ProductDetailsView: View {
 
                         }
                     }
+                    .onAppear(perform: totalSum)
                 }
             }
 
@@ -91,6 +95,7 @@ struct ProductDetailsView: View {
 
     }
     
+    // calculate total price
     func totalSum() {
         var s: Float = 0
         if let items = product.items?.allObjects as? [ItemEntity] {
@@ -98,10 +103,11 @@ struct ProductDetailsView: View {
                 s += items[i].price * Float(getItemCount(item: items[i])?.count ?? 1)
             }
         }
-        
+        print("Total Sum was called")
         sum = String(format: "%.2f", s)
     }
     
+    //get item count connected to item
     func getItemCount(item: ItemEntity) -> ItemCountEntity? {
         
         if let itemCounts = product.itemCounts?.allObjects as? [ItemCountEntity] {
@@ -115,12 +121,15 @@ struct ProductDetailsView: View {
         return nil
     }
     
+    //delete item from product
     func deleteItemFromProduct(item: ItemEntity) {
         self.product.removeFromItems(item)
+        //need to add item counts deletion???
         productVM.save()
         self.totalSum()
     }
     
+    //check product name and add it if exist
     func defaultValues() {
         if self.name == "" {
             self.name = product.name ?? ""

@@ -12,6 +12,7 @@ struct SelectItemView: View {
     //@EnvironmentObject var coreDataVM: CoreDataRelationshipViewModel
     @EnvironmentObject var projectVM: ProjectsViewModel
     @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var itemVM: ItemsViewModel
     @Binding var selectedRows : Set<ItemEntity>
     
     var body: some View {
@@ -19,7 +20,9 @@ struct SelectItemView: View {
             List {
                 if let project = projectVM.selectedProject {
                     if let items = project.items?.allObjects as? [ItemEntity] {
-                        ForEach(items) { item in
+                        ForEach(itemVM.items.filter({ item in
+                            items.contains(item)
+                        })) { item in
                             HStack{
                                 ItemRow(item: item)
                                 if selectedRows.contains(item) {

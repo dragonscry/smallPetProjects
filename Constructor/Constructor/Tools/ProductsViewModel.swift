@@ -94,6 +94,9 @@ class ProductsViewModel: ObservableObject {
     
     //add items to product
     func addItemsToProduct(items: Set<ItemEntity>, product: ProductEntity) {
+        for item in items {
+            addItemCount(item: item, product: product)
+        }
         let items = items as NSSet
         product.addToItems(items)
         save()
