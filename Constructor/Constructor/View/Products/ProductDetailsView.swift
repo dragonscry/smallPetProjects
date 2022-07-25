@@ -15,6 +15,27 @@ struct ProductDetailsView: View {
     @EnvironmentObject var productVM: ProductsViewModel
     @EnvironmentObject var projectVM: ProjectsViewModel
     @EnvironmentObject var itemVM: ItemsViewModel
+    
+    var body: some View {
+        
+        if product.isEditable {
+            isEditableProduct(product: product)
+        } else {
+            isNotEdtableProduct(product: product)
+        }
+        
+    }
+    
+}
+
+struct isEditableProduct: View {
+    
+    let product: ProductEntity
+    @Environment(\.presentationMode) var presentationMode
+    //@EnvironmentObject var coreDataVM: CoreDataRelationshipViewModel
+    @EnvironmentObject var productVM: ProductsViewModel
+    @EnvironmentObject var projectVM: ProjectsViewModel
+    @EnvironmentObject var itemVM: ItemsViewModel
     @State var name = ""
     @State var sum: String = ""
     
@@ -35,13 +56,13 @@ struct ProductDetailsView: View {
             .onAppear(perform: defaultValues)
             .padding(.horizontal)
             
-
-
+            
+            
             List {
                 
                 Section {
                     Text("Total: \(sum)")
-                        
+                    
                 }
                 
                 if let items = product.items?.allObjects as? [ItemEntity] {
@@ -50,24 +71,24 @@ struct ProductDetailsView: View {
                         ForEach(itemVM.items.filter({ item in
                             items.contains(item)
                         })){ item in
-                                VStack {
-                                    ItemRowWithStepper(item: item, itemCount: getItemCount(item: item), sum: $sum)
+                            VStack {
+                                ItemRowWithStepper(item: item, itemCount: getItemCount(item: item), sum: $sum)
+                            }
+                            .swipeActions(edge: .trailing) {
+                                Button(role: .destructive) {
+                                    self.deleteItemFromProduct(item: item)
+                                } label: {
+                                    Label("Delete", systemImage: "trash")
                                 }
-                                .swipeActions(edge: .trailing) {
-                                    Button(role: .destructive) {
-                                        self.deleteItemFromProduct(item: item)
-                                    } label: {
-                                        Label("Delete", systemImage: "trash")
-                                    }
-                                }
-
+                            }
+                            
                         }
                     }
                     .onAppear(perform: totalSum)
                 }
             }
-
-
+            
+            
             
             HStack {
                 Button {
@@ -87,12 +108,26 @@ struct ProductDetailsView: View {
                 .sheet(isPresented: $isShowingSelectItem) {
                     AddItemsView(product: product)
                 }
-
-            
+                
+                
             }
             .padding(.horizontal)
         }
-
+    }
+    
+    //check product name and add it if exist
+    func defaultValues() {
+        if self.name == "" {
+            self.name = product.name ?? ""
+        }
+    }
+    
+    //delete item from product
+    func deleteItemFromProduct(item: ItemEntity) {
+        self.product.removeFromItems(item)
+        //need to add item counts deletion
+        productVM.save()
+        self.totalSum()
     }
     
     // calculate total price
@@ -121,12 +156,51 @@ struct ProductDetailsView: View {
         return nil
     }
     
-    //delete item from product
-    func deleteItemFromProduct(item: ItemEntity) {
-        self.product.removeFromItems(item)
-        //need to add item counts deletion???
-        productVM.save()
-        self.totalSum()
+    
+}
+
+struct isNotEdtableProduct: View {
+    
+    let product: ProductEntity
+    @Environment(\.presentationMode) var presentationMode
+    //@EnvironmentObject var coreDataVM: CoreDataRelationshipViewModel
+    @EnvironmentObject var productVM: ProductsViewModel
+    @EnvironmentObject var projectVM: ProjectsViewModel
+    @State var name = ""
+    @State var price = ""
+    
+    var body: some View {
+        VStack {
+            HStack {
+                DefaultPhotoView()
+                
+                VStack {
+                    TextField(product.name ?? "", text: $name)
+                        .underlineTextField()
+                    
+                    TextField(String(format: "%.2f", product.price), text: $price)
+                        .underlineTextField()
+                }
+                
+            }
+            .onAppear(perform: defaultValues)
+            .padding(.horizontal)
+            
+            Spacer()
+            
+            HStack {
+                Button {
+                    productVM.updateProduct(product: product, name: name, price: price)
+                    presentationMode.wrappedValue.dismiss()
+                } label: {
+                    SaveButtonLabel()
+                }
+                
+                Spacer()
+                
+            }
+            .padding(.horizontal)
+        }
     }
     
     //check product name and add it if exist
@@ -134,8 +208,11 @@ struct ProductDetailsView: View {
         if self.name == "" {
             self.name = product.name ?? ""
         }
+        
+        if self.price == "" {
+            self.price = String(format: "%.2f", product.price)
+        }
     }
-    
 }
 
 struct AddItemsView: View {
@@ -150,37 +227,37 @@ struct AddItemsView: View {
     
     var body: some View {
         VStack {
-        List {
-            if let project = projectVM.selectedProject {
-                if let items = project.items?.allObjects as? [ItemEntity] {
-                    if let prodItems = product.items?.allObjects as? [ItemEntity] {
-                        ForEach(items.filter({ item in
-                            !prodItems.contains(item)
-                        })){ item in
-                            HStack{
-                                ItemRow(item: item)
-                                if selectedRows.contains(item) {
-                                    Image(systemName: "heart.fill")
-                                }
-                            }.onTapGesture {
-                                if !selectedRows.contains(item){
-                                    selectedRows.insert(item)
-                                } else {
-                                    selectedRows.remove(item)
+            List {
+                if let project = projectVM.selectedProject {
+                    if let items = project.items?.allObjects as? [ItemEntity] {
+                        if let prodItems = product.items?.allObjects as? [ItemEntity] {
+                            ForEach(items.filter({ item in
+                                !prodItems.contains(item)
+                            })){ item in
+                                HStack{
+                                    ItemRow(item: item)
+                                    if selectedRows.contains(item) {
+                                        Image(systemName: "heart.fill")
+                                    }
+                                }.onTapGesture {
+                                    if !selectedRows.contains(item){
+                                        selectedRows.insert(item)
+                                    } else {
+                                        selectedRows.remove(item)
+                                    }
                                 }
                             }
                         }
                     }
                 }
             }
-        }
             Button {
                 productVM.addItemsToProduct(items: selectedRows, product: product)
                 presentationMode.wrappedValue.dismiss()
             } label: {
                 SaveButtonLabel()
             }
-
+            
         }
     }
 }

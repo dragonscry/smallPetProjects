@@ -43,6 +43,7 @@ class ProductsViewModel: ObservableObject {
         newProduct.productID = UUID().uuidString
         newProduct.name = name
         newProduct.items = []
+        newProduct.isEditable = true
         
         project.addToProducts(newProduct)
         
@@ -74,6 +75,7 @@ class ProductsViewModel: ObservableObject {
         let newProduct = ProductEntity(context: manager.context)
         newProduct.productID = UUID().uuidString
         newProduct.name = name
+        newProduct.isEditable = true
         let newItems = items as NSSet
         newProduct.items = newItems
         
@@ -84,6 +86,26 @@ class ProductsViewModel: ObservableObject {
         project.addToProducts(newProduct)
         
         save()
+    }
+    
+    func addProduct(name: String, price: String, project: ProjectEntity?) {
+        
+        guard let project = project else {
+            print("Project is not selected")
+            return
+        }
+        
+        let newProduct = ProductEntity(context: manager.context)
+        newProduct.productID = UUID().uuidString
+        newProduct.name = name
+        newProduct.price = Float(price) ?? 0
+        newProduct.isEditable = false
+        
+        project.addToProducts(newProduct)
+        
+        save()
+        
+        
     }
     
     //add item to product
@@ -105,6 +127,12 @@ class ProductsViewModel: ObservableObject {
     //update product entity
     func updateProduct(product: ProductEntity, name: String) {
         product.name = name
+        save()
+    }
+    
+    func updateProduct(product: ProductEntity, name: String, price: String) {
+        product.name = name
+        product.price = Float(price) ?? 0
         save()
     }
     

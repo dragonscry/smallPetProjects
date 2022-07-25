@@ -15,6 +15,7 @@ struct AddProductView: View {
     @EnvironmentObject var projectVM: ProjectsViewModel
     @State var name = ""
     @State var items = Set<ItemEntity>()
+    @State var price = ""
     
     var arrayItems: [ItemEntity] {
         Array(items)
@@ -39,7 +40,11 @@ struct AddProductView: View {
                 Spacer()
                 
                 Button {
-                    if items.isEmpty {
+                    
+                    if !price.isEmpty {
+                        productVM.addProduct(name: name, price: price, project: projectVM.selectedProject)
+                    }
+                    else if items.isEmpty {
                         productVM.addProduct(name: name, project: projectVM.selectedProject)
                     } else if !items.isEmpty {
                         productVM.addProduct(name: name, items: items, project: projectVM.selectedProject)
@@ -53,8 +58,18 @@ struct AddProductView: View {
             
             HStack {
                 DefaultPhotoView()
-                TextField("Type Product Name", text: $name)
-                    .underlineTextField()
+                VStack {
+                    TextField("Type Product Name", text: $name)
+                        .underlineTextField()
+                    VStack {
+                    TextField("Type Product Price", text: $price)
+                        .underlineTextField()
+                        Text("Note: if you type product price product became uneditable")
+                            .font(.subheadline)
+                    }
+                }
+
+                
             }
             
             List {
