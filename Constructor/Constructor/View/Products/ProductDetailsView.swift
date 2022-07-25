@@ -61,7 +61,7 @@ struct isEditableProduct: View {
             List {
                 
                 Section {
-                    Text("Total: \(sum)")
+                    Text("Total: \(product.price)")
                     
                 }
                 
@@ -84,7 +84,6 @@ struct isEditableProduct: View {
                             
                         }
                     }
-                    .onAppear(perform: totalSum)
                 }
             }
             
@@ -127,19 +126,6 @@ struct isEditableProduct: View {
         self.product.removeFromItems(item)
         //need to add item counts deletion
         productVM.save()
-        self.totalSum()
-    }
-    
-    // calculate total price
-    func totalSum() {
-        var s: Float = 0
-        if let items = product.items?.allObjects as? [ItemEntity] {
-            for i in 0..<items.count {
-                s += items[i].price * Float(getItemCount(item: items[i])?.count ?? 1)
-            }
-        }
-        print("Total Sum was called")
-        sum = String(format: "%.2f", s)
     }
     
     //get item count connected to item

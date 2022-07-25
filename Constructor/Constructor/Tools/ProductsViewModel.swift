@@ -17,6 +17,7 @@ class ProductsViewModel: ObservableObject {
     
     init() {
         getProducts()
+        getItemCounts()
     }
     
     //add products from core to array
@@ -25,6 +26,18 @@ class ProductsViewModel: ObservableObject {
         
         do {
             products = try manager.context.fetch(request)
+        } catch let error {
+            print("Error product fetching \(error.localizedDescription)")
+        }
+        
+    }
+    
+    //add products from core to array
+    func getItemCounts() {
+        let request = NSFetchRequest<ItemCountEntity>(entityName: "ItemCountEntity")
+        
+        do {
+            itemCounts = try manager.context.fetch(request)
         } catch let error {
             print("Error product fetching \(error.localizedDescription)")
         }
@@ -78,16 +91,21 @@ class ProductsViewModel: ObservableObject {
         newProduct.isEditable = true
         let newItems = items as NSSet
         newProduct.items = newItems
+        var price : Float = 0
         
         for item in items {
             addItemCount(item: item, product: newProduct)
+            price += item.price
         }
+        
+        newProduct.price = price
         
         project.addToProducts(newProduct)
         
         save()
     }
     
+    //add product to core with price
     func addProduct(name: String, price: String, project: ProjectEntity?) {
         
         guard let project = project else {
@@ -177,6 +195,7 @@ class ProductsViewModel: ObservableObject {
         itemCounts.removeAll()
         manager.save()
         getProducts()
+        getItemCounts()
     }
     
 }
