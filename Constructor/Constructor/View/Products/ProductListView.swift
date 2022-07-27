@@ -74,46 +74,13 @@ struct ProductListView_Previews: PreviewProvider {
 struct ProductRow: View {
     
     let product: ProductEntity
-    @State var sum : String = ""
-    var s : Float { getPrice()}
     
     var body: some View {
         HStack {
             Text(product.name ?? "UnnamedProduct")
             Spacer()
-            Text("\(sum)")
-        }
-        .onAppear(perform: chSum)
-        
-    }
-    
-    //convert float to float with 2 decimals
-    func chSum() {
-        self.sum = String(format: "%.2f", s)
-    }
-    
-    //calculates sums from all items
-    func getPrice() -> Float {
-        var s : Float = 0
-        if let items = product.items?.allObjects as? [ItemEntity] {
-            for i in 0..<items.count {
-                s += items[i].price * Float(getItemCount(item: items[i])?.count ?? 1)
-            }
-        }
-        return s
-    }
-    
-    //get item count which connected to item
-    func getItemCount(item: ItemEntity) -> ItemCountEntity? {
-        
-        if let itemCounts = product.itemCounts?.allObjects as? [ItemCountEntity] {
-            let count = itemCounts.first { itemCount in
-                itemCount.idItem == item.itemID
-            }
-            
-            return count
+            Text("\(String(format: "%.2f", product.price))")
         }
         
-        return nil
     }
 }

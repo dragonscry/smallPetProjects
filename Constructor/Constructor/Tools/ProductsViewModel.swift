@@ -13,11 +13,11 @@ class ProductsViewModel: ObservableObject {
     let manager = CoreDataManager.instance
     
     @Published var products: [ProductEntity] = [] //empty array with products
-    @Published var itemCounts: [ItemCountEntity] = [] //empty array with itemCounts
+    //@Published var itemCounts: [ItemCountEntity] = [] //empty array with itemCounts
     
     init() {
         getProducts()
-        getItemCounts()
+       // getItemCounts()
     }
     
     //add products from core to array
@@ -33,16 +33,16 @@ class ProductsViewModel: ObservableObject {
     }
     
     //add products from core to array
-    func getItemCounts() {
-        let request = NSFetchRequest<ItemCountEntity>(entityName: "ItemCountEntity")
-        
-        do {
-            itemCounts = try manager.context.fetch(request)
-        } catch let error {
-            print("Error product fetching \(error.localizedDescription)")
-        }
-        
-    }
+//    func getItemCounts() {
+//        let request = NSFetchRequest<ItemCountEntity>(entityName: "ItemCountEntity")
+//        
+//        do {
+//            itemCounts = try manager.context.fetch(request)
+//        } catch let error {
+//            print("Error product fetching \(error.localizedDescription)")
+//        }
+//        
+//    }
     
     //add product to project and to core
     func addProduct(name : String, project: ProjectEntity?) {
@@ -57,6 +57,7 @@ class ProductsViewModel: ObservableObject {
         newProduct.name = name
         newProduct.items = []
         newProduct.isEditable = true
+        newProduct.price = 0
         
         project.addToProducts(newProduct)
         
@@ -105,7 +106,7 @@ class ProductsViewModel: ObservableObject {
         save()
     }
     
-    //add product to core with price
+    //add not editable product to core with price
     func addProduct(name: String, price: String, project: ProjectEntity?) {
         
         guard let project = project else {
@@ -148,6 +149,7 @@ class ProductsViewModel: ObservableObject {
         save()
     }
     
+    //update not editable product
     func updateProduct(product: ProductEntity, name: String, price: String) {
         product.name = name
         product.price = Float(price) ?? 0
@@ -189,13 +191,38 @@ class ProductsViewModel: ObservableObject {
         save()
     }
     
+    func recalculationProduct(product: ProductEntity) {
+        var s: Float = 0
+        if let items = product.items?.allObjects as? [ItemEntity] {
+            for i in 0..<items.count {
+                s += items[i].price * Float(getItemCount(item: items[i], product: product)?.count ?? 1)
+            }
+        }
+        product.price = s
+        save()
+    }
+    
+    //get item count which connected to item
+    func getItemCount(item: ItemEntity, product: ProductEntity) -> ItemCountEntity? {
+        
+        if let itemCounts = product.itemCounts?.allObjects as? [ItemCountEntity] {
+            let count = itemCounts.first { itemCount in
+                itemCount.idItem == item.itemID
+            }
+            
+            return count
+        }
+        
+        return nil
+    }
+    
     
     func save() {
         products.removeAll()
-        itemCounts.removeAll()
+        //itemCounts.removeAll()
         manager.save()
         getProducts()
-        getItemCounts()
+        //getItemCounts()
     }
     
 }

@@ -61,7 +61,7 @@ struct isEditableProduct: View {
             List {
                 
                 Section {
-                    Text("Total: \(product.price)")
+                    Text("Total: \(String(format: "%.2f", product.price))")
                     
                 }
                 
@@ -72,7 +72,7 @@ struct isEditableProduct: View {
                             items.contains(item)
                         })){ item in
                             VStack {
-                                ItemRowWithStepper(item: item, itemCount: getItemCount(item: item), sum: $sum)
+                                ItemRowWithStepper(item: item, product: product, itemCount: getItemCount(item: item), sum: $sum)
                             }
                             .swipeActions(edge: .trailing) {
                                 Button(role: .destructive) {
@@ -124,8 +124,10 @@ struct isEditableProduct: View {
     //delete item from product
     func deleteItemFromProduct(item: ItemEntity) {
         self.product.removeFromItems(item)
-        //need to add item counts deletion
-        productVM.save()
+        if let itemCount = getItemCount(item: item) {
+            self.product.removeFromItemCounts(itemCount)
+        }
+        productVM.recalculationProduct(product: product)
     }
     
     //get item count connected to item
@@ -239,6 +241,7 @@ struct AddItemsView: View {
             }
             Button {
                 productVM.addItemsToProduct(items: selectedRows, product: product)
+                productVM.recalculationProduct(product: product)
                 presentationMode.wrappedValue.dismiss()
             } label: {
                 SaveButtonLabel()
