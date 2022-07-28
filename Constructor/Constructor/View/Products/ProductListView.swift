@@ -25,7 +25,7 @@ struct ProductListView: View {
                             NavigationLink {
                                 ProductDetailsView(product: product)
                             } label: {
-                                ProductRow(product: product)
+                                Text("\(product.name ?? "Unnamed Product")")
                             }
                         }
                         .onDelete(perform: productVM.deleteProduct)

@@ -119,6 +119,7 @@ struct isEditableProduct: View {
         if self.name == "" {
             self.name = product.name ?? ""
         }
+        productVM.recalculationProduct(product: product)
     }
     
     //delete item from product
