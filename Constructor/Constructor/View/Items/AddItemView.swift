@@ -15,6 +15,8 @@ struct AddItemView: View {
     @EnvironmentObject var itemVM: ItemsViewModel
     @State var name = ""
     @State var price = ""
+    @State var razmer = ""
+    @State var description = ""
     
     var body: some View {
         NavigationView {
@@ -29,10 +31,17 @@ struct AddItemView: View {
                         
                         TextField("Type Item price", text: $price)
                             .underlineTextField()
+                        
+                        TextField("Type kg/l/ft", text: $razmer)
+                            .underlineTextField()
                     }
                 }
                 .padding(.bottom, 50)
                 .padding(.horizontal)
+                
+                TextEditor(text: $description)
+                    .border(Color.gray)
+                    .padding()
                 
                 Button {
                     itemVM.addItem(name: name, price: Float(price) ?? 0, project: projectVM.selectedProject)
