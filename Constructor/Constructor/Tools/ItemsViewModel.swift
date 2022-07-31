@@ -31,7 +31,7 @@ class ItemsViewModel: ObservableObject {
     }
     
     //add item to core NEED UPD
-    func addItem(name: String, price: Float, project: ProjectEntity?) {
+    func addItem(name: String, price: Float, description: String, dimension: String, project: ProjectEntity?) {
         
         guard let project = project else {
             print("Project is not selected")
@@ -42,6 +42,8 @@ class ItemsViewModel: ObservableObject {
         newItem.itemID = UUID().uuidString
         newItem.name = name
         newItem.price = price
+        newItem.dimension = dimension
+        newItem.desc = description
         
         project.addToItems(newItem)
         

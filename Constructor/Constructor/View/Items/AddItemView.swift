@@ -15,7 +15,7 @@ struct AddItemView: View {
     @EnvironmentObject var itemVM: ItemsViewModel
     @State var name = ""
     @State var price = ""
-    @State var razmer = ""
+    @State var dimension = ""
     @State var description = ""
     
     var body: some View {
@@ -32,7 +32,7 @@ struct AddItemView: View {
                         TextField("Type Item price", text: $price)
                             .underlineTextField()
                         
-                        TextField("Type kg/l/ft", text: $razmer)
+                        TextField("Type kg/l/ft", text: $dimension)
                             .underlineTextField()
                     }
                 }
@@ -44,7 +44,7 @@ struct AddItemView: View {
                     .padding()
                 
                 Button {
-                    itemVM.addItem(name: name, price: Float(price) ?? 0, project: projectVM.selectedProject)
+                    itemVM.addItem(name: name, price: Float(price) ?? 0, description: description, dimension: dimension, project: projectVM.selectedProject)
                     itemVM.getItems()
                     presentationMode.wrappedValue.dismiss()
                 } label: {

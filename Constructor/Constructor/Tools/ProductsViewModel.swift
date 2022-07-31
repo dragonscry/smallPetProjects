@@ -161,7 +161,7 @@ class ProductsViewModel: ObservableObject {
         
         guard let itemCount = itemCount else {return}
         
-        itemCount.count = Int32(count)
+        itemCount.count = Float(count)
         save()
     }
     

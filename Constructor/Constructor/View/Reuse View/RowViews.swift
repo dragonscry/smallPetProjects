@@ -72,6 +72,8 @@ struct ItemRowWithStepper: View {
         productVM.updateItemCount(itemCount: itemCount, count: count)
         productVM.recalculationProduct(product: product)
     }
+    
+    //TODO: change count and stepper to field!!! count now is float
 }
 
 //struct RowViews_Previews: PreviewProvider {

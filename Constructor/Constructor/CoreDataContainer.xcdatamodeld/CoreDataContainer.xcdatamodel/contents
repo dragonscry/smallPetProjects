@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21E258" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="ItemCountEntity" representedClassName="ItemCountEntity" syncable="YES" codeGenerationType="class">
-        <attribute name="count" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="count" optional="YES" attributeType="Float" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="idItem" optional="YES" attributeType="String"/>
         <relationship name="product" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ProductEntity" inverseName="itemCounts" inverseEntity="ProductEntity"/>
     </entity>
     <entity name="ItemEntity" representedClassName="ItemEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="desc" optional="YES" attributeType="String"/>
+        <attribute name="dimension" optional="YES" attributeType="String"/>
         <attribute name="itemID" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="price" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
@@ -30,7 +32,7 @@
     </entity>
     <elements>
         <element name="ItemCountEntity" positionX="-567" positionY="-396" width="128" height="88"/>
-        <element name="ItemEntity" positionX="-389.6953125" positionY="-362.05859375" width="128" height="118"/>
+        <element name="ItemEntity" positionX="-389.6953125" positionY="-362.05859375" width="128" height="148"/>
         <element name="ProductEntity" positionX="-743.484375" positionY="-501.578125" width="128" height="148"/>
         <element name="ProjectEntity" positionX="-567" positionY="-396" width="128" height="118"/>
     </elements>
