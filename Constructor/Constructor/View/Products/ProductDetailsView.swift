@@ -37,7 +37,6 @@ struct isEditableProduct: View {
     @EnvironmentObject var projectVM: ProjectsViewModel
     @EnvironmentObject var itemVM: ItemsViewModel
     @State var name = ""
-    @State var sum: String = ""
     
     @State var isShowingSelectItem = false
     @State var isShowingItem = false
@@ -72,7 +71,7 @@ struct isEditableProduct: View {
                             items.contains(item)
                         })){ item in
                             VStack {
-                                ItemRowWithStepper(item: item, product: product, itemCount: getItemCount(item: item), sum: $sum)
+                                ItemRowWithStepper(item: item, product: product, itemCount: getItemCount(item: item))
                             }
                             .swipeActions(edge: .trailing) {
                                 Button(role: .destructive) {

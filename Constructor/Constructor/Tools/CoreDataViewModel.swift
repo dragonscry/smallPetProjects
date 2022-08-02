@@ -200,14 +200,14 @@ class CoreDataRelationshipViewModel : ObservableObject {
     }
     
     //update item count entity
-    func updateItemCount(itemCount: ItemCountEntity?, count: Int) {
-        
-        guard let itemCount = itemCount else {return}
-        
-        itemCount.count = Int32(count)
-        //save()
-        manager.save()
-    }
+//    func updateItemCount(itemCount: ItemCountEntity?, count: Int) {
+//        
+//        guard let itemCount = itemCount else {return}
+//        
+//        itemCount.count = Int32(count)
+//        //save()
+//        manager.save()
+//    }
     
     //delete project and all conected items and products
     func deleteProject(at indexSet: IndexSet) {

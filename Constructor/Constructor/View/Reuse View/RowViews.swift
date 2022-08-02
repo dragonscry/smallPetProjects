@@ -26,9 +26,7 @@ struct ItemRowWithStepper: View {
     //@EnvironmentObject var coreDataVM: CoreDataRelationshipViewModel
     @EnvironmentObject var productVM: ProductsViewModel
     var itemCount: ItemCountEntity?
-    
-    @State var count = 1
-    @Binding var sum: String
+    @State var itemCountStr = ""
     
     var body: some View {
         VStack{
@@ -38,13 +36,15 @@ struct ItemRowWithStepper: View {
                 Text(String(format: "%.2f", item.price))
             }
             HStack {
-                Stepper {
-                    Text("Count is: \(count)")
-                } onIncrement: {
-                    incrementStep()
-                } onDecrement: {
-                    decrementStep()
+                Text("Count is")
+                Spacer()
+                TextField("", text: $itemCountStr) {
+                    updateItemCount()
+                    productVM.recalculationProduct(product: product)
                 }
+                .underlineTextField()
+                Spacer()
+                Text(item.dimension ?? "")
             }
         }
         .onAppear(perform: countFromItemCount)
@@ -56,22 +56,29 @@ struct ItemRowWithStepper: View {
 //    }
     
     func countFromItemCount() {
-        self.count = Int(itemCount?.count ?? -1)
+        self.itemCountStr = String(itemCount?.count ?? -1)
     }
     
-    func incrementStep() {
-        count += 1
-        if count >= 100 { count = 100 }
+    func updateItemCount() {
+        let count: Float = Float(itemCountStr) ?? -1
         productVM.updateItemCount(itemCount: itemCount, count: count)
-        productVM.recalculationProduct(product: product)
     }
     
-    func decrementStep() {
-        count -= 1
-        if count < 1 { count = 1 }
-        productVM.updateItemCount(itemCount: itemCount, count: count)
-        productVM.recalculationProduct(product: product)
-    }
+    
+//
+//    func incrementStep() {
+//        count += 1
+//        if count >= 100 { count = 100 }
+//        productVM.updateItemCount(itemCount: itemCount, count: count)
+//        productVM.recalculationProduct(product: product)
+//    }
+//
+//    func decrementStep() {
+//        count -= 1
+//        if count < 1 { count = 1 }
+//        productVM.updateItemCount(itemCount: itemCount, count: count)
+//        productVM.recalculationProduct(product: product)
+//    }
     
     //TODO: change count and stepper to field!!! count now is float
 }

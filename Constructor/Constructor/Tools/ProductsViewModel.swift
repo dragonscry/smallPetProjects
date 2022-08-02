@@ -157,11 +157,11 @@ class ProductsViewModel: ObservableObject {
     }
     
     //update item count entity
-    func updateItemCount(itemCount: ItemCountEntity?, count: Int) {
+    func updateItemCount(itemCount: ItemCountEntity?, count: Float) {
         
         guard let itemCount = itemCount else {return}
         
-        itemCount.count = Float(count)
+        itemCount.count = count
         save()
     }
     
