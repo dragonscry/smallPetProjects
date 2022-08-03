@@ -41,6 +41,7 @@ struct ItemRowWithStepper: View {
                 TextField("", text: $itemCountStr) {
                     updateItemCount()
                     productVM.recalculationProduct(product: product)
+                    countFromItemCount()
                 }
                 .underlineTextField()
                 Spacer()
@@ -60,7 +61,8 @@ struct ItemRowWithStepper: View {
     }
     
     func updateItemCount() {
-        let count: Float = Float(itemCountStr) ?? -1
+        var count: Float = Float(itemCountStr) ?? -1
+        count = Float(round(Double(count)*100)/100.0)
         productVM.updateItemCount(itemCount: itemCount, count: count)
     }
     
