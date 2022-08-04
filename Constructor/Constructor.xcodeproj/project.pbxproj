@@ -31,6 +31,7 @@
 		9AE4FC5F2882EDBF003EB3E8 /* ProjectsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE4FC5E2882EDBF003EB3E8 /* ProjectsViewModel.swift */; };
 		9AE4FC612882F3C2003EB3E8 /* ItemsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE4FC602882F3C2003EB3E8 /* ItemsViewModel.swift */; };
 		9AE4FC632882F3D4003EB3E8 /* ProductsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE4FC622882F3D4003EB3E8 /* ProductsViewModel.swift */; };
+		9AEA0FC1289C542100CABE84 /* TemplatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEA0FC0289C542100CABE84 /* TemplatesView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +60,7 @@
 		9AE4FC5E2882EDBF003EB3E8 /* ProjectsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsViewModel.swift; sourceTree = "<group>"; };
 		9AE4FC602882F3C2003EB3E8 /* ItemsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsViewModel.swift; sourceTree = "<group>"; };
 		9AE4FC622882F3D4003EB3E8 /* ProductsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsViewModel.swift; sourceTree = "<group>"; };
+		9AEA0FC0289C542100CABE84 /* TemplatesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplatesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 		9A094E0B283B8A7800321469 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9AEA0FBF289C540B00CABE84 /* Templates */,
 				9AE4FC57287C0CAC003EB3E8 /* Projects */,
 				9A7294A22869A2A0007E93AA /* Reuse View */,
 				9A36F5EC284E799500EA563F /* Products */,
@@ -199,6 +202,14 @@
 			path = Projects;
 			sourceTree = "<group>";
 		};
+		9AEA0FBF289C540B00CABE84 /* Templates */ = {
+			isa = PBXGroup;
+			children = (
+				9AEA0FC0289C542100CABE84 /* TemplatesView.swift */,
+			);
+			path = Templates;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -278,6 +289,7 @@
 				9A0982062858FA5700ED4639 /* Extensions.swift in Sources */,
 				9A094DFC283B8A0600321469 /* ConstructorApp.swift in Sources */,
 				9A7294A62869A9B8007E93AA /* ButtonsView.swift in Sources */,
+				9AEA0FC1289C542100CABE84 /* TemplatesView.swift in Sources */,
 				9A2E787D285D0D1500320C36 /* ProductDetailsView.swift in Sources */,
 				9A7294A42869A2FA007E93AA /* DefaultPhotoView.swift in Sources */,
 				9AE4FC612882F3C2003EB3E8 /* ItemsViewModel.swift in Sources */,

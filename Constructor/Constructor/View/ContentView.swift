@@ -13,15 +13,33 @@ struct ContentView: View {
         TabView {
             ProjectListView()
                 .tabItem {
-                    Image(systemName: "display")
+                    VStack {
+                        Image(systemName: "display")
+                        Text("Projects")
+                    }
                 }
-            ItemListView()
+            TemplatesView()
                 .tabItem {
-                    Image(systemName: "suitcase")
+                    VStack{
+                        Image(systemName: "list.bullet.rectangle.portrait")
+                        Text("Templates")
+                    }
                 }
-            ProductListView()
+            
+            Text("Here will be Stock")
                 .tabItem {
-                    Image(systemName: "suitcase.cart")
+                    VStack {
+                        Image(systemName: "suitcase")
+                        Text("Stock")
+                    }
+                    
+                }
+            Text("Here will be Orders")
+                .tabItem {
+                    VStack {
+                        Image(systemName: "suitcase.cart")
+                        Text("Orders")
+                    }
                 }
         }
     }

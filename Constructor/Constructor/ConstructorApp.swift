@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct ConstructorApp: App {
     
-    @StateObject var coreDataVM: CoreDataRelationshipViewModel = CoreDataRelationshipViewModel()
+    //@StateObject var coreDataVM: CoreDataRelationshipViewModel = CoreDataRelationshipViewModel()
     @StateObject var projectsVM: ProjectsViewModel = ProjectsViewModel()
     @StateObject var itemsVM: ItemsViewModel = ItemsViewModel()
     @StateObject var productsVM: ProductsViewModel = ProductsViewModel()
@@ -20,7 +20,7 @@ struct ConstructorApp: App {
             VStack {
                 ContentView()
             }
-            .environmentObject(coreDataVM)
+            //.environmentObject(coreDataVM)
             .environmentObject(projectsVM)
             .environmentObject(itemsVM)
             .environmentObject(productsVM)
