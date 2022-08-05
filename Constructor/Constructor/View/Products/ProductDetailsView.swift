@@ -11,7 +11,6 @@ struct ProductDetailsView: View {
     
     let product: ProductEntity
     @Environment(\.presentationMode) var presentationMode
-    //@EnvironmentObject var coreDataVM: CoreDataRelationshipViewModel
     @EnvironmentObject var productVM: ProductsViewModel
     @EnvironmentObject var projectVM: ProjectsViewModel
     @EnvironmentObject var itemVM: ItemsViewModel
@@ -32,13 +31,11 @@ struct isEditableProduct: View {
     
     let product: ProductEntity
     @Environment(\.presentationMode) var presentationMode
-    //@EnvironmentObject var coreDataVM: CoreDataRelationshipViewModel
     @EnvironmentObject var productVM: ProductsViewModel
     @EnvironmentObject var projectVM: ProjectsViewModel
     @EnvironmentObject var itemVM: ItemsViewModel
     @State var name = ""
     @State var procent = ""
-    @State var totalPrice: Float = 0.0
     
     @State var isShowingSelectItem = false
     @State var isShowingItem = false
@@ -72,11 +69,10 @@ struct isEditableProduct: View {
                         Spacer()
                         TextField("Procent", text: $procent,onCommit: {
                             productVM.updateProcent(product: product, procent: procent)
-                            updateTotalPrice()
                         })
                         .underlineTextField()
                     }
-                    Text("Total price: \(String(format: "%.2f", totalPrice))")
+                    Text("Total price: \(String(format: "%.2f", product.totalPrice))")
                     
                 }
                 
@@ -135,12 +131,7 @@ struct isEditableProduct: View {
             self.name = product.name ?? ""
         }
         self.procent = String(product.procent)
-        updateTotalPrice()
         productVM.recalculationProduct(product: product)
-    }
-    
-    func updateTotalPrice() {
-        self.totalPrice = product.price + (product.price * product.procent)/100
     }
     
     //delete item from product
