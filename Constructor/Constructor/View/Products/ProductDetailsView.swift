@@ -37,6 +37,8 @@ struct isEditableProduct: View {
     @EnvironmentObject var projectVM: ProjectsViewModel
     @EnvironmentObject var itemVM: ItemsViewModel
     @State var name = ""
+    @State var procent = ""
+    @State var totalPrice: Float = 0.0
     
     @State var isShowingSelectItem = false
     @State var isShowingItem = false
@@ -60,7 +62,21 @@ struct isEditableProduct: View {
             List {
                 
                 Section {
-                    Text("Total: \(String(format: "%.2f", product.price))")
+                    Text("Own Price: \(String(format: "%.2f", product.price))")
+                    
+                }
+                
+                Section {
+                    HStack {
+                        Text("Procent for product:")
+                        Spacer()
+                        TextField("Procent", text: $procent,onCommit: {
+                            productVM.updateProcent(product: product, procent: procent)
+                            updateTotalPrice()
+                        })
+                        .underlineTextField()
+                    }
+                    Text("Total price: \(String(format: "%.2f", totalPrice))")
                     
                 }
                 
@@ -118,7 +134,13 @@ struct isEditableProduct: View {
         if self.name == "" {
             self.name = product.name ?? ""
         }
+        self.procent = String(product.procent)
+        updateTotalPrice()
         productVM.recalculationProduct(product: product)
+    }
+    
+    func updateTotalPrice() {
+        self.totalPrice = product.price + (product.price * product.procent)/100
     }
     
     //delete item from product

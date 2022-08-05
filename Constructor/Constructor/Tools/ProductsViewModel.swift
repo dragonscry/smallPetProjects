@@ -58,6 +58,7 @@ class ProductsViewModel: ObservableObject {
         newProduct.items = []
         newProduct.isEditable = true
         newProduct.price = 0
+        newProduct.procent = 0
         
         project.addToProducts(newProduct)
         
@@ -92,6 +93,7 @@ class ProductsViewModel: ObservableObject {
         newProduct.isEditable = true
         let newItems = items as NSSet
         newProduct.items = newItems
+        newProduct.procent = 10.0
         var price : Float = 0
         
         for item in items {
@@ -153,6 +155,11 @@ class ProductsViewModel: ObservableObject {
     func updateProduct(product: ProductEntity, name: String, price: String) {
         product.name = name
         product.price = Float(price) ?? 0
+        save()
+    }
+    
+    func updateProcent(product: ProductEntity, procent: String) {
+        product.procent = Float(procent) ?? 0.0
         save()
     }
     

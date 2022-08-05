@@ -18,6 +18,7 @@
         <attribute name="isEditable" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="price" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="procent" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="productID" optional="YES" attributeType="String"/>
         <relationship name="itemCounts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ItemCountEntity" inverseName="product" inverseEntity="ItemCountEntity"/>
         <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ItemEntity" inverseName="products" inverseEntity="ItemEntity"/>
@@ -33,7 +34,7 @@
     <elements>
         <element name="ItemCountEntity" positionX="-567" positionY="-396" width="128" height="88"/>
         <element name="ItemEntity" positionX="-389.6953125" positionY="-362.05859375" width="128" height="148"/>
-        <element name="ProductEntity" positionX="-743.484375" positionY="-501.578125" width="128" height="148"/>
+        <element name="ProductEntity" positionX="-743.484375" positionY="-501.578125" width="128" height="149"/>
         <element name="ProjectEntity" positionX="-567" positionY="-396" width="128" height="118"/>
     </elements>
 </model>
