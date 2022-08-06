@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A948AC6289EEC1000D22522 /* CoinModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A948AC5289EEC1000D22522 /* CoinModel.swift */; };
 		9AEA0FCF289DA10E00CABE84 /* SwiftfulCryptoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEA0FCE289DA10E00CABE84 /* SwiftfulCryptoApp.swift */; };
 		9AEA0FD1289DA10E00CABE84 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEA0FD0289DA10E00CABE84 /* ContentView.swift */; };
 		9AEA0FD3289DA11000CABE84 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AEA0FD2289DA11000CABE84 /* Assets.xcassets */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9A948AC5289EEC1000D22522 /* CoinModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinModel.swift; sourceTree = "<group>"; };
 		9AEA0FCB289DA10E00CABE84 /* Crypto Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Crypto Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AEA0FCE289DA10E00CABE84 /* SwiftfulCryptoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftfulCryptoApp.swift; sourceTree = "<group>"; };
 		9AEA0FD0289DA10E00CABE84 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -40,6 +42,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9A948AC4289EEBF800D22522 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9A948AC5289EEC1000D22522 /* CoinModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		9AEA0FC2289DA10D00CABE84 = {
 			isa = PBXGroup;
 			children = (
@@ -59,6 +69,7 @@
 		9AEA0FCD289DA10E00CABE84 /* SwiftfulCrypto */ = {
 			isa = PBXGroup;
 			children = (
+				9A948AC4289EEBF800D22522 /* Models */,
 				9AEA0FDF289DA57B00CABE84 /* Core */,
 				9AEA0FDC289DA34C00CABE84 /* Extensions */,
 				9AEA0FCE289DA10E00CABE84 /* SwiftfulCryptoApp.swift */,
@@ -211,6 +222,7 @@
 				9AEA0FE8289DA6A200CABE84 /* CircleButtonView.swift in Sources */,
 				9AEA0FDE289DA36200CABE84 /* Color.swift in Sources */,
 				9AEA0FEA289DA9B000CABE84 /* CircleButtonAnimationView.swift in Sources */,
+				9A948AC6289EEC1000D22522 /* CoinModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
