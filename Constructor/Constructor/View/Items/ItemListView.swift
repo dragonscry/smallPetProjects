@@ -14,6 +14,8 @@ struct ItemListView: View {
     @State var isAddingItem = false
     @State var isAlert = false
     
+    @State var isActive = false
+    
     var body: some View {
         NavigationView {
             List {
@@ -32,18 +34,17 @@ struct ItemListView: View {
                                 }
 
                             }
-//                            .swipeActions(edge: .trailing) {
-//                                Button(role: .destructive) {
-//                                    withAnimation(.easeOut(duration: 0.2)) {
-//                                        itemsVM.deleteItem2(item: item)
-//                                    }
-//                                } label: {
-//                                    Label("Delete", systemImage: "trash")
-//                                }
-//
-//                            }
+                            .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                                    Button {
+                                        withAnimation(.easeOut(duration: 0.1)) {
+                                            itemsVM.deleteItem2(item: item)
+                                        }
+                                    } label: {
+                                        Image(systemName: "trash")
+                                    }
+                                    .tint(.red)
+                            }
                         }
-                        .onDelete(perform: itemsVM.deleteItem)
                     }
 
                 }

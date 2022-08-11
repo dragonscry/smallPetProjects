@@ -66,6 +66,7 @@ struct AddProductView: View {
                         .underlineTextField()
                         Text("Note: if you type product price product became uneditable")
                             .font(.subheadline)
+                            .foregroundColor(.secondary)
                     }
                 }
 
