@@ -32,7 +32,7 @@ class ProductsViewModel: ObservableObject {
         
     }
     
-    //add products from core to array
+    //add itemcounts from core to array
 //    func getItemCounts() {
 //        let request = NSFetchRequest<ItemCountEntity>(entityName: "ItemCountEntity")
 //        

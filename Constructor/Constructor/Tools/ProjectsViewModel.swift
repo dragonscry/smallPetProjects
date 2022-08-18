@@ -34,7 +34,7 @@ class ProjectsViewModel: ObservableObject {
         do {
             projects = try manager.context.fetch(request)
         } catch let error {
-            print("Error product fetching \(error.localizedDescription)")
+            print("Error project fetching \(error.localizedDescription)")
         }
     }
     
