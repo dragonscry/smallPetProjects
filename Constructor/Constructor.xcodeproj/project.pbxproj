@@ -14,7 +14,6 @@
 		9A094E03283B8A0800321469 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A094E02283B8A0800321469 /* Preview Assets.xcassets */; };
 		9A0982062858FA5700ED4639 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0982052858FA5700ED4639 /* Extensions.swift */; };
 		9A2E7875285CF91500320C36 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2E7874285CF91500320C36 /* CoreDataManager.swift */; };
-		9A2E7878285CFA5500320C36 /* CoreDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2E7877285CFA5500320C36 /* CoreDataViewModel.swift */; };
 		9A2E787B285CFAB500320C36 /* CoreDataContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9A2E7879285CFAB500320C36 /* CoreDataContainer.xcdatamodeld */; };
 		9A2E787D285D0D1500320C36 /* ProductDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2E787C285D0D1500320C36 /* ProductDetailsView.swift */; };
 		9A36F5E2284D2F6F00EA563F /* ItemListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A36F5E1284D2F6F00EA563F /* ItemListView.swift */; };
@@ -43,7 +42,6 @@
 		9A094E02283B8A0800321469 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9A0982052858FA5700ED4639 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		9A2E7874285CF91500320C36 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
-		9A2E7877285CFA5500320C36 /* CoreDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataViewModel.swift; sourceTree = "<group>"; };
 		9A2E787A285CFAB500320C36 /* CoreDataContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataContainer.xcdatamodel; sourceTree = "<group>"; };
 		9A2E787C285D0D1500320C36 /* ProductDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsView.swift; sourceTree = "<group>"; };
 		9A36F5E1284D2F6F00EA563F /* ItemListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListView.swift; sourceTree = "<group>"; };
@@ -96,8 +94,6 @@
 				9A2E7873285CF90300320C36 /* Tools */,
 				9A0982042858FA4300ED4639 /* Extensions */,
 				9A094DFB283B8A0600321469 /* ConstructorApp.swift */,
-				9A094E0D283B8A9200321469 /* ModelView */,
-				9A094E0C283B8A8B00321469 /* Model */,
 				9A094E0B283B8A7800321469 /* View */,
 				9A094DFF283B8A0800321469 /* Assets.xcassets */,
 				9A094E01283B8A0800321469 /* Preview Content */,
@@ -127,20 +123,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		9A094E0C283B8A8B00321469 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		9A094E0D283B8A9200321469 /* ModelView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ModelView;
-			sourceTree = "<group>";
-		};
 		9A0982042858FA4300ED4639 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -153,7 +135,6 @@
 			isa = PBXGroup;
 			children = (
 				9A2E7874285CF91500320C36 /* CoreDataManager.swift */,
-				9A2E7877285CFA5500320C36 /* CoreDataViewModel.swift */,
 				9AE4FC5E2882EDBF003EB3E8 /* ProjectsViewModel.swift */,
 				9AE4FC602882F3C2003EB3E8 /* ItemsViewModel.swift */,
 				9AE4FC622882F3D4003EB3E8 /* ProductsViewModel.swift */,
@@ -296,7 +277,6 @@
 				9AE4FC632882F3D4003EB3E8 /* ProductsViewModel.swift in Sources */,
 				9AE4FC5B287F3A4A003EB3E8 /* ProjectListView.swift in Sources */,
 				9AE4FC5D287F3A64003EB3E8 /* ProjectDetailsView.swift in Sources */,
-				9A2E7878285CFA5500320C36 /* CoreDataViewModel.swift in Sources */,
 				9A36F5E6284D347900EA563F /* ProductListView.swift in Sources */,
 				9A2E787B285CFAB500320C36 /* CoreDataContainer.xcdatamodeld in Sources */,
 				9A36F5E2284D2F6F00EA563F /* ItemListView.swift in Sources */,

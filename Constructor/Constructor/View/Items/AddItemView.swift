@@ -31,6 +31,7 @@ struct AddItemView: View {
                         
                         TextField("Type Item price", text: $price)
                             .underlineTextField()
+                            .keyboardType(.numbersAndPunctuation)
                         
                         TextField("Type kg/l/ft", text: $dimension)
                             .underlineTextField()
@@ -48,7 +49,7 @@ struct AddItemView: View {
                     itemVM.getItems()
                     presentationMode.wrappedValue.dismiss()
                 } label: {
-                    SaveButtonLabel()
+                    DefaultButton(text: "Save")
                 }
 
                 

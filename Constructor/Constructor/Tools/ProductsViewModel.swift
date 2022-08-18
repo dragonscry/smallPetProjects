@@ -162,7 +162,7 @@ class ProductsViewModel: ObservableObject {
     func updateProcent(product: ProductEntity, procent: String) {
         product.procent = Float(procent) ?? 0.0
         recalculationProduct(product: product)
-        save()
+ //       save()
     }
     
     //update item count entity

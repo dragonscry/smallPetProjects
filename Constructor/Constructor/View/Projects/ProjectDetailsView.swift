@@ -31,7 +31,7 @@ struct ProjectDetailsView: View {
                 projectVM.updateProject(project: project, name: name)
                 presentationMode.wrappedValue.dismiss()
             } label: {
-                SaveButtonLabel()
+                DefaultButton(text: "Save")
             }
             
             Spacer()

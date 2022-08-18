@@ -40,7 +40,7 @@ struct ItemDetailsView: View {
                 productVM.getProducts()
                 presentationMode.wrappedValue.dismiss()
             } label: {
-                SaveButtonLabel()
+                DefaultButton(text: "Save")
             }
             
             Spacer()

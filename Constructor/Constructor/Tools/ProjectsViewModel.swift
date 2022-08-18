@@ -86,18 +86,18 @@ class ProjectsViewModel: ObservableObject {
     }
     
     //delete specific item
-    func deleteItem(item: ItemEntity) {
+    private func deleteItem(item: ItemEntity) {
         manager.context.delete(item)
     }
     
     //delete specific product and all conected item counts
-    func deleteProduct(product: ProductEntity) {
+    private func deleteProduct(product: ProductEntity) {
         deleteItemCounts(product: product)
         manager.context.delete(product)
     }
     
     //delete item counts from project
-    func deleteItemCounts(product: ProductEntity) {
+    private func deleteItemCounts(product: ProductEntity) {
         if let itemCounts = product.itemCounts?.allObjects as? [ItemCountEntity] {
             for itemCount in itemCounts {
                 manager.context.delete(itemCount)

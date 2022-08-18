@@ -105,7 +105,7 @@ struct isEditableProduct: View {
                     productVM.updateProduct(product: product, name: name)
                     presentationMode.wrappedValue.dismiss()
                 } label: {
-                    SaveButtonLabel()
+                    DefaultButton(text: "Save")
                 }
                 
                 Spacer()
@@ -113,7 +113,7 @@ struct isEditableProduct: View {
                 Button {
                     isShowingSelectItem = true
                 } label: {
-                    SelectItemButtonLabel()
+                    DefaultButton(text: "Select Item")
                 }
                 .sheet(isPresented: $isShowingSelectItem) {
                     AddItemsView(product: product)
@@ -194,7 +194,7 @@ struct isNotEdtableProduct: View {
                     productVM.updateProduct(product: product, name: name, price: price)
                     presentationMode.wrappedValue.dismiss()
                 } label: {
-                    SaveButtonLabel()
+                    DefaultButton(text: "Save")
                 }
                 
                 Spacer()
@@ -257,7 +257,7 @@ struct AddItemsView: View {
                 productVM.recalculationProduct(product: product)
                 presentationMode.wrappedValue.dismiss()
             } label: {
-                SaveButtonLabel()
+                DefaultButton(text: "Save")
             }
             
         }

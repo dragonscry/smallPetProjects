@@ -29,7 +29,7 @@ struct AddProjectView: View {
                     projectVM.addProject(name: name)
                     presentationMode.wrappedValue.dismiss()
                 } label: {
-                    SaveButtonLabel()
+                    DefaultButton(text: "Save")
                 }
                 
                 Spacer()

@@ -66,6 +66,7 @@ class ItemsViewModel: ObservableObject {
         save()
     }
     
+    // delete directly item from core
     func deleteItem2(item: ItemEntity) {
         manager.context.delete(item)
         save()

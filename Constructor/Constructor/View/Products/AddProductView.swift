@@ -31,7 +31,7 @@ struct AddProductView: View {
                 Button {
                     self.isShowingSelectItem = true
                 } label: {
-                    SelectItemButtonLabel()
+                    DefaultButton(text: "Select item")
                 }
                 .sheet(isPresented: $isShowingSelectItem) {
                     SelectItemView(selectedRows: $items)
@@ -51,7 +51,7 @@ struct AddProductView: View {
                     }
                     presentationMode.wrappedValue.dismiss()
                 } label: {
-                    SaveButtonLabel()
+                    DefaultButton(text: "Save")
                 }
             }
             .padding(.bottom, 40)

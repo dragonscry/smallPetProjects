@@ -7,40 +7,26 @@
 
 import SwiftUI
 
-struct ButtonsView: View {
+// Default button
+struct DefaultButton: View {
+    
+    let text: String
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
-
-
-// Default Save Button Label
-struct SaveButtonLabel: View {
-    var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 10)
-                .stroke(.black)
-            Text("SAVE")
-                .foregroundColor(.black)
-        }
-        .frame(width: 80, height: 40)
-    }
-}
-
-struct SelectItemButtonLabel: View {
-    var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 10)
-                .stroke(.black)
-            Text("SELECT ITEM")
-                .foregroundColor(.black)
-        }
-        .frame(width: 130, height: 40)
+        Text("\(text.uppercased())")
+            .padding(.horizontal, 5)
+            .padding()
+            .background(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(.black)
+            )
     }
 }
 
 struct ButtonsView_Previews: PreviewProvider {
     static var previews: some View {
-        SelectItemButtonLabel()
+        DefaultButton(text: "Save")
+            .previewLayout(.sizeThatFits)
+            .padding()
     }
 }
