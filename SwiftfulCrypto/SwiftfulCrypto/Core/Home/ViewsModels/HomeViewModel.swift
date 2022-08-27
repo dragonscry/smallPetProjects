@@ -20,6 +20,7 @@ class HomeViewModel: ObservableObject {
     private let coinDataService = CoinDataService()
     private var cansellables = Set<AnyCancellable>()
     private let marketDataService = MarketDataService()
+    private let portfolioDataService = PortfolioDataService()
     
     init() {
         addSubscribers()
@@ -43,6 +44,9 @@ class HomeViewModel: ObservableObject {
                 self?.statistics = returnedStats
             }
             .store(in: &cansellables)
+        
+        //updates portfolioCoins
+        
     }
     
     private func filterCoins(text: String, coins: [CoinModel]) -> [CoinModel] {
