@@ -91,7 +91,7 @@
 		9A094DFA283B8A0600321469 /* Constructor */ = {
 			isa = PBXGroup;
 			children = (
-				9A2E7873285CF90300320C36 /* Tools */,
+				9A2E7873285CF90300320C36 /* ModelViews */,
 				9A0982042858FA4300ED4639 /* Extensions */,
 				9A094DFB283B8A0600321469 /* ConstructorApp.swift */,
 				9A094E0B283B8A7800321469 /* View */,
@@ -131,7 +131,7 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		9A2E7873285CF90300320C36 /* Tools */ = {
+		9A2E7873285CF90300320C36 /* ModelViews */ = {
 			isa = PBXGroup;
 			children = (
 				9A2E7874285CF91500320C36 /* CoreDataManager.swift */,
@@ -139,7 +139,7 @@
 				9AE4FC602882F3C2003EB3E8 /* ItemsViewModel.swift */,
 				9AE4FC622882F3D4003EB3E8 /* ProductsViewModel.swift */,
 			);
-			path = Tools;
+			path = ModelViews;
 			sourceTree = "<group>";
 		};
 		9A36F5EB284E798D00EA563F /* Items */ = {

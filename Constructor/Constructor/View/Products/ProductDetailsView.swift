@@ -14,33 +14,109 @@ struct ProductDetailsView: View {
     @EnvironmentObject var productVM: ProductsViewModel
     @EnvironmentObject var projectVM: ProjectsViewModel
     @EnvironmentObject var itemVM: ItemsViewModel
+    @State var name = ""
+    @State var procent = ""
+    @State var price = ""
+    @State var isShowingSelectItem = false
+    @State var isShowingItem = false
     
     var body: some View {
         
         if product.isEditable {
-            isEditableProduct(product: product)
+            isEditableProduct
         } else {
-            isNotEdtableProduct(product: product)
+            isNotEditableProduct
         }
         
     }
     
 }
 
-struct isEditableProduct: View {
+extension ProductDetailsView {
+    var isEditableProduct: some View {
+        VStack {
+            HStack {
+                DefaultPhotoView()
+                
+                VStack {
+                    TextField(product.name ?? "", text: $name)
+                        .underlineTextField()
+                }
+                
+            }
+            .onAppear(perform: defaultValues)
+            .padding(.horizontal)
+            
+            List {
+                
+                Section {
+                    Text("Own Price: \(String(format: "%.2f", product.price))")
+                    
+                }
+                
+                Section {
+                    HStack {
+                        Text("Procent for product:")
+                        Spacer()
+                        TextField("Procent", text: $procent,onCommit: {
+                            productVM.updateProcent(product: product, procent: procent)
+                        })
+                        .underlineTextField()
+                    }
+                    Text("Total price: \(String(format: "%.2f", product.totalPrice))")
+                    
+                }
+                
+                if let items = product.items?.allObjects as? [ItemEntity] {
+                    
+                    Section(header: Text("Items in product")) {
+                        ForEach(itemVM.items.filter({ item in
+                            items.contains(item)
+                        })){ item in
+                            VStack {
+                                ItemRowWithStepper(item: item, product: product, itemCount: getItemCount(item: item))
+                            }
+                            .swipeActions(edge: .trailing) {
+                                Button(role: .destructive) {
+                                    self.deleteItemFromProduct(item: item)
+                                } label: {
+                                    Label("Delete", systemImage: "trash")
+                                }
+                            }
+                            
+                        }
+                    }
+                }
+            }
+            
+            
+            
+            HStack {
+                Button {
+                    productVM.updateProduct(product: product, name: name)
+                    presentationMode.wrappedValue.dismiss()
+                } label: {
+                    DefaultButton(text: "Save")
+                }
+                
+                Spacer()
+                
+                Button {
+                    isShowingSelectItem = true
+                } label: {
+                    DefaultButton(text: "Select Item")
+                }
+                .sheet(isPresented: $isShowingSelectItem) {
+                    AddItemsView(product: product)
+                }
+                
+                
+            }
+            .padding(.horizontal)
+        }
+    }
     
-    let product: ProductEntity
-    @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var productVM: ProductsViewModel
-    @EnvironmentObject var projectVM: ProjectsViewModel
-    @EnvironmentObject var itemVM: ItemsViewModel
-    @State var name = ""
-    @State var procent = ""
-    
-    @State var isShowingSelectItem = false
-    @State var isShowingItem = false
-    
-    var body: some View {
+    var isNotEditableProduct: some View {
         VStack {
             HStack {
                 DefaultPhotoView()
@@ -126,25 +202,19 @@ struct isEditableProduct: View {
     }
     
     //check product name and add it if exist
-    func defaultValues() {
+    private func defaultValues() {
         if self.name == "" {
             self.name = product.name ?? ""
+        }
+        if self.price == "" {
+            self.price = String(format: "%.2f", product.price)
         }
         self.procent = String(product.procent)
         productVM.recalculationProduct(product: product)
     }
     
-    //delete item from product
-    func deleteItemFromProduct(item: ItemEntity) {
-        self.product.removeFromItems(item)
-        if let itemCount = getItemCount(item: item) {
-            self.product.removeFromItemCounts(itemCount)
-        }
-        productVM.recalculationProduct(product: product)
-    }
-    
     //get item count connected to item
-    func getItemCount(item: ItemEntity) -> ItemCountEntity? {
+    private func getItemCount(item: ItemEntity) -> ItemCountEntity? {
         
         if let itemCounts = product.itemCounts?.allObjects as? [ItemCountEntity] {
             let count = itemCounts.first { itemCount in
@@ -157,62 +227,13 @@ struct isEditableProduct: View {
         return nil
     }
     
-    
-}
-
-struct isNotEdtableProduct: View {
-    
-    let product: ProductEntity
-    @Environment(\.presentationMode) var presentationMode
-    //@EnvironmentObject var coreDataVM: CoreDataRelationshipViewModel
-    @EnvironmentObject var productVM: ProductsViewModel
-    @EnvironmentObject var projectVM: ProjectsViewModel
-    @State var name = ""
-    @State var price = ""
-    
-    var body: some View {
-        VStack {
-            HStack {
-                DefaultPhotoView()
-                
-                VStack {
-                    TextField(product.name ?? "", text: $name)
-                        .underlineTextField()
-                    
-                    TextField(String(format: "%.2f", product.price), text: $price)
-                        .underlineTextField()
-                }
-                
-            }
-            .onAppear(perform: defaultValues)
-            .padding(.horizontal)
-            
-            Spacer()
-            
-            HStack {
-                Button {
-                    productVM.updateProduct(product: product, name: name, price: price)
-                    presentationMode.wrappedValue.dismiss()
-                } label: {
-                    DefaultButton(text: "Save")
-                }
-                
-                Spacer()
-                
-            }
-            .padding(.horizontal)
+    //delete item from product
+    private func deleteItemFromProduct(item: ItemEntity) {
+        self.product.removeFromItems(item)
+        if let itemCount = getItemCount(item: item) {
+            self.product.removeFromItemCounts(itemCount)
         }
-    }
-    
-    //check product name and add it if exist
-    func defaultValues() {
-        if self.name == "" {
-            self.name = product.name ?? ""
-        }
-        
-        if self.price == "" {
-            self.price = String(format: "%.2f", product.price)
-        }
+        productVM.recalculationProduct(product: product)
     }
 }
 

@@ -21,36 +21,13 @@ struct AddItemView: View {
     var body: some View {
         NavigationView {
             VStack {
-                HStack {
-                    
-                    DefaultPhotoView()
-                    
-                    VStack {
-                        TextField("Type Item name", text: $name)
-                            .underlineTextField()
-                        
-                        TextField("Type Item price", text: $price)
-                            .underlineTextField()
-                            .keyboardType(.numbersAndPunctuation)
-                        
-                        TextField("Type kg/l/ft", text: $dimension)
-                            .underlineTextField()
-                    }
-                }
-                .padding(.bottom, 50)
-                .padding(.horizontal)
+
+                info
                 
-                TextEditor(text: $description)
-                    .border(Color.gray)
-                    .padding()
+                TextField("Description", text: $description)
+                    .underlineTextField()
                 
-                Button {
-                    itemVM.addItem(name: name, price: Float(price) ?? 0, description: description, dimension: dimension, project: projectVM.selectedProject)
-                    itemVM.getItems()
-                    presentationMode.wrappedValue.dismiss()
-                } label: {
-                    DefaultButton(text: "Save")
-                }
+                saveButton
 
                 
                 Spacer()
@@ -66,4 +43,40 @@ struct AddItemView_Previews: PreviewProvider {
     static var previews: some View {
         AddItemView()
     }
+}
+
+extension AddItemView {
+    
+    var info : some View {
+        HStack {
+            
+            DefaultPhotoView()
+            
+            VStack {
+                TextField("Type Item name", text: $name)
+                    .underlineTextField()
+                
+                TextField("Type Item price", text: $price)
+                    .underlineTextField()
+                    .keyboardType(.numbersAndPunctuation)
+                
+                TextField("Type kg/l/ft", text: $dimension)
+                    .underlineTextField()
+            }
+        }
+        .padding(.bottom, 50)
+        .padding(.horizontal)
+    }
+    
+    var saveButton: some View {
+        
+        Button {
+            itemVM.addItem(name: name, price: Float(price) ?? 0, description: description, dimension: dimension, project: projectVM.selectedProject)
+            itemVM.getItems()
+            presentationMode.wrappedValue.dismiss()
+        } label: {
+            DefaultButton(text: "Save")
+        }
+    }
+    
 }

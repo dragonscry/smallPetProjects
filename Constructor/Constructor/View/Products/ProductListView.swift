@@ -16,23 +16,7 @@ struct ProductListView: View {
     
     var body: some View {
         NavigationView {
-            List {
-                if let project = projectVM.selectedProject {
-                    if let products = project.products?.allObjects as? [ProductEntity]{
-                        ForEach(productVM.products.filter({ product in
-                            products.contains(product)
-                        })) { product in
-                            NavigationLink {
-                                ProductDetailsView(product: product)
-                            } label: {
-                                Text("\(product.name ?? "Unnamed Product")")
-                            }
-                        }
-                        .onDelete(perform: productVM.deleteProduct)
-                    }
-                }
-                
-            }
+            productList
             .alert("Please, add a Project", isPresented: $isAlert, actions: {
                 Button(role: .cancel) {
                     //
@@ -82,5 +66,28 @@ struct ProductRow: View {
             Text("\(String(format: "%.2f", product.price))")
         }
         
+    }
+}
+
+extension ProductListView {
+    
+    var productList: some View {
+        List {
+            if let project = projectVM.selectedProject {
+                if let products = project.products?.allObjects as? [ProductEntity]{
+                    ForEach(productVM.products.filter({ product in
+                        products.contains(product)
+                    })) { product in
+                        NavigationLink {
+                            ProductDetailsView(product: product)
+                        } label: {
+                            Text("\(product.name ?? "Unnamed Product")")
+                        }
+                    }
+                    .onDelete(perform: productVM.deleteProduct)
+                }
+            }
+            
+        }
     }
 }

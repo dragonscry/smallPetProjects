@@ -23,7 +23,6 @@ struct ItemRowWithStepper: View {
     
     var item : ItemEntity
     var product: ProductEntity
-    //@EnvironmentObject var coreDataVM: CoreDataRelationshipViewModel
     @EnvironmentObject var productVM: ProductsViewModel
     var itemCount: ItemCountEntity?
     @State var itemCountStr = ""

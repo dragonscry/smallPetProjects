@@ -19,40 +19,17 @@ struct ItemDetailsView: View {
     
     var body: some View {
         VStack {
-            HStack {
-                
-                DefaultPhotoView()
-                
-                VStack {
-                    TextField(item.name ?? "", text: $name)
-                        .underlineTextField()
-                    
-                    TextField("\(item.price)", text: $price)
-                        .underlineTextField()
-                }
-            }
-            .padding(.horizontal)
-            .padding(.bottom, 50)
-
             
-            Button {
-                itemVM.updateItem(item: item, name: name, price: Float(price) ?? 0)
-                productVM.getProducts()
-                presentationMode.wrappedValue.dismiss()
-            } label: {
-                DefaultButton(text: "Save")
-            }
+            itemDetails
+
+            buttons
             
             Spacer()
             
         }
         .onAppear(perform: defaultValues)
     }
-    
-    func defaultValues() {
-        self.name = item.name ?? ""
-        self.price = String(item.price)
-    }
+
 }
 
 //struct ItemDetailsView_Previews: PreviewProvider {
@@ -60,3 +37,40 @@ struct ItemDetailsView: View {
 //        ItemDetailsView(item: Item(name: "Logan", price: 20))
 //    }
 //}
+
+extension ItemDetailsView {
+    var itemDetails : some View {
+        HStack {
+            
+            DefaultPhotoView()
+            
+            VStack {
+                TextField(item.name ?? "", text: $name)
+                    .underlineTextField()
+                
+                TextField("\(item.price)", text: $price)
+                    .numericTextField()
+                    .underlineTextField()
+                    
+            }
+        }
+        .padding(.horizontal)
+        .padding(.bottom, 50)
+    }
+    
+    var buttons: some View {
+        Button {
+            itemVM.updateItem(item: item, name: name, price: Float(price) ?? 0)
+            productVM.getProducts()
+            presentationMode.wrappedValue.dismiss()
+        } label: {
+            DefaultButton(text: "Save")
+        }
+    }
+    
+    
+    private func defaultValues() {
+        self.name = item.name ?? ""
+        self.price = String(item.price)
+    }
+}

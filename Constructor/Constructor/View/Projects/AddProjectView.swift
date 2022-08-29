@@ -10,7 +10,6 @@ import SwiftUI
 struct AddProjectView: View {
     
     @Environment(\.presentationMode) var presentationMode
-    //@EnvironmentObject var coreDataVM: CoreDataRelationshipViewModel
     @EnvironmentObject var projectVM: ProjectsViewModel
     @State var name = ""
     

@@ -22,3 +22,9 @@ extension View {
             .padding(10)
     }
 }
+
+extension TextField {
+    func numericTextField() -> some View {
+        self.keyboardType(.decimalPad)
+    }
+}
