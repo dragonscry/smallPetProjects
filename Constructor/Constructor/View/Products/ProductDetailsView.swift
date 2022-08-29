@@ -124,77 +124,26 @@ extension ProductDetailsView {
                 VStack {
                     TextField(product.name ?? "", text: $name)
                         .underlineTextField()
+                    
+                    TextField(String(format: "%.2f", product.price), text: $price)
+                        .underlineTextField()
                 }
                 
             }
             .onAppear(perform: defaultValues)
             .padding(.horizontal)
             
-            
-            
-            List {
-                
-                Section {
-                    Text("Own Price: \(String(format: "%.2f", product.price))")
-                    
-                }
-                
-                Section {
-                    HStack {
-                        Text("Procent for product:")
-                        Spacer()
-                        TextField("Procent", text: $procent,onCommit: {
-                            productVM.updateProcent(product: product, procent: procent)
-                        })
-                        .underlineTextField()
-                    }
-                    Text("Total price: \(String(format: "%.2f", product.totalPrice))")
-                    
-                }
-                
-                if let items = product.items?.allObjects as? [ItemEntity] {
-                    
-                    Section(header: Text("Items in product")) {
-                        ForEach(itemVM.items.filter({ item in
-                            items.contains(item)
-                        })){ item in
-                            VStack {
-                                ItemRowWithStepper(item: item, product: product, itemCount: getItemCount(item: item))
-                            }
-                            .swipeActions(edge: .trailing) {
-                                Button(role: .destructive) {
-                                    self.deleteItemFromProduct(item: item)
-                                } label: {
-                                    Label("Delete", systemImage: "trash")
-                                }
-                            }
-                            
-                        }
-                    }
-                }
-            }
-            
-            
+            Spacer()
             
             HStack {
                 Button {
-                    productVM.updateProduct(product: product, name: name)
+                    productVM.updateProduct(product: product, name: name, price: price)
                     presentationMode.wrappedValue.dismiss()
                 } label: {
                     DefaultButton(text: "Save")
                 }
                 
                 Spacer()
-                
-                Button {
-                    isShowingSelectItem = true
-                } label: {
-                    DefaultButton(text: "Select Item")
-                }
-                .sheet(isPresented: $isShowingSelectItem) {
-                    AddItemsView(product: product)
-                }
-                
                 
             }
             .padding(.horizontal)
