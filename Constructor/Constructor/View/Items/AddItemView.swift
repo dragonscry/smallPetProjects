@@ -11,8 +11,8 @@ struct AddItemView: View {
     
     @Environment(\.presentationMode) var presentationMode
     //@EnvironmentObject var coreDataVM: CoreDataRelationshipViewModel
-    @EnvironmentObject var projectVM: ProjectsViewModel
-    @EnvironmentObject var itemVM: ItemsViewModel
+    @EnvironmentObject var projectVM: ProjectsDataManager
+    @EnvironmentObject var itemVM: ItemsDataManager
     @State var name = ""
     @State var price = ""
     @State var dimension = ""

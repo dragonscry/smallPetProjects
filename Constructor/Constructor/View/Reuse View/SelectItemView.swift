@@ -10,9 +10,9 @@ import SwiftUI
 struct SelectItemView: View {
     
     //@EnvironmentObject var coreDataVM: CoreDataRelationshipViewModel
-    @EnvironmentObject var projectVM: ProjectsViewModel
+    @EnvironmentObject var projectVM: ProjectsDataManager
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var itemVM: ItemsViewModel
+    @EnvironmentObject var itemVM: ItemsDataManager
     @Binding var selectedRows : Set<ItemEntity>
     
     var body: some View {

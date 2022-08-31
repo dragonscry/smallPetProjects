@@ -10,13 +10,14 @@ import SwiftUI
 struct ProjectListView: View {
     
     //@EnvironmentObject var coreDataVM: CoreDataRelationshipViewModel
-    @EnvironmentObject var projectVM: ProjectsViewModel
+    @EnvironmentObject var projectVM: ProjectsDataManager
+    @EnvironmentObject var projectVMNew: ProjectViewModel
     @State var isAddingProject = false
     
     var body: some View {
         NavigationView {
             List {
-                ForEach(projectVM.projects) { project in
+                ForEach(projectVMNew.projects) { project in
                     NavigationLink {
                         ProjectDetailsView(project: project)
                     } label: {
@@ -35,7 +36,7 @@ struct ProjectListView: View {
                     
 
                 }
-                .onDelete(perform: projectVM.deleteProject)
+                .onDelete(perform: projectVMNew.deleteProject)
             }
             .navigationTitle("All Projects")
             .toolbar {

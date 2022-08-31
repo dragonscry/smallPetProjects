@@ -9,8 +9,8 @@ import SwiftUI
 
 struct ItemListView: View {
     //@EnvironmentObject var coreDataVM: CoreDataRelationshipViewModel
-    @EnvironmentObject var itemsVM: ItemsViewModel
-    @EnvironmentObject var projectVM: ProjectsViewModel
+    @EnvironmentObject var itemsVM: ItemsDataManager
+    @EnvironmentObject var projectVM: ProjectsDataManager
     @State var isAddingItem = false
     @State var isAlert = false
     @State var isActive = false

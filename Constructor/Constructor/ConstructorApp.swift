@@ -10,9 +10,10 @@ import SwiftUI
 @main
 struct ConstructorApp: App {
     
-    @StateObject var projectsVM: ProjectsViewModel = ProjectsViewModel()
-    @StateObject var itemsVM: ItemsViewModel = ItemsViewModel()
-    @StateObject var productsVM: ProductsViewModel = ProductsViewModel()
+    @StateObject var projectsVM: ProjectsDataManager = ProjectsDataManager()
+    @StateObject var projectsVMNew: ProjectViewModel = ProjectViewModel()
+    @StateObject var itemsVM: ItemsDataManager = ItemsDataManager()
+    @StateObject var productsVM: ProductsDataManager = ProductsDataManager()
     
     var body: some Scene {
         WindowGroup {
@@ -22,6 +23,7 @@ struct ConstructorApp: App {
             .environmentObject(projectsVM)
             .environmentObject(itemsVM)
             .environmentObject(productsVM)
+            .environmentObject(projectsVMNew)
         }
     }
 }

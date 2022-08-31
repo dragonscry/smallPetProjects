@@ -11,9 +11,9 @@ struct ProductDetailsView: View {
     
     let product: ProductEntity
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var productVM: ProductsViewModel
-    @EnvironmentObject var projectVM: ProjectsViewModel
-    @EnvironmentObject var itemVM: ItemsViewModel
+    @EnvironmentObject var productVM: ProductsDataManager
+    @EnvironmentObject var projectVM: ProjectsDataManager
+    @EnvironmentObject var itemVM: ItemsDataManager
     @State var name = ""
     @State var procent = ""
     @State var price = ""
@@ -188,9 +188,9 @@ extension ProductDetailsView {
 
 struct AddItemsView: View {
     
-    @EnvironmentObject var productVM: ProductsViewModel
-    @EnvironmentObject var itemsVM: ItemsViewModel
-    @EnvironmentObject var projectVM: ProjectsViewModel
+    @EnvironmentObject var productVM: ProductsDataManager
+    @EnvironmentObject var itemsVM: ItemsDataManager
+    @EnvironmentObject var projectVM: ProjectsDataManager
     @Environment(\.presentationMode) var presentationMode
     
     let product: ProductEntity

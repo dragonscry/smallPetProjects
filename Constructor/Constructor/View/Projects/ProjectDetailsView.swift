@@ -10,7 +10,7 @@ import SwiftUI
 struct ProjectDetailsView: View {
     
     //@EnvironmentObject var coreDataVM: CoreDataRelationshipViewModel
-    @EnvironmentObject var projectVM: ProjectsViewModel
+    @EnvironmentObject var projectVM: ProjectsDataManager
     @Environment(\.presentationMode) var presentationMode
     var project: ProjectEntity
     @State var name = ""

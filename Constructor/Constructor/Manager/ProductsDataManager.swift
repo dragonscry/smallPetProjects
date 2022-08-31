@@ -7,8 +7,9 @@
 
 import Foundation
 import CoreData
+import SwiftUI
 
-class ProductsViewModel: ObservableObject {
+class ProductsDataManager: ObservableObject {
     
     let manager = CoreDataManager.instance
     

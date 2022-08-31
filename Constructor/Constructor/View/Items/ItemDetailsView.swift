@@ -10,8 +10,8 @@ import SwiftUI
 struct ItemDetailsView: View {
     
     //@EnvironmentObject var coreDataVM: CoreDataRelationshipViewModel
-    @EnvironmentObject var itemVM: ItemsViewModel
-    @EnvironmentObject var productVM: ProductsViewModel
+    @EnvironmentObject var itemVM: ItemsDataManager
+    @EnvironmentObject var productVM: ProductsDataManager
     @Environment(\.presentationMode) var presentationMode
     var item : ItemEntity
     @State var name = ""

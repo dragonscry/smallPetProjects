@@ -11,8 +11,8 @@ struct AddProductView: View {
     
     @Environment(\.presentationMode) var presentationMode
     //@EnvironmentObject var coreDataVM: CoreDataRelationshipViewModel
-    @EnvironmentObject var productVM: ProductsViewModel
-    @EnvironmentObject var projectVM: ProjectsViewModel
+    @EnvironmentObject var productVM: ProductsDataManager
+    @EnvironmentObject var projectVM: ProjectsDataManager
     @State var name = ""
     @State var items = Set<ItemEntity>()
     @State var price = ""

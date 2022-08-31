@@ -28,3 +28,10 @@ extension TextField {
         self.keyboardType(.decimalPad)
     }
 }
+
+extension UIApplication {
+    
+    func endEdtitng() {
+        sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+}

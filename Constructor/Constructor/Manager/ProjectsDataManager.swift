@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-class ProjectsViewModel: ObservableObject {
+class ProjectsDataManager: ObservableObject {
     
     let manager = CoreDataManager.instance
     
@@ -81,6 +81,7 @@ class ProjectsViewModel: ObservableObject {
             }
             
             manager.context.delete(project)
+            
         }
         save()
     }

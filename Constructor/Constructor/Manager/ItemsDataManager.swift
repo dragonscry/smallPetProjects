@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-class ItemsViewModel: ObservableObject {
+class ItemsDataManager: ObservableObject {
     
     let manager = CoreDataManager.instance
     

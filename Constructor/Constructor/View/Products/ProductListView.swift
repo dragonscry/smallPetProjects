@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct ProductListView: View {
-    //@EnvironmentObject var coreDataVM: CoreDataRelationshipViewModel
-    @EnvironmentObject var productVM: ProductsViewModel
-    @EnvironmentObject var projectVM: ProjectsViewModel
+    @EnvironmentObject var productVM: ProductsDataManager
+    @EnvironmentObject var projectVM: ProjectsDataManager
+    //@EnvironmentObject var productListVM: ProductListViewModel
     @State var isAddingProduct = false
     @State var isAlert = false
     
