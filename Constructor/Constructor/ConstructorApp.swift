@@ -10,20 +10,20 @@ import SwiftUI
 @main
 struct ConstructorApp: App {
     
-    @StateObject var projectsVM: ProjectsDataManager = ProjectsDataManager()
-    @StateObject var projectsVMNew: ProjectViewModel = ProjectViewModel()
-    @StateObject var itemsVM: ItemsDataManager = ItemsDataManager()
-    @StateObject var productsVM: ProductsDataManager = ProductsDataManager()
+//    @StateObject var projectsVM: ProjectsDataManager = ProjectsDataManager()
+    @StateObject var superVM: SuperViewModel = SuperViewModel()
+//    @StateObject var itemsVM: ItemsDataManager = ItemsDataManager()
+//    @StateObject var productsVM: ProductsDataManager = ProductsDataManager()
     
     var body: some Scene {
         WindowGroup {
             VStack {
                 ContentView()
             }
-            .environmentObject(projectsVM)
-            .environmentObject(itemsVM)
-            .environmentObject(productsVM)
-            .environmentObject(projectsVMNew)
+            //.environmentObject(projectsVM)
+            //.environmentObject(itemsVM)
+            //.environmentObject(productsVM)
+            .environmentObject(superVM)
         }
     }
 }

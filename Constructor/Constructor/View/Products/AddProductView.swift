@@ -11,8 +11,9 @@ struct AddProductView: View {
     
     @Environment(\.presentationMode) var presentationMode
     //@EnvironmentObject var coreDataVM: CoreDataRelationshipViewModel
-    @EnvironmentObject var productVM: ProductsDataManager
-    @EnvironmentObject var projectVM: ProjectsDataManager
+//    @EnvironmentObject var productVM: ProductsDataManager
+//    @EnvironmentObject var projectVM: ProjectsDataManager
+    @EnvironmentObject var superVM: SuperViewModel
     @State var name = ""
     @State var items = Set<ItemEntity>()
     @State var price = ""
@@ -60,12 +61,12 @@ extension AddProductView {
             Button {
                 
                 if !price.isEmpty {
-                    productVM.addProduct(name: name, price: price, project: projectVM.selectedProject)
+                    superVM.addProduct(name: name, price: price, project: superVM.selectedProject)
                 }
                 else if items.isEmpty {
-                    productVM.addProduct(name: name, project: projectVM.selectedProject)
+                    superVM.addProduct(name: name, project: superVM.selectedProject)
                 } else if !items.isEmpty {
-                    productVM.addProduct(name: name, items: items, project: projectVM.selectedProject)
+                    superVM.addProduct(name: name, items: items, project: superVM.selectedProject)
                 }
                 presentationMode.wrappedValue.dismiss()
             } label: {

@@ -11,8 +11,9 @@ struct AddItemView: View {
     
     @Environment(\.presentationMode) var presentationMode
     //@EnvironmentObject var coreDataVM: CoreDataRelationshipViewModel
-    @EnvironmentObject var projectVM: ProjectsDataManager
-    @EnvironmentObject var itemVM: ItemsDataManager
+//    @EnvironmentObject var projectVM: ProjectsDataManager
+//    @EnvironmentObject var itemVM: ItemsDataManager
+    @EnvironmentObject var superVM: SuperViewModel
     @State var name = ""
     @State var price = ""
     @State var dimension = ""
@@ -71,8 +72,8 @@ extension AddItemView {
     var saveButton: some View {
         
         Button {
-            itemVM.addItem(name: name, price: Float(price) ?? 0, description: description, dimension: dimension, project: projectVM.selectedProject)
-            itemVM.getItems()
+            superVM.addItem(name: name, price: Float(price) ?? 0, description: description, dimension: dimension, project: superVM.selectedProject)
+            superVM.saveItem()
             presentationMode.wrappedValue.dismiss()
         } label: {
             DefaultButton(text: "Save")

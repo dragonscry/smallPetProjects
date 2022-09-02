@@ -10,14 +10,14 @@ import SwiftUI
 struct ProjectListView: View {
     
     //@EnvironmentObject var coreDataVM: CoreDataRelationshipViewModel
-    @EnvironmentObject var projectVM: ProjectsDataManager
-    @EnvironmentObject var projectVMNew: ProjectViewModel
+    //@EnvironmentObject var projectVM: ProjectsDataManager
+    @EnvironmentObject var superVM: SuperViewModel
     @State var isAddingProject = false
     
     var body: some View {
         NavigationView {
             List {
-                ForEach(projectVMNew.projects) { project in
+                ForEach(superVM.projects) { project in
                     NavigationLink {
                         ProjectDetailsView(project: project)
                     } label: {
@@ -27,16 +27,16 @@ struct ProjectListView: View {
                             Text(project.isSelected ? "🟢" : "🔴")
                         }
                         .onTapGesture {
-                            projectVMNew.unselectAllProjects()
+                            superVM.unselectAllProjects()
                             project.isSelected = true
-                            projectVMNew.saveProject()
+                            superVM.saveProject()
                         }
                     }
 
                     
 
                 }
-                .onDelete(perform: projectVMNew.deleteProject)
+                .onDelete(perform: superVM.deleteProject)
             }
             .navigationTitle("All Projects")
             .toolbar {

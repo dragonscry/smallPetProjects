@@ -22,7 +22,7 @@ class ProductsDataManager: ObservableObject {
     }
     
     //add products from core to array
-    func getProducts() {
+    private func getProducts() {
         let request = NSFetchRequest<ProductEntity>(entityName: "ProductEntity")
         
         do {
@@ -67,7 +67,7 @@ class ProductsDataManager: ObservableObject {
     }
     
     //add item count to core
-    func addItemCount(item: ItemEntity, product: ProductEntity) {
+    private func addItemCount(item: ItemEntity, product: ProductEntity) {
         let newItemCount = ItemCountEntity(context: manager.context)
         newItemCount.idItem = item.itemID
         newItemCount.count = 1
@@ -76,7 +76,7 @@ class ProductsDataManager: ObservableObject {
     }
     
     //add item count to product
-    func addItemCountToProduct(itemCount: ItemCountEntity, product: ProductEntity) {
+    private func addItemCountToProduct(itemCount: ItemCountEntity, product: ProductEntity) {
         product.addToItemCounts(itemCount)
     }
     

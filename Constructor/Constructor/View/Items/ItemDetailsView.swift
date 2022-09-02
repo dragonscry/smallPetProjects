@@ -10,8 +10,9 @@ import SwiftUI
 struct ItemDetailsView: View {
     
     //@EnvironmentObject var coreDataVM: CoreDataRelationshipViewModel
-    @EnvironmentObject var itemVM: ItemsDataManager
-    @EnvironmentObject var productVM: ProductsDataManager
+//    @EnvironmentObject var itemVM: ItemsDataManager
+//    @EnvironmentObject var productVM: ProductsDataManager
+    @EnvironmentObject var superVM: SuperViewModel
     @Environment(\.presentationMode) var presentationMode
     var item : ItemEntity
     @State var name = ""
@@ -60,8 +61,8 @@ extension ItemDetailsView {
     
     var buttons: some View {
         Button {
-            itemVM.updateItem(item: item, name: name, price: Float(price) ?? 0)
-            productVM.getProducts()
+            superVM.updateItem(item: item, name: name, price: Float(price) ?? 0)
+            superVM.saveItem()
             presentationMode.wrappedValue.dismiss()
         } label: {
             DefaultButton(text: "Save")

@@ -10,7 +10,8 @@ import SwiftUI
 struct ProjectDetailsView: View {
     
     //@EnvironmentObject var coreDataVM: CoreDataRelationshipViewModel
-    @EnvironmentObject var projectVM: ProjectsDataManager
+    //@EnvironmentObject var projectVM: ProjectsDataManager
+    @EnvironmentObject var superVM: SuperViewModel
     @Environment(\.presentationMode) var presentationMode
     var project: ProjectEntity
     @State var name = ""
@@ -28,7 +29,7 @@ struct ProjectDetailsView: View {
             .padding(.bottom, 50)
             
             Button {
-                projectVM.updateProject(project: project, name: name)
+                superVM.updateProject(project: project, name: name)
                 presentationMode.wrappedValue.dismiss()
             } label: {
                 DefaultButton(text: "Save")

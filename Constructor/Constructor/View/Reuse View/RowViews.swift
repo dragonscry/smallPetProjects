@@ -23,7 +23,8 @@ struct ItemRowWithStepper: View {
     
     var item : ItemEntity
     var product: ProductEntity
-    @EnvironmentObject var productVM: ProductsDataManager
+    //@EnvironmentObject var productVM: ProductsDataManager
+    @EnvironmentObject var superVM: SuperViewModel
     var itemCount: ItemCountEntity?
     @State var itemCountStr = ""
     
@@ -39,7 +40,7 @@ struct ItemRowWithStepper: View {
                 Spacer()
                 TextField("", text: $itemCountStr) {
                     updateItemCount()
-                    productVM.recalculationProduct(product: product)
+                    superVM.recalculationProduct(product: product)
                     countFromItemCount()
                 }
                 .underlineTextField()
@@ -62,7 +63,7 @@ struct ItemRowWithStepper: View {
     func updateItemCount() {
         var count: Float = Float(itemCountStr) ?? -1
         count = Float(round(Double(count)*100)/100.0)
-        productVM.updateItemCount(itemCount: itemCount, count: count)
+        superVM.updateItemCount(itemCount: itemCount, count: count)
     }
     
     

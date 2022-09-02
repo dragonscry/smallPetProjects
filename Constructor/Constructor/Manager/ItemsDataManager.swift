@@ -19,7 +19,7 @@ class ItemsDataManager: ObservableObject {
     }
     
     //add items from core to array
-    func getItems() {
+    private func getItems() {
         let request = NSFetchRequest<ItemEntity>(entityName: "ItemEntity")
         
         do {

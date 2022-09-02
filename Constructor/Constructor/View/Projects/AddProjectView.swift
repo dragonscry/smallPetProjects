@@ -10,8 +10,8 @@ import SwiftUI
 struct AddProjectView: View {
     
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var projectVM: ProjectsDataManager
-    @EnvironmentObject var projectVMNew: ProjectViewModel
+    //@EnvironmentObject var projectVM: ProjectsDataManager
+    @EnvironmentObject var superVM: SuperViewModel
     @State var name = ""
     
     var body: some View {
@@ -25,8 +25,8 @@ struct AddProjectView: View {
                 .padding(.bottom, 20)
                 
                 Button {
-                    projectVMNew.unselectAllProjects()
-                    projectVMNew.addProject(name: name)
+                    superVM.unselectAllProjects()
+                    superVM.addProject(name: name)
                     presentationMode.wrappedValue.dismiss()
                 } label: {
                     DefaultButton(text: "Save")

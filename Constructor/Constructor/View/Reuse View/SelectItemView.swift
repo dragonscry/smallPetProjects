@@ -10,32 +10,27 @@ import SwiftUI
 struct SelectItemView: View {
     
     //@EnvironmentObject var coreDataVM: CoreDataRelationshipViewModel
-    @EnvironmentObject var projectVM: ProjectsDataManager
+    //@EnvironmentObject var projectVM: ProjectsDataManager
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var itemVM: ItemsDataManager
+    //@EnvironmentObject var itemVM: ItemsDataManager
+    @EnvironmentObject var superVM: SuperViewModel
     @Binding var selectedRows : Set<ItemEntity>
     
     var body: some View {
         NavigationView {
             List {
-                if let project = projectVM.selectedProject {
-                    if let items = project.items?.allObjects as? [ItemEntity] {
-                        ForEach(itemVM.items.filter({ item in
-                            items.contains(item)
-                        })) { item in
-                            HStack{
-                                ItemRow(item: item)
-                                if selectedRows.contains(item) {
-                                    Image(systemName: "heart.fill")
-                                }
-                            }
-                            .onTapGesture {
-                                if !selectedRows.contains(item){
-                                    selectedRows.insert(item)
-                                } else {
-                                    selectedRows.remove(item)
-                                }
-                            }
+                ForEach(superVM.items) { item in
+                    HStack{
+                        ItemRow(item: item)
+                        if selectedRows.contains(item) {
+                            Image(systemName: "heart.fill")
+                        }
+                    }
+                    .onTapGesture {
+                        if !selectedRows.contains(item){
+                            selectedRows.insert(item)
+                        } else {
+                            selectedRows.remove(item)
                         }
                     }
                 }

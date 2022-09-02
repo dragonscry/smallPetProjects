@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct ProductListView: View {
-    @EnvironmentObject var productVM: ProductsDataManager
-    @EnvironmentObject var projectVM: ProjectsDataManager
-    @EnvironmentObject var projectsVMNew: ProjectViewModel
+//    @EnvironmentObject var productVM: ProductsDataManager
+//    @EnvironmentObject var projectVM: ProjectsDataManager
+    @EnvironmentObject var superVM: SuperViewModel
     @State var isAddingProduct = false
     @State var isAlert = false
     
@@ -29,7 +29,7 @@ struct ProductListView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        if projectVM.selectedProject != nil {
+                        if !superVM.projects.isEmpty {
                             self.isAddingProduct = true
                         } else {
                             self.isAlert = true
@@ -87,14 +87,22 @@ extension ProductListView {
 //                    .onDelete(perform: productVM.deleteProduct)
 //                }
 //            }
-            ForEach(projectsVMNew.products) { product in
+            ForEach(superVM.products) { product in
                 NavigationLink {
                     ProductDetailsView(product: product)
                 } label: {
                     Text("\(product.name ?? "Unnamed Product")")
                 }
+                .swipeActions(edge: .trailing) {
+                    Button(role: .destructive) {
+                        superVM.deleteProduct(product: product)
+                    } label: {
+                        Label("Delete", systemImage: "trash")
+                    }
+                }
+                
             }
-            .onDelete(perform: productVM.deleteProduct)
+            //.onDelete(perform: superVM.deleteProduct)
             
         }
     }

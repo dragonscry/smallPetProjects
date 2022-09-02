@@ -11,9 +11,10 @@ struct ProductDetailsView: View {
     
     let product: ProductEntity
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var productVM: ProductsDataManager
-    @EnvironmentObject var projectVM: ProjectsDataManager
-    @EnvironmentObject var itemVM: ItemsDataManager
+//    @EnvironmentObject var productVM: ProductsDataManager
+//    @EnvironmentObject var projectVM: ProjectsDataManager
+//    @EnvironmentObject var itemVM: ItemsDataManager
+    @EnvironmentObject var superVM: SuperViewModel
     @State var name = ""
     @State var procent = ""
     @State var price = ""
@@ -59,7 +60,7 @@ extension ProductDetailsView {
                         Text("Procent for product:")
                         Spacer()
                         TextField("Procent", text: $procent,onCommit: {
-                            productVM.updateProcent(product: product, procent: procent)
+                            superVM.updateProcent(product: product, procent: procent)
                         })
                         .underlineTextField()
                     }
@@ -70,7 +71,7 @@ extension ProductDetailsView {
                 if let items = product.items?.allObjects as? [ItemEntity] {
                     
                     Section(header: Text("Items in product")) {
-                        ForEach(itemVM.items.filter({ item in
+                        ForEach(superVM.items.filter({ item in
                             items.contains(item)
                         })){ item in
                             VStack {
@@ -93,7 +94,7 @@ extension ProductDetailsView {
             
             HStack {
                 Button {
-                    productVM.updateProduct(product: product, name: name)
+                    superVM.updateProduct(product: product, name: name)
                     presentationMode.wrappedValue.dismiss()
                 } label: {
                     DefaultButton(text: "Save")
@@ -137,7 +138,7 @@ extension ProductDetailsView {
             
             HStack {
                 Button {
-                    productVM.updateProduct(product: product, name: name, price: price)
+                    superVM.updateProduct(product: product, name: name, price: price)
                     presentationMode.wrappedValue.dismiss()
                 } label: {
                     DefaultButton(text: "Save")
@@ -159,7 +160,7 @@ extension ProductDetailsView {
             self.price = String(format: "%.2f", product.price)
         }
         self.procent = String(product.procent)
-        productVM.recalculationProduct(product: product)
+        superVM.recalculationProduct(product: product)
     }
     
     //get item count connected to item
@@ -182,7 +183,7 @@ extension ProductDetailsView {
         if let itemCount = getItemCount(item: item) {
             self.product.removeFromItemCounts(itemCount)
         }
-        productVM.recalculationProduct(product: product)
+        superVM.recalculationProduct(product: product)
     }
 }
 
