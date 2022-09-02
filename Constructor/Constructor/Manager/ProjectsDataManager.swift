@@ -28,7 +28,7 @@ class ProjectsDataManager: ObservableObject {
     }
     
     //add projects from core to array
-    func getProjects() {
+    private func getProjects() {
         let request = NSFetchRequest<ProjectEntity>(entityName: "ProjectEntity")
         
         do {

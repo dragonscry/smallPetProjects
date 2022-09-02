@@ -27,9 +27,9 @@ struct ProjectListView: View {
                             Text(project.isSelected ? "🟢" : "🔴")
                         }
                         .onTapGesture {
-                            projectVM.unselectAllProject()
+                            projectVMNew.unselectAllProjects()
                             project.isSelected = true
-                            projectVM.save()
+                            projectVMNew.saveProject()
                         }
                     }
 

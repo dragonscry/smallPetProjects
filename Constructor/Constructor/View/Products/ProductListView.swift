@@ -10,7 +10,7 @@ import SwiftUI
 struct ProductListView: View {
     @EnvironmentObject var productVM: ProductsDataManager
     @EnvironmentObject var projectVM: ProjectsDataManager
-    //@EnvironmentObject var productListVM: ProductListViewModel
+    @EnvironmentObject var projectsVMNew: ProjectViewModel
     @State var isAddingProduct = false
     @State var isAlert = false
     
@@ -73,20 +73,28 @@ extension ProductListView {
     
     var productList: some View {
         List {
-            if let project = projectVM.selectedProject {
-                if let products = project.products?.allObjects as? [ProductEntity]{
-                    ForEach(productVM.products.filter({ product in
-                        products.contains(product)
-                    })) { product in
-                        NavigationLink {
-                            ProductDetailsView(product: product)
-                        } label: {
-                            Text("\(product.name ?? "Unnamed Product")")
-                        }
-                    }
-                    .onDelete(perform: productVM.deleteProduct)
+//            if let project = projectVM.selectedProject {
+//                if let products = project.products?.allObjects as? [ProductEntity]{
+//                    ForEach(productVM.products.filter({ product in
+//                        products.contains(product)
+//                    })) { product in
+//                        NavigationLink {
+//                            ProductDetailsView(product: product)
+//                        } label: {
+//                            Text("\(product.name ?? "Unnamed Product")")
+//                        }
+//                    }
+//                    .onDelete(perform: productVM.deleteProduct)
+//                }
+//            }
+            ForEach(projectsVMNew.products) { product in
+                NavigationLink {
+                    ProductDetailsView(product: product)
+                } label: {
+                    Text("\(product.name ?? "Unnamed Product")")
                 }
             }
+            .onDelete(perform: productVM.deleteProduct)
             
         }
     }

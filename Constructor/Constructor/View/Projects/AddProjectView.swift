@@ -25,8 +25,8 @@ struct AddProjectView: View {
                 .padding(.bottom, 20)
                 
                 Button {
-                    projectVM.unselectAllProject()
-                    projectVM.addProject(name: name)
+                    projectVMNew.unselectAllProjects()
+                    projectVMNew.addProject(name: name)
                     presentationMode.wrappedValue.dismiss()
                 } label: {
                     DefaultButton(text: "Save")
