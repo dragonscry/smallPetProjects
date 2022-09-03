@@ -11,9 +11,9 @@ struct ProductDetailsView: View {
     
     let product: ProductEntity
     @Environment(\.presentationMode) var presentationMode
-//    @EnvironmentObject var productVM: ProductsDataManager
-//    @EnvironmentObject var projectVM: ProjectsDataManager
-//    @EnvironmentObject var itemVM: ItemsDataManager
+    //    @EnvironmentObject var productVM: ProductsDataManager
+    //    @EnvironmentObject var projectVM: ProjectsDataManager
+    //    @EnvironmentObject var itemVM: ItemsDataManager
     @EnvironmentObject var superVM: SuperViewModel
     @State var name = ""
     @State var procent = ""
@@ -189,9 +189,10 @@ extension ProductDetailsView {
 
 struct AddItemsView: View {
     
-    @EnvironmentObject var productVM: ProductsDataManager
-    @EnvironmentObject var itemsVM: ItemsDataManager
-    @EnvironmentObject var projectVM: ProjectsDataManager
+    //    @EnvironmentObject var productVM: ProductsDataManager
+    //    @EnvironmentObject var itemsVM: ItemsDataManager
+    //    @EnvironmentObject var projectVM: ProjectsDataManager
+    @EnvironmentObject var superVM: SuperViewModel
     @Environment(\.presentationMode) var presentationMode
     
     let product: ProductEntity
@@ -200,38 +201,30 @@ struct AddItemsView: View {
     var body: some View {
         VStack {
             List {
-                if let project = projectVM.selectedProject {
-                    if let items = project.items?.allObjects as? [ItemEntity] {
-                        if let prodItems = product.items?.allObjects as? [ItemEntity] {
-                            ForEach(items.filter({ item in
-                                !prodItems.contains(item)
-                            })){ item in
-                                HStack{
-                                    ItemRow(item: item)
-                                    if selectedRows.contains(item) {
-                                        Image(systemName: "heart.fill")
-                                    }
-                                }.onTapGesture {
-                                    if !selectedRows.contains(item){
-                                        selectedRows.insert(item)
-                                    } else {
-                                        selectedRows.remove(item)
-                                    }
-                                }
-                            }
+                ForEach(superVM.items){ item in
+                    HStack{
+                        ItemRow(item: item)
+                        if selectedRows.contains(item) {
+                            Image(systemName: "heart.fill")
+                        }
+                    }.onTapGesture {
+                        if !selectedRows.contains(item){
+                            selectedRows.insert(item)
+                        } else {
+                            selectedRows.remove(item)
                         }
                     }
                 }
             }
-            Button {
-                productVM.addItemsToProduct(items: selectedRows, product: product)
-                productVM.recalculationProduct(product: product)
-                presentationMode.wrappedValue.dismiss()
-            } label: {
-                DefaultButton(text: "Save")
-            }
-            
         }
+        Button {
+            superVM.addItemsToProduct(items: selectedRows, product: product)
+            superVM.recalculationProduct(product: product)
+            presentationMode.wrappedValue.dismiss()
+        } label: {
+            DefaultButton(text: "Save")
+        }
+        
     }
 }
 

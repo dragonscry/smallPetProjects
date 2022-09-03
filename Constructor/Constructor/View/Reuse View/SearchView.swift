@@ -34,7 +34,7 @@ struct SearchView: View {
             }
             .font(.headline)
             .padding()
-            .background(RoundedRectangle(cornerRadius: 25).fill(Color.gray)
+            .background(RoundedRectangle(cornerRadius: 25).fill(Color.gray.opacity(0.2))
                 .shadow(color: Color.black.opacity(0.15), radius: 10, x: 0, y: 0)
             )
             .padding()

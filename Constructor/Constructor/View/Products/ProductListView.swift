@@ -16,15 +16,18 @@ struct ProductListView: View {
     
     var body: some View {
         NavigationView {
-            productList
-            .alert("Please, add a Project", isPresented: $isAlert, actions: {
-                Button(role: .cancel) {
-                    //
-                } label: {
-                    Text("OK")
-                }
-                
-            })
+            VStack {
+                SearchView(searchText: $superVM.searchProducts)
+                productList
+                .alert("Please, add a Project", isPresented: $isAlert, actions: {
+                    Button(role: .cancel) {
+                        //
+                    } label: {
+                        Text("OK")
+                    }
+                    
+                })
+            }
             .navigationTitle("All Products")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {

@@ -20,6 +20,9 @@ class SuperViewModel: ObservableObject {
     @Published var products: [ProductEntity] = []
     @Published var items: [ItemEntity] = []
     
+    @Published var searchItems = ""
+    @Published var searchProducts = ""
+    
     var selectedProject: ProjectEntity = ProjectEntity()
     
     init() {
@@ -53,6 +56,50 @@ class SuperViewModel: ObservableObject {
             }
             .store(in: &cansellables)
         
+        $searchItems
+            .combineLatest(itemsData.$items)
+            .debounce(for: .seconds(0.5), scheduler: DispatchQueue.main)
+            .map(searchItems)
+            .sink { [weak self] serchedItem in
+                self?.items = serchedItem
+            }
+            .store(in: &cansellables)
+        
+        $searchProducts
+            .combineLatest(productsData.$products)
+            .debounce(for: .seconds(0.5), scheduler: DispatchQueue.main)
+            .map(searchProducts)
+            .sink { [weak self] searchedProduct in
+                self?.products = searchedProduct
+            }
+            .store(in: &cansellables)
+        
+    }
+    
+    private func searchItems(text: String, items: [ItemEntity]) -> [ItemEntity] {
+        let filteredItems = filterItems(items: items, projects: projectsData.projects)
+        guard !text.isEmpty else {
+            return filteredItems
+        }
+        
+        let lowercasedText = text.lowercased()
+        
+        return filteredItems.filter { item -> Bool in
+            return item.name?.lowercased().contains(lowercasedText) ?? false
+        }
+    }
+    
+    private func searchProducts(text: String, products: [ProductEntity]) -> [ProductEntity] {
+        let filteredProducts = filterProducts(products: products, projects: projectsData.projects)
+        guard !text.isEmpty else {
+            return filteredProducts
+        }
+        
+        let lowercasedText = text.lowercased()
+        
+        return filteredProducts.filter { product -> Bool in
+            return product.name?.lowercased().contains(lowercasedText) ?? false
+        }
     }
     
     
@@ -81,7 +128,7 @@ class SuperViewModel: ObservableObject {
     //MARK: Item Functions
     
     func addItem(name: String, price: Float, description: String, dimension: String, project: ProjectEntity) {
-//        itemsData.addItem(name: name, price: price, description: description, dimension: dimension, project: project)
+        itemsData.addItem(name: name, price: price, description: description, dimension: dimension, project: project)
     }
     
     func updateItem(item: ItemEntity, name: String, price: Float){
@@ -111,15 +158,19 @@ class SuperViewModel: ObservableObject {
     //MARK: Product Functions
     
     func addProduct(name: String, project: ProjectEntity) {
-        //productsData.addProduct(name: name, project: project)
+        productsData.addProduct(name: name, project: project)
     }
     
     func addProduct(name: String, items: Set<ItemEntity>, project: ProjectEntity){
-        //productsData.addProduct(name: name, items: items, project: project)
+        productsData.addProduct(name: name, items: items, project: project)
     }
     
     func addProduct(name: String, price: String, project: ProjectEntity) {
         productsData.addProduct(name: name, price: price, project: project)
+    }
+    
+    func addItemsToProduct(items: Set<ItemEntity>, product: ProductEntity) {
+        productsData.addItemsToProduct(items: items, product: product)
     }
     
     func updateProduct(product: ProductEntity, name: String) {
