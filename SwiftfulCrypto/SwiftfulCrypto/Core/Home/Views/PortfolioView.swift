@@ -28,7 +28,7 @@ struct PortfolioView: View {
                     }
                 }
             }
-            
+            .background(Color.theme.backgorund.ignoresSafeArea())
             .navigationTitle("Edit Portfolio")
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
