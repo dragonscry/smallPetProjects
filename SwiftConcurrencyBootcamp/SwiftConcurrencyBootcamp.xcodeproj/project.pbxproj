@@ -12,6 +12,7 @@
 		9A9A1A6728DB98F900ACDF75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A9A1A6628DB98F900ACDF75 /* Assets.xcassets */; };
 		9A9A1A6A28DB98F900ACDF75 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A9A1A6928DB98F900ACDF75 /* Preview Assets.xcassets */; };
 		9A9A1A7128DB992400ACDF75 /* DoCatchTryThrowBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9A1A7028DB992400ACDF75 /* DoCatchTryThrowBootcamp.swift */; };
+		9A9A1A7328DD002700ACDF75 /* DownloadImageAsync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9A1A7228DD002700ACDF75 /* DownloadImageAsync.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		9A9A1A6628DB98F900ACDF75 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9A9A1A6928DB98F900ACDF75 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9A9A1A7028DB992400ACDF75 /* DoCatchTryThrowBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoCatchTryThrowBootcamp.swift; sourceTree = "<group>"; };
+		9A9A1A7228DD002700ACDF75 /* DownloadImageAsync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadImageAsync.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 				9A9A1A6228DB98F700ACDF75 /* SwiftConcurrencyBootcampApp.swift */,
 				9A9A1A6428DB98F700ACDF75 /* ContentView.swift */,
 				9A9A1A7028DB992400ACDF75 /* DoCatchTryThrowBootcamp.swift */,
+				9A9A1A7228DD002700ACDF75 /* DownloadImageAsync.swift */,
 				9A9A1A6628DB98F900ACDF75 /* Assets.xcassets */,
 				9A9A1A6828DB98F900ACDF75 /* Preview Content */,
 			);
@@ -140,6 +143,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A9A1A7328DD002700ACDF75 /* DownloadImageAsync.swift in Sources */,
 				9A9A1A7128DB992400ACDF75 /* DoCatchTryThrowBootcamp.swift in Sources */,
 				9A9A1A6528DB98F700ACDF75 /* ContentView.swift in Sources */,
 				9A9A1A6328DB98F700ACDF75 /* SwiftConcurrencyBootcampApp.swift in Sources */,
