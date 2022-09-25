@@ -14,9 +14,9 @@ struct SwiftfulCryptoApp: App {
     @State private var showLaunchView: Bool = true
     
     init() {
-        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor : UIColor(Color.theme.accent)]
-        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor : UIColor(Color.theme.accent)]
-        UINavigationBar.appearance().tintColor = UIColor(Color.theme.accent)
+        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor : UIColor(Color.green)]
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor : UIColor(Color.green)]
+        UINavigationBar.appearance().tintColor = UIColor(Color.green)
         UITableView.appearance().backgroundColor = UIColor.clear
     }
     
