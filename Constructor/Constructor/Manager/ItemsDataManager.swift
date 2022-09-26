@@ -44,6 +44,7 @@ class ItemsDataManager: ObservableObject {
         newItem.price = price
         newItem.dimension = dimension
         newItem.desc = description
+        newItem.storageCount = 0
         
         project.addToItems(newItem)
         
