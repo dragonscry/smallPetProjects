@@ -39,12 +39,13 @@ class ProjectsDataManager: ObservableObject {
     }
     
     //add project to core
-    func addProject(name: String) {
+    func addProject(name: String, budget: String) {
         self.unselectAllProject()
         let newProject = ProjectEntity(context: manager.context)
         newProject.projectID = UUID().uuidString
         newProject.name = name
         newProject.isSelected = true
+        newProject.budget = Double(budget) ?? 0
         save()
     }
     

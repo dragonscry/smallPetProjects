@@ -105,8 +105,8 @@ class SuperViewModel: ObservableObject {
     
     //MARK: Project Functions
     
-    func addProject(name: String) {
-        projectsData.addProject(name: name)
+    func addProject(name: String, budget: String) {
+        projectsData.addProject(name: name, budget: budget)
     }
     
     func unselectAllProjects() {
@@ -127,11 +127,11 @@ class SuperViewModel: ObservableObject {
     
     //MARK: Item Functions
     
-    func addItem(name: String, price: Float, description: String, dimension: String, project: ProjectEntity) {
+    func addItem(name: String, price: Double, description: String, dimension: String, project: ProjectEntity) {
         itemsData.addItem(name: name, price: price, description: description, dimension: dimension, project: project)
     }
     
-    func updateItem(item: ItemEntity, name: String, price: Float){
+    func updateItem(item: ItemEntity, name: String, price: Double){
         itemsData.updateItem(item: item, name: name, price: price)
     }
     
@@ -189,7 +189,7 @@ class SuperViewModel: ObservableObject {
         productsData.recalculationProduct(product: product)
     }
     
-    func updateItemCount(itemCount: ItemCountEntity?, count: Float) {
+    func updateItemCount(itemCount: ItemCountEntity?, count: Double) {
         productsData.updateItemCount(itemCount: itemCount, count: count)
     }
     

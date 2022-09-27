@@ -35,3 +35,10 @@ extension UIApplication {
         sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
+
+extension Double {
+    
+    func asString2Decimal() -> String {
+        return String(format: "%.2f", self)
+    }
+}

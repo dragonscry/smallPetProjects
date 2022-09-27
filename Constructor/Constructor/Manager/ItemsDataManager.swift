@@ -31,7 +31,7 @@ class ItemsDataManager: ObservableObject {
     }
     
     //add item to core NEED UPD
-    func addItem(name: String, price: Float, description: String, dimension: String, project: ProjectEntity?) {
+    func addItem(name: String, price: Double, description: String, dimension: String, project: ProjectEntity?) {
         
         guard let project = project else {
             print("Project is not selected")
@@ -44,7 +44,7 @@ class ItemsDataManager: ObservableObject {
         newItem.price = price
         newItem.dimension = dimension
         newItem.desc = description
-        newItem.storageCount = 0
+        newItem.storageCount = 0.0
         
         project.addToItems(newItem)
         
@@ -52,7 +52,7 @@ class ItemsDataManager: ObservableObject {
     }
     
     //update item entity
-    func updateItem(item: ItemEntity, name: String, price: Float) {
+    func updateItem(item: ItemEntity, name: String, price: Double) {
         item.name = name
         item.price = price
         save()

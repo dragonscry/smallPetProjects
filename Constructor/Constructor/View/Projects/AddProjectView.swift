@@ -13,20 +13,27 @@ struct AddProjectView: View {
     //@EnvironmentObject var projectVM: ProjectsDataManager
     @EnvironmentObject var superVM: SuperViewModel
     @State var name = ""
+    @State var budget = ""
     
     var body: some View {
         NavigationView {
             VStack {
                 HStack {
                     DefaultPhotoView()
-                    TextField("Type Project Name", text: $name)
-                        .underlineTextField()
+                    VStack {
+                        TextField("Type Project Name", text: $name)
+                            .underlineTextField()
+                        TextField("Type Project Budget", text: $budget)
+                            .numericTextField()
+                            .underlineTextField()
+                    }
+                        
                 }
                 .padding(.bottom, 20)
                 
                 Button {
                     superVM.unselectAllProjects()
-                    superVM.addProject(name: name)
+                    superVM.addProject(name: name, budget: budget)
                     presentationMode.wrappedValue.dismiss()
                 } label: {
                     DefaultButton(text: "Save")

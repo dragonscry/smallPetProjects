@@ -61,8 +61,8 @@ struct ItemRowWithStepper: View {
     }
     
     func updateItemCount() {
-        var count: Float = Float(itemCountStr) ?? -1
-        count = Float(round(Double(count)*100)/100.0)
+        var count: Double = Double(itemCountStr) ?? -1
+        count = Double(round(Double(count)*100)/100.0)
         superVM.updateItemCount(itemCount: itemCount, count: count)
     }
     

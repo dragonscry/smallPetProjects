@@ -95,7 +95,7 @@ class ProductsDataManager: ObservableObject {
         let newItems = items as NSSet
         newProduct.items = newItems
         newProduct.procent = 0.0
-        var price : Float = 0
+        var price : Double = 0
         
         for item in items {
             addItemCount(item: item, product: newProduct)
@@ -121,7 +121,7 @@ class ProductsDataManager: ObservableObject {
         let newProduct = ProductEntity(context: manager.context)
         newProduct.productID = UUID().uuidString
         newProduct.name = name
-        newProduct.price = Float(price) ?? 0
+        newProduct.price = Double(price) ?? 0
         newProduct.isEditable = false
         
         project.addToProducts(newProduct)
@@ -156,18 +156,18 @@ class ProductsDataManager: ObservableObject {
     //update not editable product
     func updateProduct(product: ProductEntity, name: String, price: String) {
         product.name = name
-        product.price = Float(price) ?? 0
+        product.price = Double(price) ?? 0
         save()
     }
     
     func updateProcent(product: ProductEntity, procent: String) {
-        product.procent = Float(procent) ?? 0.0
+        product.procent = Double(procent) ?? 0.0
         recalculationProduct(product: product)
  //       save()
     }
     
     //update item count entity
-    func updateItemCount(itemCount: ItemCountEntity?, count: Float) {
+    func updateItemCount(itemCount: ItemCountEntity?, count: Double) {
         
         guard let itemCount = itemCount else {return}
         
@@ -202,10 +202,10 @@ class ProductsDataManager: ObservableObject {
     }
     
     func recalculationProduct(product: ProductEntity) {
-        var s: Float = 0
+        var s: Double = 0
         if let items = product.items?.allObjects as? [ItemEntity] {
             for i in 0..<items.count {
-                s += items[i].price * Float(getItemCount(item: items[i], product: product)?.count ?? 1)
+                s += items[i].price * Double(getItemCount(item: items[i], product: product)?.count ?? 1)
             }
         }
         product.price = s
