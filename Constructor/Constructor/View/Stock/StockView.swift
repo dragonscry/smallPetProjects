@@ -18,7 +18,7 @@ struct StockView: View {
             
             HStack {
                 Spacer()
-                BasketView(count: itemToBasket.count, height: 30, width: 30)
+                basket
             }
             .padding(.horizontal, 10)
             
@@ -55,6 +55,7 @@ struct StockView: View {
 //        }
 //        return itemModel
 //    }
+    
 }
 //
 //struct StockView_Previews: PreviewProvider {
@@ -62,6 +63,32 @@ struct StockView: View {
 //        StockView()
 //    }
 //}
+
+extension StockView {
+    
+    var basket: some View {
+        ZStack {
+            Image(systemName: "cart")
+                .resizable()
+                .scaledToFit()
+            if itemToBasket.count > 0 {
+            Text("\(itemToBasket.count)")
+                    .fontWeight(.bold)
+                    .font(.system(size: 12))
+                    .foregroundColor(.white)
+                    .padding(.horizontal, 3)
+                    .background {
+                        Capsule()
+                            .fill(Color.red)
+                    }
+                    .offset(x: 15, y: -15)
+         }
+
+
+        }
+        .frame(width: 30, height: 30)
+    }
+}
 
 struct ItemModel: Codable, Hashable {
     let id: String
