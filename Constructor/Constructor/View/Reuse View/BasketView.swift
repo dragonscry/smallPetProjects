@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct BasketView: View {
-    @State var count = 1
+    
+    @State var count: Int
     
     var height: CGFloat
     var width: CGFloat
@@ -18,16 +19,19 @@ struct BasketView: View {
             Image(systemName: "cart")
                 .resizable()
                 .scaledToFit()
-            Text("\(count)")
-                .fontWeight(.bold)
-                .font(.system(size: height/2.5))
-                .foregroundColor(.white)
-                .padding(.horizontal, 2)
-                .background {
-                    Capsule()
-                        .fill(Color.red)
-                }
-                .offset(x: width/2, y: -height/2)
+//            if count > 0 {
+                Text("\(count)")
+                    .fontWeight(.bold)
+                    .font(.system(size: height/3))
+                    .foregroundColor(.white)
+                    .padding(.horizontal, 3)
+                    .background {
+                        Capsule()
+                            .fill(Color.red)
+                    }
+                    .offset(x: width/2, y: -height/2)
+//            }
+
 
         }
         .frame(width: width, height: height)
@@ -36,6 +40,6 @@ struct BasketView: View {
 
 struct BasketView_Previews: PreviewProvider {
     static var previews: some View {
-        BasketView(count: 99, height: 30, width: 30)
+        BasketView(count: 1, height: 30, width: 30)
     }
 }
