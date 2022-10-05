@@ -14,14 +14,7 @@ struct StockView: View {
     @State private var itemToBasket = Set<ItemEntity>()
     
     var body: some View {
-        VStack{
-            
-            HStack {
-                Spacer()
-                basket
-            }
-            .padding(.horizontal, 10)
-            
+        NavigationView {
             List {
                 ForEach(superVM.items) { item in
                     HStack {
@@ -38,24 +31,22 @@ struct StockView: View {
                         } else {
                             itemToBasket.remove(item)
                         }
-                        
-
                     }
+                }
+            }
+            .navigationTitle("Stock")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    NavigationLink {
+                        BasketWithItems()
+                    } label: {
+                        basket
+                    }
+
                 }
             }
         }
     }
-    
-//    func itemEntityToItemModels() -> [ItemModel] {
-//        var itemModel = [ItemModel]()
-//        for item in superVM.items {
-//            if let id = item.item {
-//                itemModel.append(ItemModel(id: id))
-//            }
-//        }
-//        return itemModel
-//    }
-    
 }
 //
 //struct StockView_Previews: PreviewProvider {
@@ -72,19 +63,19 @@ extension StockView {
                 .resizable()
                 .scaledToFit()
             if itemToBasket.count > 0 {
-            Text("\(itemToBasket.count)")
+                Text("\(itemToBasket.count)")
                     .fontWeight(.bold)
                     .font(.system(size: 12))
                     .foregroundColor(.white)
-                    .padding(.horizontal, 3)
+                    .padding(.horizontal, 4)
                     .background {
                         Capsule()
                             .fill(Color.red)
                     }
                     .offset(x: 15, y: -15)
-         }
-
-
+            }
+            
+            
         }
         .frame(width: 30, height: 30)
     }
@@ -92,5 +83,6 @@ extension StockView {
 
 struct ItemModel: Codable, Hashable {
     let id: String
+    let name: String
     var count = 0
 }
