@@ -121,6 +121,10 @@ class SuperViewModel: ObservableObject {
         projectsData.deleteProject(at: indexSet)
     }
     
+    func ZAKUPKA(items: [ItemModel]) {
+        projectsData.ZAKUPKA(items: items, project: projectsData.selectedProject)
+    }
+    
     func saveProject(){
         projectsData.save()
     }
@@ -153,6 +157,10 @@ class SuperViewModel: ObservableObject {
             projectItems.contains(item)
         }
         
+    }
+    
+    func updateCount(itemModels: [ItemModel]) {
+        itemsData.updateItemCount(itemModels: itemModels)
     }
     
     //MARK: Product Functions

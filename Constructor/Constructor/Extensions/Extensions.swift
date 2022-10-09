@@ -42,3 +42,9 @@ extension Double {
         return String(format: "%.2f", self)
     }
 }
+
+extension Int {
+    func toString() -> String {
+        return String(self)
+    }
+}

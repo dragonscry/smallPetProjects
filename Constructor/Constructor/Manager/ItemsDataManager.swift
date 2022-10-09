@@ -79,4 +79,12 @@ class ItemsDataManager: ObservableObject {
         self.manager.save()
         self.getItems()
     }
+    
+    func updateItemCount(itemModels: [ItemModel]) {
+        for model in itemModels {
+            let item = items.first {$0.itemID == model.id}
+            item?.storageCount += Double(model.count) ?? 0
+        }
+        save()
+    }
 }

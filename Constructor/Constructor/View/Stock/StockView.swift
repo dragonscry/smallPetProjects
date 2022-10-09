@@ -11,7 +11,7 @@ struct StockView: View {
     
     @EnvironmentObject var superVM: SuperViewModel
     
-    @State private var itemToBasket = Set<ItemEntity>()
+    @State var itemsToBasket = Set<ItemEntity>()
     
     var body: some View {
         NavigationView {
@@ -20,25 +20,26 @@ struct StockView: View {
                     HStack {
                         Text(item.name ?? "")
                         Spacer()
-                        if itemToBasket.contains(item) {
-                            Image(systemName: "heart.fill")
-                        }
+                        if itemsToBasket.contains(item) {
+                            Image(systemName: "cart.fill")
+                        } else {Image(systemName: "cart")}
                         Text(item.storageCount.asString2Decimal())
                     }
                     .onTapGesture {
-                        if !itemToBasket.contains(item){
-                            itemToBasket.insert(item)
+                        if !itemsToBasket.contains(item){
+                            itemsToBasket.insert(item)
                         } else {
-                            itemToBasket.remove(item)
+                            itemsToBasket.remove(item)
                         }
                     }
                 }
+
             }
             .navigationTitle("Stock")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     NavigationLink {
-                        BasketWithItems()
+                        BasketWithItems(itemsToBasket: $itemsToBasket)
                     } label: {
                         basket
                     }
@@ -62,8 +63,8 @@ extension StockView {
             Image(systemName: "cart")
                 .resizable()
                 .scaledToFit()
-            if itemToBasket.count > 0 {
-                Text("\(itemToBasket.count)")
+            if itemsToBasket.count > 0 {
+                Text("\(itemsToBasket.count)")
                     .fontWeight(.bold)
                     .font(.system(size: 12))
                     .foregroundColor(.white)
@@ -79,10 +80,4 @@ extension StockView {
         }
         .frame(width: 30, height: 30)
     }
-}
-
-struct ItemModel: Codable, Hashable {
-    let id: String
-    let name: String
-    var count = 0
 }

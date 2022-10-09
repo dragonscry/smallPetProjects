@@ -20,9 +20,10 @@ struct ProjectDetailsView: View {
         VStack {
             HStack {
                 DefaultPhotoView()
-                VStack {
+                VStack(alignment: .leading) {
                     TextField(project.name ?? "", text: $name)
                         .underlineTextField()
+                    Text("Budget is: \(project.budget.asString2Decimal())")
                 }
             }
             .padding(.horizontal)

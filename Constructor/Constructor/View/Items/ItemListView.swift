@@ -67,9 +67,10 @@ extension ItemListView {
                 NavigationLink {
                     ItemDetailsView(item: item)
                 } label: {
-                    VStack {
-                        //ItemRow(item: item)
+                    HStack{
                         Text("\(item.name ?? "")")
+                        Spacer()
+                        Text("\(item.price.asString2Decimal())")
                     }
                     
                 }

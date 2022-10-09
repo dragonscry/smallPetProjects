@@ -24,6 +24,7 @@ struct ItemDetailsView: View {
             itemDetails
 
             buttons
+
             
             Spacer()
             
@@ -62,7 +63,6 @@ extension ItemDetailsView {
     var buttons: some View {
         Button {
             superVM.updateItem(item: item, name: name, price: Double(price) ?? 0)
-            superVM.saveItem()
             presentationMode.wrappedValue.dismiss()
         } label: {
             DefaultButton(text: "Save")

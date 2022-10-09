@@ -201,6 +201,7 @@ class ProductsDataManager: ObservableObject {
         save()
     }
     
+    //recalculate product price
     func recalculationProduct(product: ProductEntity) {
         var s: Double = 0
         if let items = product.items?.allObjects as? [ItemEntity] {

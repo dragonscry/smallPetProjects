@@ -107,6 +107,19 @@ class ProjectsDataManager: ObservableObject {
         }
     }
     
+    func ZAKUPKA(items: [ItemModel], project: ProjectEntity?) {
+        guard let project = project else {return}
+        
+        guard let projectItems = project.items?.allObjects as? [ItemEntity] else {return}
+        
+        for model in items {
+            guard let item = projectItems.first(where: {$0.itemID == model.id}) else {return}
+            project.budget -= item.price * (Double(model.count) ?? 0)
+        }
+        
+        save()
+    }
+    
     func save() {
         projects.removeAll()
         self.manager.save()
