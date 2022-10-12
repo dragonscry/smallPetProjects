@@ -68,37 +68,25 @@ struct ProductListView_Previews: PreviewProvider {
     }
 }
 
-//Custom Product row
-struct ProductRow: View {
-    
-    let product: ProductEntity
-    
-    var body: some View {
-        HStack {
-            Text(product.name ?? "UnnamedProduct")
-            Spacer()
-            Text("\(String(format: "%.2f", product.price))")
-        }
-        
-    }
-}
-
 extension ProductListView {
     
     var productList: some View {
         List {
             ForEach(superVM.products) { product in
-                Text("\(product.name ?? "Unnamed Product")")
-                    .onTapGesture {
-                        selectProduct(product: product)
+                HStack{
+                    Text("\(product.name ?? "Unnamed Product")")
+                }
+                
+                .onTapGesture {
+                    selectProduct(product: product)
+                }
+                .swipeActions(edge: .trailing) {
+                    Button(role: .destructive) {
+                        superVM.deleteProduct(product: product)
+                    } label: {
+                        Label("Delete", systemImage: "trash")
                     }
-                    .swipeActions(edge: .trailing) {
-                        Button(role: .destructive) {
-                            superVM.deleteProduct(product: product)
-                        } label: {
-                            Label("Delete", systemImage: "trash")
-                        }
-                    }
+                }
             }
         }
     }
