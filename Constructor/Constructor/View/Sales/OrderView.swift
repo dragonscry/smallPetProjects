@@ -16,6 +16,7 @@ struct OrderView: View {
             List {
                 
             }
+            .navigationBarTitleDisplayMode(.inline)
             .navigationTitle("Order")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {

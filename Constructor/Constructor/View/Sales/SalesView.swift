@@ -17,7 +17,7 @@ struct SalesView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     NavigationLink {
-                        Text("Order")
+                        OrderView()
                     } label: {
                         Image(systemName: "plus")
                     }

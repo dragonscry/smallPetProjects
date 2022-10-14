@@ -34,7 +34,7 @@ struct ContentView: View {
                     }
                     
                 }
-            Text("Here will be Orders")
+            SalesView()
                 .tabItem {
                     VStack {
                         Image(systemName: "suitcase.cart")
