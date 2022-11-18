@@ -13,6 +13,8 @@
 		9AC865582927E8B600257111 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AC865572927E8B600257111 /* Preview Assets.xcassets */; };
 		9AC865602927E9E000257111 /* CategoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC8655F2927E9E000257111 /* CategoryList.swift */; };
 		9AC865622927EDCF00257111 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC865612927EDCF00257111 /* CardView.swift */; };
+		9AC865642927F99800257111 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC865632927F99800257111 /* Home.swift */; };
+		9AC865662928005B00257111 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC865652928005B00257111 /* GameView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +25,8 @@
 		9AC865572927E8B600257111 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9AC8655F2927E9E000257111 /* CategoryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryList.swift; sourceTree = "<group>"; };
 		9AC865612927EDCF00257111 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		9AC865632927F99800257111 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		9AC865652928005B00257111 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +81,8 @@
 			children = (
 				9AC8655F2927E9E000257111 /* CategoryList.swift */,
 				9AC865612927EDCF00257111 /* CardView.swift */,
+				9AC865632927F99800257111 /* Home.swift */,
+				9AC865652928005B00257111 /* GameView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -153,7 +159,9 @@
 			files = (
 				9AC865532927E8B500257111 /* ContentView.swift in Sources */,
 				9AC865512927E8B500257111 /* SwiftQuizApp.swift in Sources */,
+				9AC865642927F99800257111 /* Home.swift in Sources */,
 				9AC865622927EDCF00257111 /* CardView.swift in Sources */,
+				9AC865662928005B00257111 /* GameView.swift in Sources */,
 				9AC865602927E9E000257111 /* CategoryList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
