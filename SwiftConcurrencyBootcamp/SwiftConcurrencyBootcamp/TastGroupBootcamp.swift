@@ -19,6 +19,50 @@ class TaskGroupBootcampDataManager {
         return [image1, image2, image3, image4]
     }
     
+    func fetchImagesWithTaskGroup() async throws -> [UIImage] {
+        
+        let urlStrings = [
+            "https://picsum.photos/300",
+            "https://picsum.photos/300",
+            "https://picsum.photos/300",
+            "https://picsum.photos/300",
+            "https://picsum.photos/300",
+            "https://picsum.photos/300"
+        ]
+        
+        return try await withThrowingTaskGroup(of: UIImage?.self) { group in
+            var images: [UIImage] = []
+            images.reserveCapacity(urlStrings.count)
+            
+            for urlString in urlStrings {
+                group.addTask {
+                    try? await self.fetchImage(urlString: urlString)
+                }
+            }
+            
+//            group.addTask {
+//                try await self.fetchImage(urlString: "https://picsum.photos/300")
+//            }
+//            group.addTask {
+//                try await self.fetchImage(urlString: "https://picsum.photos/300")
+//            }
+//            group.addTask {
+//                try await self.fetchImage(urlString: "https://picsum.photos/300")
+//            }
+//            group.addTask {
+//                try await self.fetchImage(urlString: "https://picsum.photos/300")
+//            }
+            
+            for try await image in group {
+                if let image = image {
+                    images.append(image)
+                }
+            }
+            
+            return images
+        }
+    }
+    
     private func fetchImage(urlString: String) async throws -> UIImage {
         guard let url = URL(string: urlString) else {
             throw URLError(.badURL)
@@ -42,7 +86,7 @@ class TaskGroupBootcampViewModel: ObservableObject {
     let manager = TaskGroupBootcampDataManager()
     
     func getImages() async {
-        if let images = try? await manager.fetchImagesWithAsyncLet() {
+        if let images = try? await manager.fetchImagesWithTaskGroup() {
             self.images.append(contentsOf: images)
         }
     }
